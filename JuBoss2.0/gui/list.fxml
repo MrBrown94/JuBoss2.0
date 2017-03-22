@@ -24,7 +24,7 @@
         <tabs>
           <Tab text="Dettaglio">
                <content>
-                  <TableView id="dettaglioPane" prefHeight="200.0" prefWidth="200.0">
+                  <TableView prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: RED;">
                     <columns>
                       <TableColumn prefWidth="75.0" text="C1" />
                       <TableColumn prefWidth="75.0" text="C2" />

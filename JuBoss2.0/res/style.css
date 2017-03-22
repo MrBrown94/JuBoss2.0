@@ -1,8 +1,8 @@
 /* START - BackGround Image */
 #bg{
     -fx-background-image: url("bg.png");
-    -fx-background-repeat: stretch;   
-    -fx-background-size: 940 500;
+    -fx-background-repeat: repeat;   
+    -fx-background-size: 893 510;
     -fx-background-position: center center;
 }
 /* END - BackGround Image */
@@ -64,6 +64,13 @@
 	-fx-background-image: url("test.jpg");
     -fx-background-repeat: repeat;   
     -fx-background-size: 940 500;
+    -fx-background-position: center center;
+    }
+    
+#ingrossoPane {
+	-fx-background-image: url("bg.png");
+    -fx-background-repeat: r;   
+    -fx-background-size: 500 200;
     -fx-background-position: center center;
     }
 /* fine test (non rompere il cazzo) */
