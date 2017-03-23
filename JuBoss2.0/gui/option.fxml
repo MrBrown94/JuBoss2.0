@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="211.0" prefWidth="478.0" stylesheets="@../res/style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <Label layoutX="98.0" layoutY="102.0" text="Dettaglio">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Label layoutX="97.0" layoutY="39.0" text="Ingrosso">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <TextField layoutX="257.0" layoutY="44.0" prefHeight="31.0" prefWidth="129.0" />
+      <TextField layoutX="257.0" layoutY="109.0" prefHeight="31.0" prefWidth="129.0" />
+      <Button layoutX="314.0" layoutY="166.0" mnemonicParsing="false" prefWidth="90.0" text="Salva" />
+      <Button layoutX="210.0" layoutY="166.0" mnemonicParsing="false" prefWidth="90.0" text="Annulla" />
+   </children>
+</AnchorPane>
