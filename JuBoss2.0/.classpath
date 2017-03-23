@@ -3,5 +3,10 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gui"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="C:/Users/Fabio Di Carlo/git/JuBoss2.0/JuBoss2.0/db/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Fabio Di Carlo/git/JuBoss2.0/JuBoss2.0/db/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Fabio Di Carlo/git/JuBoss2.0/JuBoss2.0/db/hsqldb.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Fabio Di Carlo/git/JuBoss2.0/JuBoss2.0/db/jackcess-2.1.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Fabio Di Carlo/git/JuBoss2.0/JuBoss2.0/db/ucanaccess-4.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

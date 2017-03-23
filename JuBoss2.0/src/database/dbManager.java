@@ -12,18 +12,18 @@ public class dbManager {
 	
 	public dbManager() {
 		
-		   //estrazione path
-	    File jarDir = new File(ClassLoader.getSystemClassLoader().getResource(".").getPath());
+		//estrazione path
+		File jarDir = new File(ClassLoader.getSystemClassLoader().getResource(".").getPath());
 	    String path = jarDir.getAbsolutePath();
-	    path.replace("bin", "strunz");
-	    System.out.println(path);
-	    path.replaceAll("bin","ciao");
+	    
+	    path = path.replaceAll("bin", "");
+	    path = path.replace("\\", "/");
+	    
 	    
 		//String url = "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=C:/Users/Fabio Di Carlo/git/JuBoss2.0/db.accdb";
-		/*
 		try {
 			   
-			Connection conn = DriverManager.getConnection("jdbc:ucanaccess://" + path +"/db.accdb;memory=false");
+			Connection conn = DriverManager.getConnection("jdbc:ucanaccess://" + path + "db/db.accdb;memory=false");
 			System.out.println("connesso");
 		
 		} catch (SQLException e) {
@@ -39,7 +39,7 @@ public class dbManager {
 	}
 	
 	public static void main(String[] args) {
-		
+	    
 		dbManager test = new dbManager();
 	}
 }
