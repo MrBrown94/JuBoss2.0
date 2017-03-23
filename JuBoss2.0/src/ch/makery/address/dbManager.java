@@ -1,4 +1,4 @@
-package database;
+package ch.makery.address;
 
 import java.io.File;
 import java.sql.Connection;
@@ -22,6 +22,7 @@ public class dbManager {
 		//String url = "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=C:/Users/Fabio Di Carlo/git/JuBoss2.0/db.accdb";
 		try {
 			   
+			@SuppressWarnings("unused")
 			Connection conn = DriverManager.getConnection("jdbc:ucanaccess://" + path + "db/db.accdb;memory=false");
 			System.out.println("connesso");
 		
@@ -39,6 +40,7 @@ public class dbManager {
 	
 	public static void main(String[] args) {
 	    
+		@SuppressWarnings("unused")
 		dbManager test = new dbManager();
 	}
 }
