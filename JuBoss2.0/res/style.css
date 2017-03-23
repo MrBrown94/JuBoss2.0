@@ -2,7 +2,7 @@
 #bg{
     -fx-background-image: url("bg.png");
     -fx-background-repeat: repeat;   
-    -fx-background-size: 893 510;
+    -fx-background-size: 940 510;
     -fx-background-position: center center;
 }
 /* END - BackGround Image */
