@@ -13,7 +13,10 @@ public class dbManager {
 		//String url = "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=C:/Users/Fabio Di Carlo/git/JuBoss2.0/db.accdb";
 		
 		try {
-			Connection conn=DriverManager.getConnection("jdbc:ucanaccess://C:/Users/Fabio Di Carlo/git/JuBoss2.0/db.accdb");
+		
+			Connection conn = DriverManager.getConnection("jdbc:ucanaccess://C:/Users/Brown/git/JuBoss2.0/JuBoss2.0/db/db.accdb;memory=false");
+			System.out.println("connesso");
+		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
