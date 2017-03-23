@@ -1,5 +1,6 @@
 package database;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -10,11 +11,19 @@ import java.sql.SQLException;
 public class dbManager {
 	
 	public dbManager() {
+		
+		   //estrazione path
+	    File jarDir = new File(ClassLoader.getSystemClassLoader().getResource(".").getPath());
+	    String path = jarDir.getAbsolutePath();
+	    path.replace("bin", "strunz");
+	    System.out.println(path);
+	    path.replaceAll("bin","ciao");
+	    
 		//String url = "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=C:/Users/Fabio Di Carlo/git/JuBoss2.0/db.accdb";
-		
+		/*
 		try {
-		
-			Connection conn = DriverManager.getConnection("jdbc:ucanaccess://C:/Users/Brown/git/JuBoss2.0/JuBoss2.0/db/db.accdb;memory=false");
+			   
+			Connection conn = DriverManager.getConnection("jdbc:ucanaccess://" + path +"/db.accdb;memory=false");
 			System.out.println("connesso");
 		
 		} catch (SQLException e) {
@@ -26,6 +35,7 @@ public class dbManager {
 		/*while (rs.next()) {
 		    System.out.println(rs.getString(1));
 		}*/
+	    
 	}
 	
 	public static void main(String[] args) {
