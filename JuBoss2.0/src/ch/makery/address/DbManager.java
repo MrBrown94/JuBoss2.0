@@ -226,6 +226,47 @@ public class DbManager {
 	}
 	
 	
+	//Get settings % Ingrosso/Dettaglio
+	public int[] getSettings() {
+		
+		int[] setting = new int[2];
+		
+		try {
+			
+			st.execute("SELECT * FROM Settings");
+			rs = st.getResultSet();
+			
+			rs.next();
+			setting[0] = rs.getInt(1);
+			setting[1] = rs.getInt(2);
+			
+			return setting;
+		} catch (SQLException e) {
+			errorMessage(e.getMessage());
+		}
+		
+		return null;
+	}
+	
+	
+	//Set settings % Ingrosso/Dettaglio
+	public void setSettings(int ingrosso, int dettaglio) {
+		
+		String query = "UPDATE Settings SET Ingrosso=?, Dettaglio=?";
+		
+		try {
+			
+			pst = connection.prepareStatement(query);
+			
+			pst.setInt(1, ingrosso); //Ingrosso
+			pst.setInt(2, dettaglio); //Dettaglio
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			errorMessage(e.getMessage());
+		}
+	}
+	
+	
 	//Messaggio di errore in MessageDialog e chiamata metodo per chiusura connessione db
 	private void errorMessage(String error) {
 		
