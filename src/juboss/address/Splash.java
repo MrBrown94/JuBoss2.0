@@ -39,15 +39,13 @@ public class Splash extends JWindow {
 	    //Apertura GIF
 		ImageIcon bg = new ImageIcon(Splash.class.getResource("/splashsmall.gif"));
 		JLabel label = new JLabel(bg);
-		
 		content.add(label, BorderLayout.CENTER);
 
 		//Display Splash
 		setVisible(true);
-
+		
 		//Sleep Splash
 	    try { 
-	    	
 	    	db = new DbManager();
 	    	dataVector = db.getAllData();
 	    	
