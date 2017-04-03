@@ -1,6 +1,7 @@
 package juboss.address;
 
 import java.io.IOException;
+import java.util.Vector;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,11 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
+    
+    //Vector di elementi info Vini
+  	private static Vector < Vector < Object >> dataVector = new Vector < Vector < Object >>();
+  	private static DbManager db = null;
+  	
 
     @Override
     public void start(Stage primaryStage) {
@@ -69,7 +75,30 @@ public class MainApp extends Application {
     public Stage getPrimaryStage() {
         return primaryStage;
     }
+    
+    
+    //Caricamento dati dal db
+    public static void preLoad(DbManager database, Vector < Vector < Object >> vector) {
+    	
+    	db = database;
+    	dataVector = vector;
+    }
+    
+    
+    //Return dati DB
+    public DbManager returnDb() {
+    	
+    	return db;
+    }
+    
+    
+    //Return dati Vector
+    public Vector < Vector < Object >> returnVector() {
+    	
+    	return dataVector;
+    }
 
+    
     public static void main(String[] args) {
         launch(args);
     }

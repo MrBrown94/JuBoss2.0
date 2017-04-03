@@ -1,12 +1,18 @@
 package juboss.address;
 
 import java.awt.*;
+import java.util.Vector;
+
 import javax.swing.*;
 
 public class Splash extends JWindow {
 	
 	private static final long serialVersionUID = 1L;
 	private int duration;
+	
+	//Vector di elementi info Vini
+	private Vector < Vector < Object >> dataVector = new Vector < Vector < Object >>();
+	private DbManager db = null;
 	
 	
 	//Costruttore
@@ -40,7 +46,14 @@ public class Splash extends JWindow {
 		setVisible(true);
 
 		//Sleep Splash
-	    try { Thread.sleep(duration); } catch (Exception e) {}
+	    try { 
+	    	
+	    	db = new DbManager();
+	    	dataVector = db.getAllData();
+	    	
+	    	Thread.sleep(duration);
+	    } catch (Exception e) {}
+	    
 	    dispose();
 	}
 	
@@ -49,6 +62,7 @@ public class Splash extends JWindow {
 	public void showSplashAndStart(){
 			
 		showSplash();
+		MainApp.preLoad(db, dataVector);
 		MainApp.main(null);
 	}
 
@@ -56,7 +70,7 @@ public class Splash extends JWindow {
 	//Main Splash
 	public static void main(String[] args) {
 		
-		Splash splash = new Splash(3000);
+		Splash splash = new Splash(2000);
 	    splash.showSplashAndStart();
 	  }
 }
