@@ -1,4 +1,4 @@
-package ch.makery.address;
+package juboss.address;
 
 import java.io.IOException;
 

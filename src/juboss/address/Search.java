@@ -1,4 +1,4 @@
-package ch.makery.address;
+package juboss.address;
 
 import javax.swing.JTable;
 import javax.swing.JTextField;
