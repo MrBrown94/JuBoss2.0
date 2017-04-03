@@ -1,4 +1,4 @@
-package juboss.address;
+package juboss;
 
 import javax.swing.JTable;
 import javax.swing.JTextField;

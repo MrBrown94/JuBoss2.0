@@ -1,4 +1,4 @@
-package juboss.address;
+package juboss;
 
 import java.awt.*;
 import java.util.Vector;
