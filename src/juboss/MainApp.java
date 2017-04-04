@@ -99,8 +99,7 @@ public class MainApp extends Application {
     	return dataVector;
     }
 
-    //launch AddEdit
-    
+    //Launch AddEdit
     public static void LaunchAddEdit(){
     	AddEdit.main(null);
     }

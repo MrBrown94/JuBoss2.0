@@ -22,6 +22,8 @@ public class Search extends Thread {
     	
     	rowSorter = new TableRowSorter<>(tb.getModel());
     	tb.setRowSorter(rowSorter);
+    	
+    	Thread.currentThread().setName("Search");
     }
     
     
