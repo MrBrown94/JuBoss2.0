@@ -86,14 +86,14 @@ public class MainApp extends Application {
     
     
     //Return dati DB
-    public DbManager returnDb() {
+    public static DbManager returnDb() {
     	
     	return db;
     }
     
     
     //Return dati Vector
-    public Vector < Vector < Object >> returnVector() {
+    public static Vector < Vector < Object >> returnVector() {
     	
     	return dataVector;
     }

@@ -1,10 +1,16 @@
 package juboss.view;
 
+import java.awt.Toolkit;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Vector;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import juboss.MainApp;
 
 public class ListViewController {
 
@@ -15,19 +21,46 @@ public class ListViewController {
     private URL location;
 
     @FXML
-    private TextField search;
+    private TableColumn<?, ?> ColumnDenom;
 
     @FXML
-    private TableView<?> tableDettaglio;
+    private TableColumn<?, ?> ColumnDenominazione;
 
     @FXML
-    private TableView<?> tableIngrosso;
+    private TableColumn<?, ?> ColumnDettaglio;
+
+    @FXML
+    private TableView<?> tableView;
+
+    @FXML
+    private TableColumn<?, ?> columnIngrosso;
 
     @FXML
     void initialize() {
-        assert search != null : "fx:id=\"search\" was not injected: check your FXML file 'ListView.fxml'.";
-        assert tableDettaglio != null : "fx:id=\"tableDettaglio\" was not injected: check your FXML file 'ListView.fxml'.";
-        assert tableIngrosso != null : "fx:id=\"tableIngrosso\" was not injected: check your FXML file 'ListView.fxml'.";
+    	
+        assert ColumnDenom != null : "fx:id=\"ColumnDenom\" was not injected: check your FXML file 'ListView.fxml'.";
+        assert ColumnDenominazione != null : "fx:id=\"ColumnDenominazione\" was not injected: check your FXML file 'ListView.fxml'.";
+        assert ColumnDettaglio != null : "fx:id=\"ColumnDettaglio\" was not injected: check your FXML file 'ListView.fxml'.";
+        assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'ListView.fxml'.";
+        assert columnIngrosso != null : "fx:id=\"columnIngrosso\" was not injected: check your FXML file 'ListView.fxml'.";
+        
+        //test inizializzazione
+        System.out.println("initializing controller");
+        
+        //caricamento tabella
+        System.out.println("creazione tabella");
+        
+        Vector < Vector < Object >> vector = MainApp.returnVector();
+        ObservableList<Object> vector2 = FXCollections.observableArrayList(vector);
+        
+        System.out.print(vector.get(1).get(1));
 
+        
+    }
+    
+    //emette un suono di errore <3
+    @FXML
+    void sound(){
+       	Toolkit.getDefaultToolkit().beep();
     }
 }
