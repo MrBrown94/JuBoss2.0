@@ -5,9 +5,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import juboss.MainApp;
 
@@ -37,7 +39,15 @@ public class GuiController {
     @FXML
     void launchAddEdit() {
     	
-    		Stage primaryStage = new Stage();
+    		Stage stage = new Stage();
+    	//set full screen without hiding bottom bar	
+    		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+    		stage.setX(primaryScreenBounds.getMinX());
+    		stage.setY(primaryScreenBounds.getMinY());
+    		stage.setWidth(primaryScreenBounds.getWidth());
+    		stage.setHeight(primaryScreenBounds.getHeight());
+    	
+    		    	
     	//we should run AddEditMain from here
     	try {
             // Load gui.
@@ -46,8 +56,10 @@ public class GuiController {
             AnchorPane listView = (AnchorPane) loader.load();
             //build scene
             Scene scene = new Scene(listView);
-            primaryStage.setScene(scene);
-            primaryStage.show();	            
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
