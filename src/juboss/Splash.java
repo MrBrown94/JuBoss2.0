@@ -1,17 +1,18 @@
 package juboss;
 
 import java.awt.*;
-import java.util.Vector;
-
 import javax.swing.*;
+
+import javafx.collections.ObservableList;
 
 public class Splash extends JWindow {
 	
 	private static final long serialVersionUID = 1L;
 	private int duration;
 	
-	//Vector di elementi info Vini
-	private Vector < Vector < Object >> dataVector = new Vector < Vector < Object >>();
+	//ObservableList di  Vini
+	public static ObservableList<Wine> viniOb;
+	
 	private DbManager db = null;
 	
 	
@@ -47,7 +48,8 @@ public class Splash extends JWindow {
 		//Sleep Splash
 	    try { 
 	    	db = new DbManager();
-	    	dataVector = db.getAllData();
+	    	System.out.println("carico db");
+	    	viniOb = db.getAllData();
 	    	
 	    	Thread.sleep(duration);
 	    } catch (Exception e) {}
@@ -60,7 +62,7 @@ public class Splash extends JWindow {
 	public void showSplashAndStart(){
 			
 		showSplash();
-		MainApp.preLoad(db, dataVector);
+		//MainApp.preLoad(db, viniOB);
 		MainApp.main(null);
 	}
 
