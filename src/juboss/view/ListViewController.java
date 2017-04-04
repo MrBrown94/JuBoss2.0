@@ -50,10 +50,10 @@ public class ListViewController {
         //caricamento tabella
         System.out.println("creazione tabella");
         
-        Vector < Vector < Object >> vector = MainApp.returnVector();
+        Vector < Vector < Object >> vector = MainApp.dataVector;
         ObservableList<Object> vector2 = FXCollections.observableArrayList(vector);
         
-        System.out.print(vector.get(1).get(1));
+        //System.out.print(vector.get(1).get(1));
 
         
     }

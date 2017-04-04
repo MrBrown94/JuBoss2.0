@@ -16,7 +16,7 @@ public class MainApp extends Application {
     private BorderPane rootLayout;
     
     //Vector di elementi info Vini
-  	private static Vector < Vector < Object >> dataVector = new Vector < Vector < Object >>();
+  	public static Vector < Vector < Object >> dataVector = new Vector < Vector < Object >>();
   	private static DbManager db = null;
   	
 
@@ -95,9 +95,15 @@ public class MainApp extends Application {
     //Return dati Vector
     public static Vector < Vector < Object >> returnVector() {
     	
+    	dataVector = db.getAllData();
     	return dataVector;
     }
 
+    //launch AddEdit
+    
+    public static void LaunchAddEdit(){
+    	AddEdit.main(null);
+    }
     
     public static void main(String[] args) {
         launch(args);

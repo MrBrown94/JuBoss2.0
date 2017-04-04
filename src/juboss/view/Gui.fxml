@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane pickOnBounds="false" prefHeight="355.0" prefWidth="761.0" stylesheets="@../../../res/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane pickOnBounds="false" prefHeight="355.0" prefWidth="761.0" stylesheets="@../../../res/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="juboss.view.GuiController">
    <children>
       <GridPane id="bg" prefHeight="355.0" prefWidth="939.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -26,11 +26,11 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button id="button" fx:id="AggiungiBtn" mnemonicParsing="false" prefHeight="130.0" prefWidth="234.0" text="Aggiungi &#10;Modifica" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button id="button" fx:id="AddEditBtn" mnemonicParsing="false" onMouseClicked="#launchAddEdit" prefHeight="130.0" prefWidth="234.0" text="Aggiungi &#10;Modifica" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="40.0" />
                </font></Button>
-            <Button id="button" mnemonicParsing="false" prefHeight="129.0" prefWidth="234.0" text="Visualizza" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button id="button" fx:id="ShowListBtn" mnemonicParsing="false" prefHeight="129.0" prefWidth="234.0" text="Visualizza" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>

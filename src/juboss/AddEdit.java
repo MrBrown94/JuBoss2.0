@@ -8,15 +8,15 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class List extends Application {
+public class AddEdit extends Application {
 
-	   private Stage primaryStage;
+	 private Stage primaryStage;
 	  
 
 	    @Override
 	    public void start(Stage primaryStage) {
 	        this.primaryStage = primaryStage;
-	        this.primaryStage.setTitle("Lista Vini");
+	        this.primaryStage.setTitle("Aggiungi / Modifica");
 	        this.primaryStage.setResizable(false);
 	        
 	        showGui();
@@ -29,11 +29,11 @@ public class List extends Application {
 	        try {
 	            // Load gui.
 	            FXMLLoader loader = new FXMLLoader();
-	            loader.setLocation(MainApp.class.getResource("view/ListView.fxml"));
-	            AnchorPane listView = (AnchorPane) loader.load();
+	            loader.setLocation(MainApp.class.getResource("view/AddEdit.fxml"));
+	            AnchorPane addEdit = (AnchorPane) loader.load();
 	            
 	            //build scene
-	            Scene scene = new Scene(listView);
+	            Scene scene = new Scene(addEdit);
 	            primaryStage.setScene(scene);
 	            primaryStage.show();	            
 	        } catch (IOException e) {
@@ -50,6 +50,6 @@ public class List extends Application {
 	    }
 
 	    public static void main(String[] args) {
-	    	launch(args);
+	        launch(args);
 	    }
-	}
+}
