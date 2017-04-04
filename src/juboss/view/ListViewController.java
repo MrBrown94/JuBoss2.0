@@ -1,11 +1,17 @@
 package juboss.view;
 
+import java.awt.List;
 import java.awt.Toolkit;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
+import com.sun.javafx.css.CalculatedValue;
+
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,6 +22,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import juboss.MainApp;
+import juboss.Wine;
 
 public class ListViewController {
 
@@ -26,19 +33,19 @@ public class ListViewController {
     private URL location;
 
     @FXML
-    private TableColumn<Object, String> columnDenominazione1;
+    private TableColumn<Wine, String> columnDenominazione1;
     
     @FXML
-    private TableColumn<?, ?> columnDenominazione2;
+    private TableColumn<Wine, String> columnDenominazione2;
 
     @FXML
-    private TableColumn<?, ?> columnDettaglio;
+    private TableColumn<Wine, String>  columnDettaglio;
 
     @FXML
-    private TableView<Object> tableView;
+    private TableView<Wine> tableView;
 
     @FXML
-    private TableColumn<?, ?> columnIngrosso;
+    private TableColumn<Wine, String>  columnIngrosso;
 
     @FXML
     void initialize() {
@@ -48,29 +55,21 @@ public class ListViewController {
         assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'ListView.fxml'.";
         assert columnIngrosso != null : "fx:id=\"columnIngrosso\" was not injected: check your FXML file 'ListView.fxml'.";
         
-        //test inizializzazione
-        System.out.println("initializing controller");
         
-        //caricamento tabella
-        System.out.println("creazione tabella");
-        
-        //inizializzazione colonne
-        //columnDenominazione1.setCellValueFactory();
-        
-        TableColumn<Object,String> columnDenominazione1 = new TableColumn<Object,String>("Denominazione");
-        
-        columnDenominazione1.setCellValueFactory(new PropertyValueFactory("title"));
-        
-        Vector < Vector < Object >> vector = MainApp.dataVector;
-        ObservableList<Object> vector2 = FXCollections.observableArrayList(vector);
-        
-        System.out.print(vector);
-        
+        columnDenominazione1.setCellValueFactory(new PropertyValueFactory<Wine, String>("denominazione"));
+        tableView.setItems(getUserList());
+        tableView.getColumns().addAll(columnDenominazione1, columnDettaglio);
     }
     
-    //emette un suono di errore <3
-    @FXML
-    void sound(){
-       	Toolkit.getDefaultToolkit().beep();
+    private ObservableList<Wine> getUserList() {
+    	
+    	Wine user1 = new Wine("smith", "smith@gmail.com","Susan", "Smith","","","","",1,1,1,true);
+    	
+    	/*Wine user1 = new Wine("smith", "smith@gmail.com","Susan", "Smith","","","","",1,1,1,true);
+    	Wine user2 = new Wine("smith", "smith@gmail.com","Susan", "Smith","","","","",1,1,1,true);
+    	Wine user3 = new Wine("smith", "smith@gmail.com","Susan", "Smith","","","","",1,1,1,true);*/
+   
+        ObservableList<Wine> list = FXCollections.observableArrayList(user1);
+        return list;
     }
 }

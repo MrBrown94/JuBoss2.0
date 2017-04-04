@@ -34,6 +34,7 @@ public class List extends Application {
 	            
 	            //build scene
 	            Scene scene = new Scene(listView);
+	            
 	            primaryStage.setScene(scene);
 	            primaryStage.show();	            
 	        } catch (IOException e) {
