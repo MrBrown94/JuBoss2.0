@@ -1,20 +1,19 @@
 package juboss.view;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import juboss.AddEdit;
-import juboss.List;
 import juboss.MainApp;
 
 public class GuiController {
 	
-	private MainApp mainapp;
+	
 
     @FXML
     private ResourceBundle resources;
@@ -37,17 +36,21 @@ public class GuiController {
     
     @FXML
     void launchAddEdit() {
+    	
+    		Stage primaryStage = new Stage();
     	//we should run AddEditMain from here
-    	MainApp.LaunchAddEdit();
+    	try {
+            // Load gui.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/ListView.fxml"));
+            AnchorPane listView = (AnchorPane) loader.load();
+            //build scene
+            Scene scene = new Scene(listView);
+            primaryStage.setScene(scene);
+            primaryStage.show();	            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    
-    /**
-     * Is called by the main application to give a reference back to itself
-     * 
-     * @param mainApp
-     */
-    public void setMainApp(MainApp mainApp) {
-        this.mainapp = mainApp;
-    }
-
+  
 }
