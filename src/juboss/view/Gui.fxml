@@ -26,11 +26,11 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button id="button" fx:id="AddEditBtn" mnemonicParsing="false" onMouseClicked="#launchAddEdit" prefHeight="130.0" prefWidth="234.0" text="Aggiungi &#10;Modifica" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button id="button" fx:id="AddEditBtn" mnemonicParsing="false" prefHeight="130.0" prefWidth="234.0" text="Aggiungi &#10;Modifica" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="40.0" />
                </font></Button>
-            <Button id="button" fx:id="ShowListBtn" mnemonicParsing="false" prefHeight="129.0" prefWidth="234.0" text="Visualizza" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button id="button" fx:id="ShowListBtn" mnemonicParsing="false" onMouseClicked="#launchAddEdit" prefHeight="129.0" prefWidth="234.0" text="Visualizza" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>
