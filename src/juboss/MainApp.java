@@ -1,8 +1,6 @@
 package juboss;
 
 import java.io.IOException;
-import java.util.Vector;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,10 +12,8 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
-    
-    //Vector di elementi info Vini
-  	public static Vector < Vector < Object >> dataVector = new Vector < Vector < Object >>();
-  	private static DbManager db = null;
+   
+  	//private static DbManager db = null;
   	
 
     @Override
@@ -76,29 +72,6 @@ public class MainApp extends Application {
         return primaryStage;
     }
     
-    
-    //Caricamento dati dal db
-    public static void preLoad(DbManager database, Vector < Vector < Object >> vector) {
-    	
-    	db = database;
-    	dataVector = vector;
-    }
-    
-    
-    //Return dati DB
-    public static DbManager returnDb() {
-    	
-    	return db;
-    }
-    
-    
-    //Return dati Vector
-    public static Vector < Vector < Object >> returnVector() {
-    	
-    	dataVector = db.getAllData();
-    	return dataVector;
-    }
-
     //Launch AddEdit
     public static void LaunchAddEdit(){
     	AddEdit.main(null);
