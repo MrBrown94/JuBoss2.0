@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import juboss.model.Wine;
 
 public class DbManager {
 	

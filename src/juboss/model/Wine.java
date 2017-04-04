@@ -1,4 +1,4 @@
-package juboss;
+package juboss.model;
 
 import javafx.beans.property.SimpleStringProperty;
 

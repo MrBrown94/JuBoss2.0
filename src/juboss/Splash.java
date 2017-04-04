@@ -4,6 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 import javafx.collections.ObservableList;
+import juboss.model.Wine;
 
 public class Splash extends JWindow {
 	

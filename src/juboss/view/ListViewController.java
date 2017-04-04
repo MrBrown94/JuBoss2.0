@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import juboss.Wine;
+import juboss.model.Wine;
 
 public class ListViewController {
 	
@@ -83,7 +83,7 @@ public class ListViewController {
         columnDenominazione2.setCellValueFactory(new PropertyValueFactory<Wine, String>("denominazione"));
 
         columnDettaglio.setCellValueFactory(new PropertyValueFactory<Wine, String>("dettaglioEur"));
-        columnIngrosso.setCellValueFactory(new PropertyValueFactory<Wine, String>("ingrosso"));
+        columnIngrosso.setCellValueFactory(new PropertyValueFactory<Wine, String>("ingrossoEur"));
 
         
         tableViewDett.setItems(juboss.Splash.viniOb);
@@ -105,6 +105,19 @@ public class ListViewController {
             }
         });
         
+        tableViewIngro.getColumns().addListener(new ListChangeListener() {
+            public boolean suspended;
+
+            @Override
+            public void onChanged(Change change) {
+                change.next();
+                if (change.wasReplaced() && !suspended) {
+                    this.suspended = true;
+                    tableViewIngro.getColumns().setAll(columnDenominazione1, columnIngrosso);
+                    this.suspended = false;
+                }
+            }
+        });
         
     }
     
