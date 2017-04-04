@@ -31,8 +31,8 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
       					    <columns>
-      					        <TableColumn fx:id="ColumnDenom" prefWidth="491.0" text="Denominazione" />
-      					        <TableColumn fx:id="ColumnDettaglio" maxWidth="350.0" minWidth="76.0" prefWidth="76.0" text="Dettaglio" />
+      					        <TableColumn fx:id="columnDenominazione1" prefWidth="491.0" text="Denominazione" />
+      					        <TableColumn fx:id="columnDettaglio" maxWidth="350.0" minWidth="76.0" prefWidth="76.0" text="Dettaglio" />
       					    </columns>
       					     </TableView>
                      </content>
@@ -44,7 +44,7 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
       					    <columns>
-      					        <TableColumn fx:id="ColumnDenominazione" prefWidth="491.0" text="Denominazione" />
+      					        <TableColumn fx:id="columnDenominazione2" prefWidth="491.0" text="Denominazione" />
       					        <TableColumn fx:id="columnIngrosso" maxWidth="350.0" minWidth="76.0" prefWidth="76.0" text="Ingrosso" />
       					    </columns>
       						</TableView>

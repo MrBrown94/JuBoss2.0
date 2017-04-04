@@ -5,11 +5,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 import juboss.MainApp;
 
 public class ListViewController {
@@ -21,26 +26,25 @@ public class ListViewController {
     private URL location;
 
     @FXML
-    private TableColumn<?, ?> ColumnDenom;
+    private TableColumn<Object, String> columnDenominazione1;
+    
+    @FXML
+    private TableColumn<?, ?> columnDenominazione2;
 
     @FXML
-    private TableColumn<?, ?> ColumnDenominazione;
+    private TableColumn<?, ?> columnDettaglio;
 
     @FXML
-    private TableColumn<?, ?> ColumnDettaglio;
-
-    @FXML
-    private TableView<?> tableView;
+    private TableView<Object> tableView;
 
     @FXML
     private TableColumn<?, ?> columnIngrosso;
 
     @FXML
     void initialize() {
-    	
-        assert ColumnDenom != null : "fx:id=\"ColumnDenom\" was not injected: check your FXML file 'ListView.fxml'.";
-        assert ColumnDenominazione != null : "fx:id=\"ColumnDenominazione\" was not injected: check your FXML file 'ListView.fxml'.";
-        assert ColumnDettaglio != null : "fx:id=\"ColumnDettaglio\" was not injected: check your FXML file 'ListView.fxml'.";
+    	assert columnDenominazione1 != null : "fx:id=\"ColumnDenominazione1\" was not injected: check your FXML file 'ListView.fxml'.";
+        assert columnDenominazione2 != null : "fx:id=\"ColumnDenominazione2\" was not injected: check your FXML file 'ListView.fxml'.";
+        assert columnDettaglio != null : "fx:id=\"ColumnDettaglio\" was not injected: check your FXML file 'ListView.fxml'.";
         assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'ListView.fxml'.";
         assert columnIngrosso != null : "fx:id=\"columnIngrosso\" was not injected: check your FXML file 'ListView.fxml'.";
         
@@ -50,11 +54,17 @@ public class ListViewController {
         //caricamento tabella
         System.out.println("creazione tabella");
         
+        //inizializzazione colonne
+        //columnDenominazione1.setCellValueFactory();
+        
+        TableColumn<Object,String> columnDenominazione1 = new TableColumn<Object,String>("Denominazione");
+        
+        columnDenominazione1.setCellValueFactory(new PropertyValueFactory("title"));
+        
         Vector < Vector < Object >> vector = MainApp.dataVector;
         ObservableList<Object> vector2 = FXCollections.observableArrayList(vector);
         
         System.out.print(vector);
-
         
     }
     
