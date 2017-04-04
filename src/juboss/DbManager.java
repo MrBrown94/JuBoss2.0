@@ -8,9 +8,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Vector;
-
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class DbManager {
 	
@@ -20,6 +23,8 @@ public class DbManager {
 	private Connection connection = null;
 	private ResultSet rs = null;
 	private PreparedStatement pst = null;
+	private List<Wine> data = new ArrayList<Wine>();
+	
 	
 	
 	//Inizializzazione connessione DB
@@ -90,11 +95,9 @@ public class DbManager {
 	
 	
 	//Get Info Vini
-	public Vector < Vector < Object >> getAllData() {
+	public ObservableList<Wine>  getAllData() {
 		
-		//Vector di elementi info Vini
-		Vector < Vector < Object >> dataVector = new Vector < Vector < Object >>();
-
+		
 		try {
 			
 			st.execute("SELECT * FROM Vini");
@@ -103,25 +106,14 @@ public class DbManager {
 			
 			while (rs.next()) {
 
-				Vector < Object > data = new Vector < Object >();
 				
-	            data.add(rs.getInt(1)); //ID
-	            data.add(rs.getString(2)); //Denominazione
-	            data.add(rs.getString(3)); //Produttore
-	            data.add(rs.getString(4)); //Colore
-	            data.add(rs.getString(5)); //TipoVino
-	            data.add(rs.getString(6)); //Paese
-	            data.add(rs.getString(7)); //Regione
-	            data.add(rs.getString(8)); //Capacità
-	            data.add(rs.getString(9)); //Note
-	            data.add(rs.getFloat(10)); //Prezzo
-	            data.add(rs.getFloat(11)); //Ingrosso
-	            data.add(rs.getFloat(12)); //Dettaglio
-	            data.add(rs.getBoolean(13)); //Manuale True/False
-	            dataVector.add(data);
+				
+	            data.add(new Wine(String.valueOf(rs.getInt(1)),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),String.valueOf(rs.getFloat(10)),String.valueOf(rs.getFloat(11)),String.valueOf(rs.getFloat(12))));
 			}
+			ObservableList<Wine> viniOb = FXCollections.observableList(data);
 			
-			return dataVector;
+			return viniOb;
+			
 		} catch (SQLException e) {
 			errorMessage(e.getMessage());
 		}
