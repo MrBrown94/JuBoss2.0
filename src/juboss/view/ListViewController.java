@@ -15,7 +15,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import juboss.MainApp;
 import juboss.model.Wine;
 
@@ -42,6 +41,7 @@ public class ListViewController {
 	  @FXML
 	  private TextField searchField;
 	  
+	  public static  Wine selected = null;
 	  
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -186,7 +186,7 @@ public class ListViewController {
     {
         if (event.getClickCount() == 2) //Checking double click
         {
-           Wine selected = tableViewDett.getSelectionModel().getSelectedItem();
+          selected = tableViewDett.getSelectionModel().getSelectedItem();
            
            try {
                
