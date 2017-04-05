@@ -9,6 +9,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import juboss.MainApp;
@@ -16,7 +17,6 @@ import juboss.MainApp;
 public class GuiController {
 	
 	
-
     @FXML
     private ResourceBundle resources;
 
@@ -37,27 +37,64 @@ public class GuiController {
     }
     
     @FXML
-    void launchAddEdit() {
+    void launchListView() {
     	
-    		Stage stage = new Stage();
+    		
     	//set full screen without hiding bottom bar	
     		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-    		stage.setX(primaryScreenBounds.getMinX());
-    		stage.setY(primaryScreenBounds.getMinY());
-    		stage.setWidth(primaryScreenBounds.getWidth());
-    		stage.setHeight(primaryScreenBounds.getHeight());
+    		MainApp.stageList.setX(primaryScreenBounds.getMinX());
+    		MainApp.stageList.setY(primaryScreenBounds.getMinY());
+    		MainApp.stageList.setWidth(primaryScreenBounds.getWidth());
+    		MainApp.stageList.setHeight(primaryScreenBounds.getHeight());
     	
     		    	
-    	//we should run AddEditMain from here
+    	//we should run ListView from here
     	try {
-            // Load gui.
+            
+    		// Load gui.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/ListView.fxml"));
             AnchorPane listView = (AnchorPane) loader.load();
+            
+            //build scene
+            Scene scene = new Scene(listView);
+            MainApp.stageList.setScene(scene);
+            MainApp.stageList.setResizable(false);
+            
+            //blocks user input on Gui until child stage is closed
+            MainApp.stageList.initModality(Modality.WINDOW_MODAL);
+            MainApp.stageList.initOwner(MainApp.getPrimaryStage());
+            
+            MainApp.stageList.show();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
+    void launchAddEdit() {
+    	
+    		Stage stage = new Stage();
+    		    	
+    	//we should run ListView from here
+    	try {
+           
+    		// Load gui.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/AddEdit.fxml"));
+            AnchorPane listView = (AnchorPane) loader.load();
+           
             //build scene
             Scene scene = new Scene(listView);
             stage.setScene(scene);
+            stage.centerOnScreen();
             stage.setResizable(false);
+            
+            //blocks user input on Gui until child stage is closed
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(MainApp.getPrimaryStage());
+            
             stage.show();
             
         } catch (IOException e) {
