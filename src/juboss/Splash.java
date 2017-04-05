@@ -43,7 +43,7 @@ public class Splash extends JWindow {
 		JLabel label = new JLabel(bg);
 		content.add(label, BorderLayout.CENTER);
 
-		//Display Splash
+		//Display Spldash
 		setVisible(true);
 		
 		//Sleep Splash
