@@ -7,7 +7,6 @@ public class Wine {
 	private SimpleStringProperty id;
 	private SimpleStringProperty denominazione;
 	private SimpleStringProperty produttore;
-	private SimpleStringProperty colore;
 	private SimpleStringProperty tipoVino;
 	private SimpleStringProperty paese;
 	private SimpleStringProperty regione;
@@ -21,13 +20,11 @@ public class Wine {
 	private SimpleStringProperty dettaglioEur;
 	
 	
-	
-	public Wine(String id,String denominazione,String produttore,String colore,String tipoVino,String paese,String regione,String capacità,String note,String prezzo,String ingrosso,String dettaglio){
+	public Wine(String id, String denominazione, String produttore, String tipoVino, String paese, String regione, String capacità, String note, String prezzo, String ingrosso, String dettaglio){
 		
 		this.id = new SimpleStringProperty(id);
 		this.denominazione = new SimpleStringProperty(denominazione);
 		this.produttore = new SimpleStringProperty(produttore);
-		this.colore = new SimpleStringProperty(colore);
 		this.tipoVino = new SimpleStringProperty(tipoVino);
 		this.paese = new SimpleStringProperty(paese);
 		this.regione = new SimpleStringProperty(regione);
@@ -42,62 +39,33 @@ public class Wine {
 	}
 	
 	
-	//getter methods
+	public String getId(){return id.get();}
 	
-	public String getId(){
-		return id.get();
-	}
+	public String getDenominazione(){return denominazione.get();}
 	
-	public String getDenominazione(){
-		return denominazione.get();
-	}
+	public String getProduttore(){return produttore.get();}
 	
-	public String getProduttore(){
-		return produttore.get();
-	}
+	public String getTipoVino(){return tipoVino.get();}
 	
-	public String getColore(){
-		return colore.get();
-	}
+	public String getPaese(){return paese.get();}
 	
-	public String getTipoVino(){
-		return tipoVino.get();
-	}
+	public String getRegione(){return regione.get();}
 	
-	public String getPaese(){
-		return paese.get();
-	}
+	public String getCapacità(){return capacità.get();}
 	
-	public String getRegione(){
-		return regione.get();
-	}
+	public String getNote(){return note.get();}
 	
-	public String getCapacità(){
-		return capacità.get();
-	}
+	public String getPrezzo(){return prezzo.get();}
 	
-	public String getNote(){
-		return note.get();
-	}
+	public String getPrezzoEur(){return prezzoEur.get();}
 	
-	public String getPrezzo(){
-		return prezzo.get();
-	}
-	public String getPrezzoEur(){
-		return prezzoEur.get();
-	}
-	public String getIngrosso(){
-		return ingrosso.get();
-	}
-	public String getIngrossoEur(){
-		return ingrossoEur.get();
-	}
-	public String getDettaglio(){
-		return dettaglio.get();
-	}
-	public String getDettaglioEur(){
-		return dettaglioEur.get();
-	}
+	public String getIngrosso(){return ingrosso.get();}
+	
+	public String getIngrossoEur(){return ingrossoEur.get();}
+	
+	public String getDettaglio(){return dettaglio.get();}
+	
+	public String getDettaglioEur(){return dettaglioEur.get();}
 }
 
 

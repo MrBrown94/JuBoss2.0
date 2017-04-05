@@ -98,18 +98,14 @@ public class DbManager {
 	//Get Info Vini
 	public ObservableList<Wine>  getAllData() {
 		
-		
 		try {
 			
 			st.execute("SELECT * FROM Vini");
-			
 			rs = st.getResultSet();
 			
 			while (rs.next()) {
 
-				
-				
-	            data.add(new Wine(String.valueOf(rs.getInt(1)),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),String.valueOf(rs.getFloat(10)),String.valueOf(rs.getFloat(11)),String.valueOf(rs.getFloat(12))));
+	            data.add(new Wine(String.valueOf(rs.getInt(1)), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), String.valueOf(rs.getDouble(9)), String.valueOf(rs.getDouble(10)), String.valueOf(rs.getDouble(11))));
 			}
 			ObservableList<Wine> viniOb = FXCollections.observableList(data);
 			
@@ -124,10 +120,10 @@ public class DbManager {
 	
 	
 	//Inserimento dati in DB con indice n+1
-	public void insertData(String denominazione, String produttore, String colore, String tipovino, String paese, String regione, String capacita, String note, float prezzo, float ingrosso, float dettaglio, boolean manuale) {
+	public void insertData(String denominazione, String produttore, String tipovino, String paese, String regione, String capacita, String note, double prezzo, double ingrosso, double dettaglio, boolean manuale) {
 		
 		//Query per l'inserimento dei dati nel DB
-		String query = "INSERT INTO Vini (ID, Denominazione, Produttore, Colore, TipoVino, Paese, Regione, Capacita, Note, Prezzo, Ingrosso, Dettaglio, Manuale) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String query = "INSERT INTO Vini (ID, Denominazione, Produttore, TipoVino, Paese, Regione, Capacita, Note, Prezzo, Ingrosso, Dettaglio, Manuale) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		try {
 			
@@ -136,16 +132,15 @@ public class DbManager {
 			pst.setInt(1, countVini()+1); //ID
 			pst.setString(2, denominazione); //Denominazione
 			pst.setString(3, produttore); //Produttore
-			pst.setString(4, colore); //Colore
-			pst.setString(5, tipovino); //TipoVino
-			pst.setString(6, paese); //Paese
-			pst.setString(7, regione); //Regione
-			pst.setString(8, capacita); //Capacità
-			pst.setString(9, note); //Note
-			pst.setFloat(10, prezzo); //Prezzo
-			pst.setFloat(11, ingrosso); //Ingrosso
-			pst.setFloat(12, dettaglio); //Dettaglio
-			pst.setBoolean(13, manuale); //Manuale True/False
+			pst.setString(4, tipovino); //TipoVino
+			pst.setString(5, paese); //Paese
+			pst.setString(6, regione); //Regione
+			pst.setString(7, capacita); //Capacità
+			pst.setString(8, note); //Note
+			pst.setDouble(9, prezzo); //Prezzo
+			pst.setDouble(10, ingrosso); //Ingrosso
+			pst.setDouble(11, dettaglio); //Dettaglio
+			pst.setBoolean(12, manuale); //Manuale True/False
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			errorMessage(e.getMessage());
@@ -154,7 +149,7 @@ public class DbManager {
 	
 	
 	//Modifica row DB tramite indice
-	public void editData(int ind, String denominazione, String produttore, String colore, String tipovino, String paese, String regione, String capacita, String note, float prezzo, float ingrosso, float dettaglio, boolean manuale) {
+	public void editData(int ind, String denominazione, String produttore, String tipovino, String paese, String regione, String capacita, String note, double prezzo, double ingrosso, double dettaglio, boolean manuale) {
 		
 		//Query per l'update dei dati nel DB
 		String query = "UPDATE Vini SET Denominazione=?, Produttore=?, TipoVino=?, Paese=?, Regione=?, Capacita=?, Note=?, Prezzo=?, Ingrosso=?, Dettaglio=?, Manuale=?  WHERE ID=?";
@@ -163,20 +158,19 @@ public class DbManager {
 			
 			pst = connection.prepareStatement(query);
 			
-			pst.setInt(13, ind); //ID
+			pst.setInt(12, ind); //ID
 			
 			pst.setString(1, denominazione); //Denominazione
 			pst.setString(2, produttore); //Produttore
-			pst.setString(3, tipovino); //Colore
-			pst.setString(4, tipovino); //TipoVino
-			pst.setString(5, paese); //Paese
-			pst.setString(6, regione); //Regione
-			pst.setString(7, capacita); //Capacità
-			pst.setString(8, note); //Note
-			pst.setFloat(9, prezzo); //Prezzo
-			pst.setFloat(10, ingrosso); //Ingrosso
-			pst.setFloat(11, dettaglio); //Dettaglio
-			pst.setBoolean(12, manuale); //Manuale True/False
+			pst.setString(3, tipovino); //TipoVino
+			pst.setString(4, paese); //Paese
+			pst.setString(5, regione); //Regione
+			pst.setString(6, capacita); //Capacità
+			pst.setString(7, note); //Note
+			pst.setDouble(8, prezzo); //Prezzo
+			pst.setDouble(9, ingrosso); //Ingrosso
+			pst.setDouble(10, dettaglio); //Dettaglio
+			pst.setBoolean(11, manuale); //Manuale True/False
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			errorMessage(e.getMessage());
@@ -203,18 +197,17 @@ public class DbManager {
 	            rs.getInt(1); //ID
 	            String denominazione = rs.getString(2); //Denominazione
 	            String produttore = rs.getString(3); //Produttore
-	            String colore = rs.getString(4); //Colore
-	            String tipovino = rs.getString(5); //TipoVino
-	            String paese = rs.getString(6); //Paese
-	            String regione = rs.getString(7); //Regione
-	            String capacita = rs.getString(8); //Capacità
-	            String note = rs.getString(9); //Note
-	            float prezzo = rs.getFloat(10); //Prezzo
-	            float ingrosso = rs.getFloat(11); //Ingrosso
-	            float dettaglio = rs.getFloat(12); //Dettaglio
-	            boolean manuale = rs.getBoolean(13); //Manuale True/False
+	            String tipovino = rs.getString(4); //TipoVino
+	            String paese = rs.getString(5); //Paese
+	            String regione = rs.getString(6); //Regione
+	            String capacita = rs.getString(7); //Capacità
+	            String note = rs.getString(8); //Note
+	            double prezzo = rs.getDouble(9); //Prezzo
+	            double ingrosso = rs.getDouble(10); //Ingrosso
+	            double dettaglio = rs.getDouble(11); //Dettaglio
+	            boolean manuale = rs.getBoolean(12); //Manuale True/False
 		        
-				editData(ind, denominazione, produttore, colore, tipovino, paese, regione, capacita, note, prezzo, ingrosso, dettaglio, manuale);
+				editData(ind, denominazione, produttore, tipovino, paese, regione, capacita, note, prezzo, ingrosso, dettaglio, manuale);
 				st.executeUpdate("DELETE FROM Vini WHERE ID=" + count);
 			}
 		} catch (SQLException e) {
