@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import juboss.MainApp;
 import juboss.model.Wine;
 
 public class ListViewController {
@@ -122,9 +124,33 @@ public class ListViewController {
     }
     
     
+    
+    @FXML
+    public void clickItem(MouseEvent event)
+    {
+        if (event.getClickCount() == 2) //Checking double click
+        {
+           Wine selected = tableViewDett.getSelectionModel().getSelectedItem();
+           System.out.println(selected.getDenominazione());            
+            
+        }
+    }
+    
+    
     //emette un suono di errore <3
     @FXML
     void sound(){
        	Toolkit.getDefaultToolkit().beep();
     }
-}
+    
+    //set window in full-screen mode on double click
+    @FXML
+    void setFullScreen(MouseEvent event)
+    {
+        	if (event.getClickCount() == 2) //Checking double click
+         {  	
+        	MainApp.stageList.setFullScreen(true); 
+         }
+    }
+    
+  }
