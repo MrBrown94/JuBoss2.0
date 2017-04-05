@@ -6,12 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
 
     private static Stage primaryStage;
     public static Stage stageList;
+    public static Stage stageInfoPop;
     private BorderPane rootLayout;
    
   	//private static DbManager db = null;
@@ -23,10 +25,30 @@ public class MainApp extends Application {
         MainApp.primaryStage.setTitle("JuBoss Gestional Software");
         MainApp.primaryStage.setResizable(false);
         
-        //creation of listView stage to track theyr addresses
-        stageList = new Stage();
+     //creation stages to track theyr addresses
+       
+        stageList = new Stage(); //listView
+        	//blocks user input on Gui until child stage is closed
+        	MainApp.stageList.initModality(Modality.WINDOW_MODAL);
+        	MainApp.stageList.initOwner(MainApp.getPrimaryStage());
         
-
+        stageInfoPop = new Stage(); //infoPopup
+		    //blocks user input on Gui until child stage is closed
+		    MainApp.stageInfoPop.initModality(Modality.WINDOW_MODAL);
+		    MainApp.stageInfoPop.initOwner(stageList);
+		    MainApp.stageInfoPop.setAlwaysOnTop(true);
+        
+		    
+		    //fill db TEST
+		   /* 
+		    DbManager db= new DbManager();
+		    for (int i=0; i <=4000;i++){
+		    db.insertData("test"+i, "test"+1, "test"+1, "test"+1, "test"+1, "test"+1, "test"+1, "testskdjalskjdaslkdjaslkdjaslkdjaslkdjaslkdjalskjdalksjdalksjdlaskjdlaksdj"+1, 235.59f + i, 235.59f + i, 235.59f + i, true);
+		    System.out.println("Aggiunto vino n° " + i);
+		    }
+		    
+		    */
+		    
         initRootLayout();
 
         showGui();

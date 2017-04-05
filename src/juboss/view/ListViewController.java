@@ -1,12 +1,18 @@
 package juboss.view;
 
 import java.awt.Toolkit;
+import java.io.IOException;
+
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import juboss.MainApp;
 import juboss.model.Wine;
 
@@ -131,7 +137,29 @@ public class ListViewController {
         if (event.getClickCount() == 2) //Checking double click
         {
            Wine selected = tableViewDett.getSelectionModel().getSelectedItem();
-           System.out.println(selected.getDenominazione());            
+           
+           try {
+               
+       		// Load gui.
+               FXMLLoader loader = new FXMLLoader();
+               loader.setLocation(MainApp.class.getResource("view/InfoPopup.fxml"));
+               AnchorPane infoPopup = (AnchorPane) loader.load();
+               
+               	           
+	           MainApp.stageInfoPop.centerOnScreen();
+                   
+	           //build scene
+               Scene scene = new Scene(infoPopup);
+               MainApp.stageInfoPop.setScene(scene);
+               MainApp.stageInfoPop.setResizable(false);
+               
+               MainApp.stageInfoPop.show();
+               
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
+           
+                     
             
         }
     }
