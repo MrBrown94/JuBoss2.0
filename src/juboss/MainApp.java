@@ -10,7 +10,8 @@ import javafx.stage.Stage;
 
 public class MainApp extends Application {
 
-    private Stage primaryStage;
+    private static Stage primaryStage;
+    public static Stage stageList;
     private BorderPane rootLayout;
    
   	//private static DbManager db = null;
@@ -18,9 +19,12 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("JuBoss Gestional Software");
-        this.primaryStage.setResizable(false);
+        MainApp.primaryStage = primaryStage;
+        MainApp.primaryStage.setTitle("JuBoss Gestional Software");
+        MainApp.primaryStage.setResizable(false);
+        
+        //creation of listView stage to track theyr addresses
+        stageList = new Stage();
         
 
         initRootLayout();
@@ -68,7 +72,7 @@ public class MainApp extends Application {
      * Returns the main stage.
      * @return
      */
-    public Stage getPrimaryStage() {
+    public static Stage getPrimaryStage() {
         return primaryStage;
     }
     
