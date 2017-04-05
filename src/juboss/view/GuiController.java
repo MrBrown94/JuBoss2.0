@@ -60,11 +60,7 @@ public class GuiController {
             Scene scene = new Scene(listView);
             MainApp.stageList.setScene(scene);
             MainApp.stageList.setResizable(false);
-            
-            //blocks user input on Gui until child stage is closed
-            MainApp.stageList.initModality(Modality.WINDOW_MODAL);
-            MainApp.stageList.initOwner(MainApp.getPrimaryStage());
-            
+                   
             MainApp.stageList.show();
             
         } catch (IOException e) {
