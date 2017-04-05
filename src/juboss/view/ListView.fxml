@@ -54,7 +54,7 @@
             </TabPane>
             <BorderPane onMouseClicked="#setFullScreen" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <center>
-                  <TextField maxWidth="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="500.0" promptText="Ricerca..." BorderPane.alignment="CENTER_LEFT" />
+                  <TextField fx:id="searchField" maxWidth="-Infinity" minWidth="-Infinity" onKeyPressed="#filterUpdate" prefHeight="31.0" prefWidth="500.0" promptText="Ricerca..." BorderPane.alignment="CENTER_LEFT" />
                </center>
             </BorderPane>
          </children>

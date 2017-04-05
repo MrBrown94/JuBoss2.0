@@ -4,11 +4,14 @@ import java.awt.Toolkit;
 import java.io.IOException;
 
 import javafx.collections.ListChangeListener;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -36,6 +39,9 @@ public class ListViewController {
 	  @FXML
 	  private TableView<Wine> tableViewIngro;
 	  
+	  @FXML
+	  private TextField searchField;
+	  
 	  
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -47,6 +53,7 @@ public class ListViewController {
         assert tableViewIngro != null : "fx:id=\"tableViewIngro\" was not injected: check your FXML file 'ListView.fxml'.";
         assert columnIngrosso != null : "fx:id=\"columnIngrosso\" was not injected: check your FXML file 'ListView.fxml'.";
         assert columnDettaglio != null : "fx:id=\"columnDettaglio\" was not injected: check your FXML file 'ListView.fxml'.";
+        assert searchField != null : "fx:id=\"searchField\" was not injected: check your FXML file 'ListView.fxml'.";
 
         
               
@@ -94,6 +101,12 @@ public class ListViewController {
         columnIngrosso.setCellValueFactory(new PropertyValueFactory<Wine, String>("ingrossoEur"));
 
         
+        
+     // 2. Set the filter Predicate whenever the filter changes.
+        
+    
+        
+        //adding items to tableView
         tableViewDett.setItems(juboss.Splash.viniOb);
         tableViewIngro.setItems(juboss.Splash.viniOb);
         
@@ -129,7 +142,44 @@ public class ListViewController {
         
     }
     
-    
+    //search method
+    @FXML
+    public void filterUpdate()
+    {
+    	//moving all items inside a filteredList
+        FilteredList<Wine> filteredData = new FilteredList<>(juboss.Splash.viniOb, p -> true);
+        
+    	searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(wine -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (wine.getDenominazione().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                } else if (wine.getDettaglioEur().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                return false; // Does not match.
+            });
+        });
+
+        // 3. Wrap the FilteredList in a SortedList. 
+        SortedList<Wine> sortedData = new SortedList<>(filteredData);
+
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(tableViewDett.comparatorProperty());
+        sortedData.comparatorProperty().bind(tableViewIngro.comparatorProperty());
+
+        // 5. Add sorted (and filtered) data to the table.
+        tableViewDett.setItems(sortedData);
+        tableViewIngro.setItems(sortedData);
+
+    }
     
     @FXML
     public void clickItem(MouseEvent event)
@@ -154,6 +204,8 @@ public class ListViewController {
                MainApp.stageInfoPop.setResizable(false);
                
                MainApp.stageInfoPop.show();
+               
+               
                
            } catch (IOException e) {
                e.printStackTrace();
