@@ -62,7 +62,7 @@ public class ImpExp {
 	
 	
 	/* START - Metodo per il backup alla chiusura */
-	public void autoBackup() {
+	/*public void autoBackup() {
 		
 		bk = new File(Splash.decodePath + "BKlista.xml");
 		
@@ -71,6 +71,6 @@ public class ImpExp {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 	/* END - Metodo per il backup alla chiusura */
 }
