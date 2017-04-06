@@ -73,17 +73,27 @@ public class AddEditController {
     	alert.setTitle("Errore");
     	alert.setHeaderText(null);
     	alert.setContentText("Il campo \"Denominazione\" deve essere riempito!");
-
+    	
+    	
+    	
     	if(fieldDenominazione.getText().equals(""))
     		alert.showAndWait();
 	    	
     		else{
-    				juboss.Splash.db.insertData(	fieldDenominazione.getText(), fieldProduttore.getText(), fieldTipoVino.getText(), 
-	    											comboPaese.getSelectionModel().getSelectedItem().toString(), comboRegione.getSelectionModel().getSelectedItem().toString(),
-	    											fieldCapacità.getText(), textAreaNote.getText(), Double.parseDouble(fieldPrezzo.getText()), Double.parseDouble(fieldIngrosso.getText()), 
-	    											Double.parseDouble(fieldDettaglio.getText()), checkManuale.isSelected()
+    				juboss.Splash.db.insertData(	fieldDenominazione.getText(), 
+    												fieldProduttore.getText(), 
+    												fieldTipoVino.getText(), 
+	    											""+comboPaese.getSelectionModel().getSelectedIndex(), 
+	    											""+comboRegione.getSelectionModel().getSelectedIndex(),
+	    											fieldCapacità.getText(), 
+	    											textAreaNote.getText(), 
+	    											Double.parseDouble(fieldPrezzo.getText()), 
+	    											Double.parseDouble(fieldIngrosso.getText()), 
+	    											Double.parseDouble(fieldDettaglio.getText()),
+	    											checkManuale.isSelected()
 	    										);
-    			    			
+    			    
+    			
     			};
     	
     }

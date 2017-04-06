@@ -98,7 +98,9 @@ public class ListViewController {
             }
         });
         
+        
         filterUpdate();
+        
         
     }
     

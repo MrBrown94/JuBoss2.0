@@ -45,7 +45,7 @@
                            </columnResizePolicy>
       					    <columns>
       					        <TableColumn fx:id="columnDenominazione2" prefWidth="466.0" text="Denominazione" />
-      					        <TableColumn fx:id="columnIngrosso" editable="false" maxWidth="350.0" minWidth="76.0" prefWidth="147.0" text="Ingrosso" />
+      					        <TableColumn fx:id="columnIngrosso" maxWidth="350.0" minWidth="76.0" prefWidth="147.0" text="Ingrosso" />
       					    </columns>
       						</TableView>
                      </content>

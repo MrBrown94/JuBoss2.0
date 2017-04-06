@@ -84,11 +84,7 @@ public class MainApp extends Application {
         return primaryStage;
     }
     
-    //Launch AddEdit
-    public static void LaunchAddEdit(){
-    	AddEdit.main(null);
-    }
-    
+   
     public static void main(String[] args) {
         launch(args);
     }
