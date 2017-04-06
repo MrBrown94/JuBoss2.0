@@ -50,12 +50,12 @@
             </Label>
             <TextField fx:id="fieldDenominazione" prefHeight="32.0" prefWidth="500.0" promptText="Denominazione" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
             <TextField fx:id="fieldProduttore" prefHeight="32.0" prefWidth="350.0" promptText="Produttore" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-            <TextField prefHeight="32.0" prefWidth="250.0" promptText="Tipo Vino" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+            <TextField fx:id="fieldTipoVino" prefHeight="32.0" prefWidth="250.0" promptText="Tipo Vino" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.valignment="TOP" />
             <TextField fx:id="fieldCapacità" prefHeight="32.0" prefWidth="88.0" promptText="Capacità" GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.valignment="TOP" />
             <Pane prefHeight="91.0" prefWidth="319.0" stylesheets="@../../../res/style.css" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
                <children>
                   <ComboBox fx:id="comboPaese" layoutX="91.0" layoutY="19.0" prefWidth="150.0" />
-                  <ComboBox fx:id="ComboRegione" layoutX="408.0" layoutY="18.0" prefWidth="150.0" />
+                  <ComboBox fx:id="comboRegione" layoutX="408.0" layoutY="18.0" prefWidth="150.0" />
                   <Label alignment="TOP_LEFT" layoutY="14.0" prefHeight="20.0" text="Paese">
                      <font>
                         <Font name="System Bold" size="23.0" />
