@@ -1,3 +1,5 @@
+/******************** Global CSS *******************/
+
 /* START - BackGround Image */
 #bg{
     -fx-background-image: url("bg.png");
@@ -8,7 +10,11 @@
 /* END - BackGround Image */
 
 
-/* START - Button Style GUI */
+
+
+/******************** MainAPP *******************/
+
+/* START - Button Style MainApp */
 #button {
     -fx-padding: 8 15 15 15;
     -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
@@ -40,8 +46,60 @@
     -fx-fill: white;
     -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
 }
-/* END - Button Style GUI */
+/* END - Button Style MainApp */
 
+
+
+
+/******************** AddEdit *******************/
+
+/* START - Button Style AddEdit */
+#glass-grey {
+    -fx-background-color: 
+        #c3c4c4,
+        linear-gradient(#d6d6d6 50%, white 100%),
+        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+
+#glass-grey:hover {
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
+}
+
+#glass-grey:pressed {
+    /*-fx-padding: 10 15 13 15;*/
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
+
+#glass-grey Text {
+    -fx-fill: white;
+    -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
+}
+/* END - Button Style AddEdit */
+
+
+/* START - Text Style AddEdit */
+#textaction {
+  -fx-fill: #212121;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );  
+}
+/* END - Text Style AddEdit */
+
+
+
+
+
+
+
+/******************** TEST DI SIMONE DI MERDA  *******************/
 /*test */
 
 #tab {
