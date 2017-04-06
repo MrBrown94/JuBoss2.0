@@ -3,7 +3,9 @@ package juboss.view;
 import java.awt.Toolkit;
 import java.io.IOException;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
@@ -92,21 +94,42 @@ public class ListViewController {
                 change.next();
                 if (change.wasReplaced() && !suspended) {
                     this.suspended = true;
-                    tableViewIngro.getColumns().setAll(columnDenominazione1, columnIngrosso);
+                    tableViewIngro.getColumns().setAll(columnDenominazione2, columnIngrosso);
                     this.suspended = false;
                 }
             }
         });
         
-        
-        filterUpdate();
-        
-        
+     filterUpdate();
+         
     }
     
-    
+    public void filterUpdate(){
+    ObservableList<Wine> data =  tableViewDett.getItems();
+    searchField.textProperty().addListener((observable, oldValue,  newValue) -> {
+                if (oldValue != null && (newValue.length() < oldValue.length())) {
+                	tableViewDett.setItems(data);
+                }
+                String value = newValue.toLowerCase();
+                ObservableList<Wine> subentries = FXCollections.observableArrayList();
+
+                long count = tableViewDett.getColumns().stream().count();
+                for (int i = 0; i < tableViewDett.getItems().size(); i++) {
+                    for (int j = 0; j < count; j++) {
+                        String entry = "" + tableViewDett.getColumns().get(j).getCellData(i);
+                        if (entry.toLowerCase().contains(value)) {
+                            subentries.add(tableViewDett.getItems().get(i));
+                            break;
+                        }
+                    }
+                }
+                tableViewDett.setItems(subentries);
+                tableViewIngro.setItems(subentries);
+            });
+    }
+    /*
     //search method
-    public void filterUpdate()
+    public void filterUpdateOld()
     {
     	//moving all items inside a filteredList
         FilteredList<Wine> filteredData = new FilteredList<>(juboss.Splash.viniOb, p -> true);
@@ -133,18 +156,20 @@ public class ListViewController {
         // 3. Wrap the FilteredList in a SortedList. 
         SortedList<Wine> sortedData = new SortedList<>(filteredData);
 
+        
         // 4. Bind the SortedList comparator to the TableView comparator.
         sortedData.comparatorProperty().bind(tableViewDett.comparatorProperty());
         sortedData.comparatorProperty().bind(tableViewIngro.comparatorProperty());
-
+        
+        
         // 5. Add sorted (and filtered) data to the table.
         tableViewDett.setItems(sortedData);
         tableViewIngro.setItems(sortedData);
-
+             
     }
-    
+    */
     @FXML
-    public void clickItem(MouseEvent event)
+    public void clickItemDett(MouseEvent event)
     {
         if (event.getClickCount() == 2) //Checking double click
         {
@@ -178,6 +203,40 @@ public class ListViewController {
         }
     }
     
+    @FXML
+    public void clickItemIngro(MouseEvent event)
+    {
+        if (event.getClickCount() == 2) //Checking double click
+        {
+          selected = tableViewIngro.getSelectionModel().getSelectedItem();
+           
+           try {
+               
+       		// Load gui.
+               FXMLLoader loader = new FXMLLoader();
+               loader.setLocation(MainApp.class.getResource("view/InfoPopup.fxml"));
+               AnchorPane infoPopup = (AnchorPane) loader.load();
+               
+               	           
+	           MainApp.stageInfoPop.centerOnScreen();
+                   
+	           //build scene
+               Scene scene = new Scene(infoPopup);
+               MainApp.stageInfoPop.setScene(scene);
+               MainApp.stageInfoPop.setResizable(false);
+               
+               MainApp.stageInfoPop.show();
+               
+               
+               
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
+           
+                     
+            
+        }
+    }
     
     //emette un suono di errore <3
     @FXML
