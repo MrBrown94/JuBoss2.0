@@ -25,7 +25,7 @@ public class DbManager {
 	private ResultSet rs = null;
 	private PreparedStatement pst = null;
 	private List<Wine> data = new ArrayList<Wine>();
-	
+	private String stringClose;
 	
 	
 	//Inizializzazione connessione DB
@@ -48,7 +48,7 @@ public class DbManager {
 	
 	
 	//Get Path del programma
-	private void getPath() {
+	public String getPath() {
 		
 		//Estrazione path
 		dbDir = new File(ClassLoader.getSystemClassLoader().getResource(".").getPath());
@@ -62,10 +62,18 @@ public class DbManager {
 			
 			path = path.replaceAll("bin", "");
 		    path = path.replace("\\", "/");
+		    
+		    String rePath = path;
+		    
+		    stringClose = path + "db/db.accdb;shutdown=true";
 		    path += "db/db.accdb;memory=false;COLUMNORDER=DISPLAY";
+		    
+		    return rePath;
 		} catch (UnsupportedEncodingException e) {
 			errorMessage(e.getMessage());
 		}
+		
+		return null;
 	}
 	
 	
@@ -121,7 +129,7 @@ public class DbManager {
 	
 	//Inserimento dati in DB con indice n+1
 	public void insertData(String denominazione, String produttore, String tipovino, String paese, String regione, String capacita, String note, double prezzo, double ingrosso, double dettaglio, boolean manuale) {
-		
+
 		//Query per l'inserimento dei dati nel DB
 		String query = "INSERT INTO Vini (ID, Denominazione, Produttore, TipoVino, Paese, Regione, Capacita, Note, Prezzo, Ingrosso, Dettaglio, Manuale) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 		
@@ -267,12 +275,16 @@ public class DbManager {
 	
 	//Chiusura connessione db
 	public void closeDb() {
-		
+				
 		try {
-			st.close();
-			connection.close();
-			rs.close();
-			pst.close();
+			/*connection = DriverManager.getConnection("jdbc:ucanaccess://" + stringClose);
+			connection.createStatement();*/
+			
+			if(st != null) st.close();
+			if(connection != null) connection.close();
+			if(rs != null) rs.close();
+			if(pst != null) pst.close();
+			System.gc();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
