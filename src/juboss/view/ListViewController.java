@@ -183,14 +183,12 @@ public class ListViewController {
        	Toolkit.getDefaultToolkit().beep();
     }
     
-    //set window in full-screen mode on double click
+    //set window in full-screen mode
     @FXML
     void setFullScreen(MouseEvent event)
     {
-        	if (event.getClickCount() == 2) //Checking double click
-         {  	
-        	MainApp.stageList.setFullScreen(true); 
-         }
+        	if (MainApp.stageList.isFullScreen()) MainApp.stageList.setFullScreen(false); 
+        		else MainApp.stageList.setFullScreen(true); 
     }
     
   }
