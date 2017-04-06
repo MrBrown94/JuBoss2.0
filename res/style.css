@@ -49,6 +49,16 @@
 /* END - Button Style MainApp */
 
 
+/* START - BackGround Image */
+#bgMain{
+    -fx-background-image: url("bg_main.png");
+    -fx-background-repeat: repeat;   
+    -fx-background-size: 940 510;
+    -fx-background-position: center center;
+}
+/* END - BackGround Image */
+
+
 
 
 /******************** AddEdit *******************/

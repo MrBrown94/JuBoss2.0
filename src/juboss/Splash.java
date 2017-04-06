@@ -13,8 +13,7 @@ public class Splash extends JWindow {
 	
 	//ObservableList di  Vini
 	public static ObservableList<Wine> viniOb;
-	
-	private DbManager db = null;
+	public static DbManager db = null;
 	
 	
 	//Costruttore
