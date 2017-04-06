@@ -1,4 +1,4 @@
-package juboss;
+package juboss.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
