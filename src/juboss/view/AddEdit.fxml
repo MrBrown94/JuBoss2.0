@@ -75,7 +75,7 @@
                         <Font name="System Bold" size="23.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="textAreaNote" layoutX="89.0" prefHeight="65.0" prefWidth="532.0" promptText="Note" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                  <TextArea fx:id="textAreaNote" layoutX="89.0" prefHeight="65.0" prefWidth="532.0" promptText="Note" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="6" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
@@ -108,7 +108,7 @@
             <Pane prefHeight="41.0" prefWidth="283.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
                <children>
                   <Button id="glass-grey" layoutX="56.0" layoutY="16.0" mnemonicParsing="false" prefWidth="80.0" text="Modifica" />
-                  <Button id="glass-grey" layoutX="157.0" layoutY="16.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Salva" />
+                  <Button id="glass-grey" layoutX="157.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#checkAndInsert" prefHeight="25.0" prefWidth="80.0" text="Salva" />
                </children>
             </Pane>
          </children>
