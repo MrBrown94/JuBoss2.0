@@ -13,10 +13,6 @@ public class Splash extends JWindow {
 	
 	//ObservableList di  Vini
 	public static ObservableList<Wine> viniOb;
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'master' of https://Fhumo@gitlab.com/Fhumo/JuBoss2.0.git
 	public static DbManager db = null;
 	
 	
