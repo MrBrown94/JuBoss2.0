@@ -96,7 +96,7 @@ public class DbManager {
 	
 	
 	//Get Info Vini
-	public ObservableList<Wine>  getAllData() {
+	public ObservableList<Wine> getAllData() {
 		
 		try {
 			

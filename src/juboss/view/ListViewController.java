@@ -55,57 +55,15 @@ public class ListViewController {
         assert columnDettaglio != null : "fx:id=\"columnDettaglio\" was not injected: check your FXML file 'ListView.fxml'.";
         assert searchField != null : "fx:id=\"searchField\" was not injected: check your FXML file 'ListView.fxml'.";
 
-        
-              
-        //caricamento tabella
-        System.out.println("creazione tabella");
-
-        /*
-      //dati per test  
-        List<Wine> vini = new ArrayList<Wine>();
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        vini.add(new Wine("123", "Vino De merda", "La troia de mammita", "qwe", "asd", "cazzo", "stronzo", "12 galloni", "stronzoni si nasce", "123€", "190€", "320€"));
-        
-        
-        ObservableList<Wine> viniOb = FXCollections.observableList(vini);
-         */      
-        
-        //set content type of column
-        
        
+        //set content type of column
         columnDenominazione1.setCellValueFactory(new PropertyValueFactory<Wine, String>("denominazione"));
         columnDenominazione2.setCellValueFactory(new PropertyValueFactory<Wine, String>("denominazione"));
 
         columnDettaglio.setCellValueFactory(new PropertyValueFactory<Wine, String>("dettaglioEur"));
         columnIngrosso.setCellValueFactory(new PropertyValueFactory<Wine, String>("ingrossoEur"));
-
-        
-        
-     // 2. Set the filter Predicate whenever the filter changes.
         
     
-        
         //adding items to tableView
         tableViewDett.setItems(juboss.Splash.viniOb);
         tableViewIngro.setItems(juboss.Splash.viniOb);
@@ -140,10 +98,12 @@ public class ListViewController {
             }
         });
         
+        filterUpdate();
+        
     }
     
+    
     //search method
-    @FXML
     public void filterUpdate()
     {
     	//moving all items inside a filteredList

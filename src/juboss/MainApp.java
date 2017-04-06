@@ -15,9 +15,6 @@ public class MainApp extends Application {
     public static Stage stageList;
     public static Stage stageInfoPop;
     private BorderPane rootLayout;
-   
-  	//private static DbManager db = null;
-  	
 
     @Override
     public void start(Stage primaryStage) {
@@ -38,17 +35,6 @@ public class MainApp extends Application {
 		    MainApp.stageInfoPop.initOwner(stageList);
 		    MainApp.stageInfoPop.setAlwaysOnTop(true);
         
-		    
-		    //fill db TEST
-		   /* 
-		    DbManager db= new DbManager();
-		    for (int i=0; i <=4000;i++){
-		    db.insertData("test"+i, "test"+1, "test"+1, "test"+1, "test"+1, "test"+1, "test"+1, "testskdjalskjdaslkdjaslkdjaslkdjaslkdjaslkdjalskjdalksjdalksjdlaskjdlaksdj"+1, 235.59f + i, 235.59f + i, 235.59f + i, true);
-		    System.out.println("Aggiunto vino n° " + i);
-		    }
-		    
-		    */
-		    
         initRootLayout();
 
         showGui();

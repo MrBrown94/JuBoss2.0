@@ -49,7 +49,6 @@ public class Splash extends JWindow {
 		//Sleep Splash
 	    try { 
 	    	db = new DbManager();
-	    	System.out.println("carico db");
 	    	viniOb = db.getAllData();
 	    	
 	    	Thread.sleep(duration);
@@ -63,7 +62,6 @@ public class Splash extends JWindow {
 	public void showSplashAndStart(){
 			
 		showSplash();
-		//MainApp.preLoad(db, viniOB);
 		MainApp.main(null);
 	}
 
