@@ -2,7 +2,6 @@ package juboss.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -26,10 +25,13 @@ public class AddEditController {
     private CheckBox checkManuale;
 
     @FXML
-    private ComboBox<?> ComboRegione;
+    private ComboBox<?> comboRegione;
 
     @FXML
     private TextField fieldProduttore;
+
+    @FXML
+    private TextField fieldTipoVino;
 
     @FXML
     private TextField fieldCapacità;
@@ -53,20 +55,19 @@ public class AddEditController {
     void initialize() {
         assert fieldPrezzo != null : "fx:id=\"fieldPrezzo\" was not injected: check your FXML file 'AddEdit.fxml'.";
         assert checkManuale != null : "fx:id=\"checkManuale\" was not injected: check your FXML file 'AddEdit.fxml'.";
-        assert ComboRegione != null : "fx:id=\"ComboRegione\" was not injected: check your FXML file 'AddEdit.fxml'.";
+        assert comboRegione != null : "fx:id=\"ComboRegione\" was not injected: check your FXML file 'AddEdit.fxml'.";
         assert fieldProduttore != null : "fx:id=\"fieldProduttore\" was not injected: check your FXML file 'AddEdit.fxml'.";
+        assert fieldTipoVino != null : "fx:id=\"fieldTipoVino\" was not injected: check your FXML file 'AddEdit.fxml'.";
         assert fieldCapacità != null : "fx:id=\"fieldCapacità\" was not injected: check your FXML file 'AddEdit.fxml'.";
         assert fieldDenominazione != null : "fx:id=\"fieldDenominazione\" was not injected: check your FXML file 'AddEdit.fxml'.";
         assert comboPaese != null : "fx:id=\"comboPaese\" was not injected: check your FXML file 'AddEdit.fxml'.";
         assert textAreaNote != null : "fx:id=\"textAreaNote\" was not injected: check your FXML file 'AddEdit.fxml'.";
         assert fieldIngrosso != null : "fx:id=\"fieldIngrosso\" was not injected: check your FXML file 'AddEdit.fxml'.";
         assert fieldDettaglio != null : "fx:id=\"fieldDettaglio\" was not injected: check your FXML file 'AddEdit.fxml'.";
-        
-        
-      }
-    
+
+    }
     @FXML
-    public void checkFullFillment(){
+    public void checkAndInsert(){
     	
     	Alert alert = new Alert(AlertType.INFORMATION);
     	alert.setTitle("Errore");
@@ -75,7 +76,15 @@ public class AddEditController {
 
     	if(fieldDenominazione.getText().equals(""))
     		alert.showAndWait();
-    	else{};
+	    	
+    		else{
+    				juboss.Splash.db.insertData(	fieldDenominazione.getText(), fieldProduttore.getText(), fieldTipoVino.getText(), 
+	    											comboPaese.getSelectionModel().getSelectedItem().toString(), comboRegione.getSelectionModel().getSelectedItem().toString(),
+	    											fieldCapacità.getText(), textAreaNote.getText(), Double.parseDouble(fieldPrezzo.getText()), Double.parseDouble(fieldIngrosso.getText()), 
+	    											Double.parseDouble(fieldDettaglio.getText()), checkManuale.isSelected()
+	    										);
+    			    			
+    			};
     	
     }
 }
