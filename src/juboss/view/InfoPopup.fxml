@@ -45,12 +45,12 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label prefHeight="21.0" prefWidth="141.0" text="Capacità" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+            <Label prefHeight="21.0" prefWidth="141.0" text="Capacità" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label prefHeight="21.0" prefWidth="141.0" text="Colore" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+            <Label prefHeight="21.0" prefWidth="141.0" text="Regione" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -67,9 +67,9 @@
             </Label>
             <TextField fx:id="fieldProduttore" alignment="TOP_LEFT" editable="false" focusTraversable="false" maxWidth="350.0" prefHeight="25.0" prefWidth="278.0" promptText="produttore&#10;" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <TextField fx:id="fieldPaese" alignment="TOP_LEFT" editable="false" focusTraversable="false" maxWidth="350.0" prefHeight="25.0" prefWidth="278.0" promptText="paese&#10;" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-            <TextField fx:id="fieldCapacità" alignment="TOP_LEFT" editable="false" focusTraversable="false" maxWidth="350.0" prefHeight="25.0" prefWidth="278.0" promptText="capacità&#10;" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-            <TextField fx:id="fieldColore" alignment="TOP_LEFT" editable="false" focusTraversable="false" maxWidth="350.0" prefHeight="25.0" prefWidth="278.0" promptText="colore&#10;" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
-            <TextField fx:id="fieldTipo" alignment="TOP_LEFT" editable="false" focusTraversable="false" maxWidth="350.0" prefHeight="25.0" prefWidth="278.0" promptText="tipo" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+            <TextField fx:id="fieldCapacità" alignment="TOP_LEFT" editable="false" focusTraversable="false" maxWidth="350.0" prefHeight="25.0" prefWidth="278.0" promptText="capacità&#10;" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+            <TextField fx:id="fieldRegione" alignment="TOP_LEFT" editable="false" focusTraversable="false" maxWidth="350.0" prefHeight="25.0" prefWidth="278.0" promptText="regione&#10;" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <TextField fx:id="fieldTipo" alignment="TOP_LEFT" editable="false" focusTraversable="false" maxWidth="350.0" prefHeight="25.0" prefWidth="278.0" promptText="tipo vino" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
             <TextArea fx:id="fieldDenominazione" editable="false" focusTraversable="false" prefHeight="61.0" prefWidth="431.0" promptText="denominazione" wrapText="true" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.valignment="TOP" />
             <TextArea fx:id="fieldNote" editable="false" focusTraversable="false" prefHeight="61.0" prefWidth="431.0" promptText="note" wrapText="true" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="7" />
          </children>

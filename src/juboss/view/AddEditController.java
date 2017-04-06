@@ -80,20 +80,22 @@ public class AddEditController {
     		alert.showAndWait();
 	    	
     		else{
-    				juboss.Splash.db.insertData(	fieldDenominazione.getText(), 
-    												fieldProduttore.getText(), 
-    												fieldTipoVino.getText(), 
+    				juboss.Splash.db.insertData(	fieldDenominazione.getText().toUpperCase(), 
+    												fieldProduttore.getText().toUpperCase(), 
+    												fieldTipoVino.getText().toUpperCase(), 
 	    											""+comboPaese.getSelectionModel().getSelectedIndex(), 
 	    											""+comboRegione.getSelectionModel().getSelectedIndex(),
-	    											fieldCapacità.getText(), 
-	    											textAreaNote.getText(), 
+	    											fieldCapacità.getText().toUpperCase(), 
+	    											textAreaNote.getText().toUpperCase(), 
 	    											Double.parseDouble(fieldPrezzo.getText()), 
 	    											Double.parseDouble(fieldIngrosso.getText()), 
 	    											Double.parseDouble(fieldDettaglio.getText()),
 	    											checkManuale.isSelected()
 	    										);
-    			    
-    			
+    				
+    			    //update lista dopo inserimento
+    				juboss.Splash.viniOb = juboss.Splash.db.getAllData();
+    				System.out.println("aggiunto");
     			};
     	
     }
