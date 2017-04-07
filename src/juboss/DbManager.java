@@ -25,7 +25,6 @@ public class DbManager {
 	private ResultSet rs = null;
 	private PreparedStatement pst = null;
 	private List<Wine> data = new ArrayList<Wine>();
-	private String stringClose;
 	
 	
 	//Inizializzazione connessione DB
@@ -65,8 +64,7 @@ public class DbManager {
 		    
 		    String rePath = path;
 		    
-		    stringClose = path + "db/db.accdb;shutdown=true";
-		    path += "db/db.accdb;memory=false;COLUMNORDER=DISPLAY";
+		    path += "db/db.accdb;memory=false;COLUMNORDER=DISPLAY;singleconnection=true";
 		    
 		    return rePath;
 		} catch (UnsupportedEncodingException e) {
@@ -277,8 +275,6 @@ public class DbManager {
 	public void closeDb() {
 				
 		try {
-			/*connection = DriverManager.getConnection("jdbc:ucanaccess://" + stringClose);
-			connection.createStatement();*/
 			
 			if(st != null) st.close();
 			if(connection != null) connection.close();

@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.LookAndFeel;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -81,6 +82,12 @@ public class ImpExp {
 	/* START - Apertura finestra per la selezione del file da Importare/Esportare */
 	private Path openChooser(int i) {
 		
+		
+		//Prendere il look precedente
+		LookAndFeel previousLF = UIManager.getLookAndFeel();
+		
+		
+		//Prendere il look del SO per il frame chooser
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
@@ -101,19 +108,30 @@ public class ImpExp {
 	    
 	    
 	    //i == 0 Operazione di importazione <> i != 0 Operazione di esportazione
-	    if(i == 0) {
-	    	
-		    if (chooser.showOpenDialog(selectedWindows) == JFileChooser.APPROVE_OPTION) {
+	    try {
+		    if(i == 0) {
 		    	
-		    	return chooser.getSelectedFile().toPath();
-		    }
-	    } else {
-	    	
-	    	if (chooser.showSaveDialog(selectedWindows) == JFileChooser.APPROVE_OPTION) {
+			    if (chooser.showOpenDialog(selectedWindows) == JFileChooser.APPROVE_OPTION) {
+			    	
+			    	return chooser.getSelectedFile().toPath();
+			    }
+		    } else {
 		    	
-		    	return chooser.getSelectedFile().toPath();
-		    }
-	    }
+		    	if (chooser.showSaveDialog(selectedWindows) == JFileChooser.APPROVE_OPTION) {
+			    	
+			    	return chooser.getSelectedFile().toPath();
+			    }
+		    }			
+	    } catch (Exception e) {
+	    	falseOperation(e.getMessage());
+		} finally {
+			
+			try {
+				UIManager.setLookAndFeel(previousLF);
+			} catch (Exception e) {
+				falseOperation(e.getMessage());
+			}	
+		}
 	    
 	    return null;
 	}
@@ -124,7 +142,7 @@ public class ImpExp {
 	private void falseOperation(String e) {
 		
 		frame = new JFrame();			 
-		JOptionPane.showMessageDialog(frame,"Importazione non eseguita\n"+e,"Warning", JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(frame,"Operazione non eseguita\n"+e,"Warning", JOptionPane.WARNING_MESSAGE);
 	}
 	/* END - Visualizzazione finestra di operazione NON riuscita Importa | Esporta con errore */
 	
@@ -136,17 +154,15 @@ public class ImpExp {
 		int result;
 		
 		//i == 0 Operazione di importazione <> i != 0 Operazione di esportazione
-		if(i == 0) result = JOptionPane.showConfirmDialog(frame,"Importazione eseguita","Info", JOptionPane.CLOSED_OPTION);
-		result = JOptionPane.showConfirmDialog(frame,"Esportazione eseguita","Info", JOptionPane.CLOSED_OPTION);
+		if(i == 0){ 
+			
+			result = JOptionPane.showConfirmDialog(frame,"Importazione eseguita","Info", JOptionPane.CLOSED_OPTION);
+		} else {
+			
+			result = JOptionPane.showConfirmDialog(frame,"Esportazione eseguita","Info", JOptionPane.CLOSED_OPTION);
+		}
 		
 		if(result == JOptionPane.CLOSED_OPTION)	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	/* END - Visualizzazione finestra di operazione NON riuscita Importa | Esporta */
-	
-	
-	public static void main(String[] args) {
-		Splash.main(null);
-		ImpExp test = new ImpExp();
-		test.importa();
-	}
 }
