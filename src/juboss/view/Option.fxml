@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="211.0" prefWidth="478.0" stylesheets="@../res/style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="211.0" prefWidth="478.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="juboss.view.OptionController">
    <children>
       <Label layoutX="98.0" layoutY="102.0" text="Dettaglio">
          <font>
@@ -19,9 +18,19 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <TextField layoutX="257.0" layoutY="44.0" prefHeight="31.0" prefWidth="129.0" />
-      <TextField layoutX="257.0" layoutY="109.0" prefHeight="31.0" prefWidth="129.0" />
+      <TextField fx:id="fieldIngrosso" layoutX="257.0" layoutY="44.0" prefHeight="31.0" prefWidth="50.0" />
+      <TextField fx:id="fieldDettaglio" layoutX="257.0" layoutY="109.0" prefHeight="31.0" prefWidth="50.0" />
       <Button layoutX="314.0" layoutY="166.0" mnemonicParsing="false" prefWidth="90.0" text="Salva" />
       <Button layoutX="210.0" layoutY="166.0" mnemonicParsing="false" prefWidth="90.0" text="Annulla" />
+      <Label layoutX="314.0" layoutY="45.0" text="\%">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="314.0" layoutY="110.0" text="\%">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

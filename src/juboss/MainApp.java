@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 
     public static Stage primaryStage;
+    public static Stage stageAddEdit;
+    public static Stage stageOption;
     public static Stage stageList;
     public static Stage stageImport;
     public static Stage stageExport;

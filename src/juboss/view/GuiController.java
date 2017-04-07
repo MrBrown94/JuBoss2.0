@@ -82,12 +82,11 @@ public class GuiController {
     
     @FXML
     void launchAddEdit() {
-    	
-    		Stage stage = new Stage();
-    		    	
+    	    		    	
     	//we should run ListView from here
     	try {
            
+    		MainApp.stageAddEdit = new Stage();
     		// Load gui.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/AddEdit.fxml"));
@@ -95,15 +94,15 @@ public class GuiController {
            
             //build scene
             Scene scene = new Scene(listView);
-            stage.setScene(scene);
-            stage.centerOnScreen();
-            stage.setResizable(false);
+            MainApp.stageAddEdit.setScene(scene);
+            MainApp.stageAddEdit.centerOnScreen();
+            MainApp.stageAddEdit.setResizable(false);
             
             //blocks user input on Gui until child stage is closed
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(MainApp.getPrimaryStage());
+            MainApp.stageAddEdit.initModality(Modality.WINDOW_MODAL);
+            MainApp.stageAddEdit.initOwner(MainApp.getPrimaryStage());
             
-            stage.show();
+            MainApp.stageAddEdit.show();
             
         } catch (IOException e) {
             e.printStackTrace();
@@ -152,6 +151,38 @@ public class GuiController {
 		}
 	}
     
+	/****************** METODI OPZIONI ******************/
+	
+	@FXML
+	void option(){
+		
+		//we should run ListView from here
+    	try {
+           
+    		MainApp.stageOption = new Stage();
+    		// Load gui.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/Option.fxml"));
+            AnchorPane listView = (AnchorPane) loader.load();
+           
+            //build scene
+            Scene scene = new Scene(listView);
+            MainApp.stageOption.setScene(scene);
+            MainApp.stageOption.centerOnScreen();
+            MainApp.stageOption.setResizable(false);
+            
+            //blocks user input on Gui until child stage is closed
+            MainApp.stageOption.initModality(Modality.WINDOW_MODAL);
+            MainApp.stageOption.initOwner(MainApp.getPrimaryStage());
+            
+            MainApp.stageOption.show();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		
+		
+	}
 	
 	
 	/****************** METODI ESPORTA ******************/

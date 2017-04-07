@@ -14,7 +14,7 @@
             <items>
                   <MenuItem mnemonicParsing="false" onAction="#importDb" text="Importa" />
                   <MenuItem mnemonicParsing="false" onAction="#exportDb" text="Esporta" />
-                  <MenuItem mnemonicParsing="false" text="Opzioni" />
+                  <MenuItem mnemonicParsing="false" onAction="#option" text="Opzioni" />
               <MenuItem mnemonicParsing="false" text="Chiudi" />
             </items>
           </Menu>
