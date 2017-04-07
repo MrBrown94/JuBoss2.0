@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#manualMode" prefHeight="587.0" prefWidth="839.0" stylesheets="@../../../res/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="juboss.view.AddEditController">
+<AnchorPane fx:id="root" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#grabFocus" prefHeight="587.0" prefWidth="839.0" stylesheets="@../../../res/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="juboss.view.AddEditController">
    <children>
-      <GridPane id="bg" focusTraversable="true" layoutX="-14.0" onMouseClicked="#manualMode" prefHeight="556.0" prefWidth="801.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <GridPane id="bg" focusTraversable="true" layoutX="-14.0" onMouseClicked="#grabFocus" prefHeight="556.0" prefWidth="801.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="62.0" minWidth="10.0" prefWidth="62.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="272.0" minWidth="10.0" prefWidth="185.0" />
@@ -52,7 +52,7 @@
             <TextField fx:id="fieldProduttore" prefHeight="32.0" prefWidth="350.0" promptText="Produttore" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP" />
             <TextField fx:id="fieldTipoVino" prefHeight="32.0" prefWidth="250.0" promptText="Tipo Vino" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.valignment="TOP" />
             <TextField fx:id="fieldCapacità" prefHeight="32.0" prefWidth="88.0" promptText="Capacità" GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.valignment="TOP" />
-            <Pane focusTraversable="true" prefHeight="91.0" prefWidth="319.0" stylesheets="@../../../res/style.css" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
+            <Pane focusTraversable="true" onMouseClicked="#grabFocus" prefHeight="91.0" prefWidth="319.0" stylesheets="@../../../res/style.css" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
                <children>
                   <ComboBox fx:id="comboPaese" layoutX="91.0" layoutY="19.0" prefWidth="150.0" />
                   <ComboBox fx:id="comboRegione" layoutX="408.0" layoutY="18.0" prefWidth="150.0" />
@@ -68,7 +68,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane focusTraversable="true" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="6">
+            <Pane focusTraversable="true" onMouseClicked="#grabFocus" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="6">
                <children>
                   <Label alignment="TOP_LEFT" layoutX="-1.0" prefHeight="20.0" text="Note" GridPane.columnIndex="1" GridPane.rowIndex="6" GridPane.valignment="TOP">
                      <font>
@@ -78,7 +78,7 @@
                   <TextArea fx:id="textAreaNote" layoutX="89.0" prefHeight="65.0" prefWidth="532.0" promptText="Note" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="6" />
                </children>
             </Pane>
-            <Pane focusTraversable="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
+            <Pane focusTraversable="true" onMouseClicked="#grabFocus" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
                <children>
                   <TextField fx:id="fieldPrezzo" layoutX="155.0" layoutY="33.0" prefHeight="32.0" prefWidth="150.0" promptText="Prezzo" />
                   <Label alignment="TOP_LEFT" layoutX="51.0" layoutY="32.0" prefHeight="20.0" text="Prezzo">
@@ -105,7 +105,7 @@
                   </CheckBox>
                </children>
             </Pane>
-            <Pane prefHeight="41.0" prefWidth="283.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+            <Pane onMouseClicked="#grabFocus" prefHeight="41.0" prefWidth="283.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
                <children>
                   <Button id="glass-grey" layoutX="56.0" layoutY="16.0" mnemonicParsing="false" prefWidth="80.0" text="Modifica" />
                   <Button id="glass-grey" layoutX="157.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#checkAndInsert" prefHeight="25.0" prefWidth="80.0" text="Salva" />
