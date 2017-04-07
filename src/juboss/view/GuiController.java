@@ -106,17 +106,18 @@ public class GuiController {
     	
     	FileChooser fileChooser = new FileChooser();
     	fileChooser.setTitle("Open Resource File");
-    	fileChooser.showOpenDialog(MainApp.stageImport);
+    	fileChooser.showOpenDialog(MainApp.primaryStage); 	
+    	    	
     }
     
-    //import db method
+    //export db method
     
     @FXML
     void exportDb(){
     	
     	FileChooser fileChooser = new FileChooser();
     	fileChooser.setTitle("Open Resource File");
-    	fileChooser.showOpenDialog(MainApp.stageImport);
+    	fileChooser.showOpenDialog(MainApp.primaryStage);
     	
     }
   
