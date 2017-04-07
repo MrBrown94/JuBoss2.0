@@ -21,13 +21,13 @@ public class ImpExp {
 	private JFrame frame;
 	
 	
-	/* START - Costruttore XML BackUp */
+	/* START - Costruttore ImpExp */
 	public ImpExp() {
 		
 		filepath = Paths.get(juboss.Splash.db.getPath()+"\\db\\db.accdb");
 		file = new File(filepath.toString());
 	}
-	/* END - Costruttore XML BackUp */
+	/* END - Costruttore ImpExp */
 	
 	
 	/* START - Metodo importa con chiusura e riapertura DB */
