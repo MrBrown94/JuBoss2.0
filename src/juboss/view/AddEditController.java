@@ -1,12 +1,10 @@
 package juboss.view;
 
-import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -15,7 +13,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import juboss.model.Wine;
 
 public class AddEditController {
 
@@ -204,6 +201,16 @@ public class AddEditController {
 	void grabFocus(){
 		
 		root.requestFocus();
+		
+		fieldDettaglio.setText(fieldDettaglio.getText().replaceAll(",", "."));
+        
+        
+        if(!fieldDettaglio.getText().contains(".") && !fieldDettaglio.getText().equals("") )
+            	fieldDettaglio.setText(fieldDettaglio.getText().concat(".00"));
+        
+        if(!fieldIngrosso.getText().contains(".") && !fieldIngrosso.getText().equals("") )
+        	fieldIngrosso.setText(fieldIngrosso.getText().concat(".00"));
+    
 	}
     
 	//fill dettaglio and ingrosso with values calculated by options
