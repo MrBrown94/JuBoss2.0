@@ -9,10 +9,10 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import juboss.ImpExp;
 import juboss.MainApp;
 
 public class GuiController {
@@ -104,20 +104,19 @@ public class GuiController {
     @FXML
     void importDb(){
     	
-    	ImpExp importDb = new ImpExp();
-    	importDb.importa();
-    	System.out.println("import");
-    	
+    	FileChooser fileChooser = new FileChooser();
+    	fileChooser.setTitle("Open Resource File");
+    	fileChooser.showOpenDialog(MainApp.stageImport);
     }
     
- //import db method
+    //import db method
     
     @FXML
     void exportDb(){
     	
-    	ImpExp importDb = new ImpExp();
-    	importDb.esporta();
-    	System.out.println("export");
+    	FileChooser fileChooser = new FileChooser();
+    	fileChooser.setTitle("Open Resource File");
+    	fileChooser.showOpenDialog(MainApp.stageImport);
     	
     }
   
