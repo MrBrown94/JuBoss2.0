@@ -107,6 +107,15 @@
 
 
 
+/******************** ListView *******************/
+
+/* START - Center Column text ListView */
+#tbList .table-column {
+  -fx-alignment: CENTER-RIGHT;
+}
+/* END - Center Column text ListView */
+
+
 
 
 /******************** TEST DI SIMONE DI MERDA  *******************/

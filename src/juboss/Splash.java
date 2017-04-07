@@ -36,7 +36,6 @@ public class Splash extends JWindow {
 		int y = (screen.height-648)/2;
 		setBounds(x,y,500,648);
 
-  
 	    //Apertura GIF
 		ImageIcon bg = new ImageIcon(Splash.class.getResource("/splashsmall.gif"));
 		JLabel label = new JLabel(bg);

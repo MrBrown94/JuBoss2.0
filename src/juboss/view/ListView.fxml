@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="802.0" prefWidth="1170.0" stylesheets="@../../../res/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="juboss.view.ListViewController">
    <children>
-      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <GridPane id="bg" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="89.0" minWidth="0.0" prefWidth="13.0" />
           <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="569.0" />
@@ -32,7 +32,7 @@
                            </columnResizePolicy>
       					    <columns>
       					        <TableColumn fx:id="columnDenominazione1" prefWidth="489.0" text="Denominazione" />
-      					        <TableColumn fx:id="columnDettaglio" maxWidth="350.0" minWidth="76.0" prefWidth="76.0" text="Dettaglio" />
+      					        <TableColumn id="tbList" fx:id="columnDettaglio" maxWidth="350.0" minWidth="76.0" prefWidth="76.0" text="Dettaglio" />
       					    </columns>
       					     </TableView>
                      </content>
@@ -59,9 +59,9 @@
                <right>
                   <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <ToggleButton focusTraversable="false" layoutX="21.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#setFullScreen" prefHeight="28.0" prefWidth="151.0" text="Schermo Intero">
+                        <ToggleButton id="glass-grey" focusTraversable="false" layoutX="21.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#setFullScreen" prefHeight="28.0" prefWidth="151.0" text="Schermo Intero">
                            <font>
-                              <Font name="Bauhaus 93" size="15.0" />
+                              <Font name="Ebrima" size="15.0" />
                            </font>
                         </ToggleButton>
                      </children>
