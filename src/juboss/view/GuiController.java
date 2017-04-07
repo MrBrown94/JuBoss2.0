@@ -211,5 +211,4 @@ public class GuiController {
 		Alert alert = new Alert(AlertType.ERROR, "Operazione NON eseguita!\n" + e, ButtonType.OK);
 		alert.showAndWait();
 	}
-  
 }
