@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -12,6 +14,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 public class AddEditController {
@@ -116,6 +120,21 @@ public class AddEditController {
 		});
      }
     
+    @FXML
+	public void checkNumberPrezzo(KeyEvent event){
+    	
+    	if(event.getText().matches("[A-Za-z]")) event.consume();
+	}
+    
+    @FXML
+	public void checkNumberIngrosso(KeyEvent event){
+
+	}
+    
+    @FXML
+	public void checkNumberDettaglio(KeyEvent event){
+
+	}
     
     //check denominazione and insert
     @FXML
@@ -233,19 +252,16 @@ public class AddEditController {
 	@FXML
     void manualMode(){
     	
-    	if(checkManuale.isSelected())
-	    	{
+    	if(checkManuale.isSelected()) {
 	    	fieldDettaglio.setDisable(false);
 	    	fieldIngrosso.setDisable(false);
 	    	fieldDettaglio.clear();
 	    	fieldIngrosso.clear();
-	    	}
-    			else
-    			{
-    				fieldDettaglio.setDisable(true);
-    				fieldIngrosso.setDisable(true);
-    				percentCalc();
-    			}
+	    } else {
+			fieldDettaglio.setDisable(true);
+			fieldIngrosso.setDisable(true);
+			percentCalc();
+    	}
     	
     }
     

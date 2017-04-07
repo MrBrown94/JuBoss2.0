@@ -80,7 +80,7 @@
             </Pane>
             <Pane focusTraversable="true" onMouseClicked="#grabFocus" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
                <children>
-                  <TextField fx:id="fieldPrezzo" layoutX="155.0" layoutY="33.0" prefHeight="32.0" prefWidth="150.0" promptText="Prezzo" />
+                  <TextField fx:id="fieldPrezzo" layoutX="155.0" layoutY="33.0" onKeyPressed="#checkNumberPrezzo" prefHeight="32.0" prefWidth="150.0" promptText="Prezzo" />
                   <Label alignment="TOP_LEFT" layoutX="51.0" layoutY="32.0" prefHeight="20.0" text="Prezzo">
                      <font>
                         <Font name="System Bold" size="23.0" />
@@ -91,8 +91,8 @@
                         <Font name="System Bold" size="23.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="fieldIngrosso" disable="true" layoutX="518.0" layoutY="33.0" prefHeight="32.0" prefWidth="150.0" promptText="Ingrosso" />
-                  <TextField fx:id="fieldDettaglio" disable="true" layoutX="518.0" layoutY="88.0" prefHeight="32.0" prefWidth="150.0" promptText="Dettaglio" />
+                  <TextField fx:id="fieldIngrosso" disable="true" layoutX="518.0" layoutY="33.0" onKeyPressed="#checkNumberIngrosso" prefHeight="32.0" prefWidth="150.0" promptText="Ingrosso" />
+                  <TextField fx:id="fieldDettaglio" disable="true" layoutX="518.0" layoutY="88.0" onKeyPressed="#checkNumberDettaglio" prefHeight="32.0" prefWidth="150.0" promptText="Dettaglio" />
                   <Label alignment="TOP_LEFT" layoutX="407.0" layoutY="87.0" prefHeight="20.0" text="Dettaglio">
                      <font>
                         <Font name="System Bold" size="23.0" />
