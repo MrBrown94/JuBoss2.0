@@ -1,5 +1,6 @@
 package juboss.view;
 
+import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -61,6 +62,7 @@ public class AddEditController {
     private TextField fieldDettaglio;
     
     int[] settings;
+    boolean comma;
 
     @FXML
     void initialize() {
@@ -106,7 +108,8 @@ public class AddEditController {
 		    public void changed(ObservableValue<? extends String> observable,
 		            String oldValue, String newValue) {
 		    	
-		   	fieldPrezzo.setText(fieldPrezzo.getText().replaceAll(",", "."));
+		    //remove letters	
+		    	//if (newValue.matches("[a-zA-Z]*"))	fieldPrezzo.setText(oldValue);
 		   
 		   	//don't calculate when manual mode is enabled	
 		    	if(!checkManuale.isSelected())
@@ -115,6 +118,7 @@ public class AddEditController {
 		    }
 		});
      }
+    
     
     //check denominazione and insert
     @FXML
