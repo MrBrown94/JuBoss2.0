@@ -13,6 +13,8 @@ public class MainApp extends Application {
 
     private static Stage primaryStage;
     public static Stage stageList;
+    public static Stage stageImport;
+    public static Stage stageExport;
     public static Stage stageInfoPop;
     private BorderPane rootLayout;
 
@@ -34,7 +36,17 @@ public class MainApp extends Application {
 		    MainApp.stageInfoPop.initModality(Modality.WINDOW_MODAL);
 		    MainApp.stageInfoPop.initOwner(stageList);
 		    MainApp.stageInfoPop.setAlwaysOnTop(true);
+		
+		stageImport = new Stage(); //importa
+        	//blocks user input on Gui until child stage is closed
+        	MainApp.stageImport.initModality(Modality.WINDOW_MODAL);
+        	MainApp.stageImport.initOwner(MainApp.getPrimaryStage());
         
+       	stageExport = new Stage(); //esporta
+        	//blocks user input on Gui until child stage is closed
+        	MainApp.stageExport.initModality(Modality.WINDOW_MODAL);
+        	MainApp.stageExport.initOwner(MainApp.getPrimaryStage());
+            
         initRootLayout();
 
         showGui();
