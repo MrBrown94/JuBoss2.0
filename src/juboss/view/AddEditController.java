@@ -106,7 +106,9 @@ public class AddEditController {
 		    public void changed(ObservableValue<? extends String> observable,
 		            String oldValue, String newValue) {
 		    	
-		    //don't calculate when manual mode is enabled	
+		   	fieldPrezzo.setText(fieldPrezzo.getText().replaceAll(",", "."));
+		   
+		   	//don't calculate when manual mode is enabled	
 		    	if(!checkManuale.isSelected())
 					percentCalc();
 
@@ -206,8 +208,8 @@ public class AddEditController {
 	
 		if(!fieldPrezzo.getText().equals(""))
 		{
-			fieldDettaglio.setText(Double.toString( Double.parseDouble(fieldPrezzo.getText()) + Double.parseDouble(fieldPrezzo.getText())/100*settings[0]) );
-			fieldIngrosso.setText(Double.toString( Double.parseDouble(fieldPrezzo.getText()) + Double.parseDouble(fieldPrezzo.getText())/100*settings[1]) );
+			fieldDettaglio.setText(Double.toString(Math.ceil(Double.parseDouble(fieldPrezzo.getText()) + Double.parseDouble(fieldPrezzo.getText())/100*settings[0])+1) );
+			fieldIngrosso.setText(Double.toString(Math.ceil(Double.parseDouble(fieldPrezzo.getText()) + Double.parseDouble(fieldPrezzo.getText())/100*settings[1])+1) );
 		}
 		else 
 		{
