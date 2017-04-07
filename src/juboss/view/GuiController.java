@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import juboss.ImpExp;
 import juboss.MainApp;
 
 public class GuiController {
@@ -96,6 +97,28 @@ public class GuiController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    //import db method
+    
+    @FXML
+    void importDb(){
+    	
+    	ImpExp importDb = new ImpExp();
+    	importDb.importa();
+    	System.out.println("import");
+    	
+    }
+    
+ //import db method
+    
+    @FXML
+    void exportDb(){
+    	
+    	ImpExp importDb = new ImpExp();
+    	importDb.esporta();
+    	System.out.println("export");
+    	
     }
   
 }

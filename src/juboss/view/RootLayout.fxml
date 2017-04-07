@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane id="bg" prefHeight="355.0" prefWidth="895.0" stylesheets="@../../../res/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="bg" prefHeight="355.0" prefWidth="895.0" stylesheets="@../../../res/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="juboss.view.GuiController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="JuBoss">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Importa" />
-                  <MenuItem mnemonicParsing="false" text="Esporta" />
+                  <MenuItem mnemonicParsing="false" onAction="#importDb" text="Importa" />
+                  <MenuItem mnemonicParsing="false" onAction="#exportDb" text="Esporta" />
                   <MenuItem mnemonicParsing="false" text="Opzioni" />
               <MenuItem mnemonicParsing="false" text="Chiudi" />
             </items>
