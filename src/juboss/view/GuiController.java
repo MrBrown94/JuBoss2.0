@@ -1,22 +1,33 @@
 package juboss.view;
 
+import static java.nio.file.StandardCopyOption.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import juboss.DbManager;
 import juboss.MainApp;
+import juboss.Splash;
 
 public class GuiController {
 	
+	private Path filepath = Paths.get(Splash.db.getPath()+"\\db\\db.accdb");
 	
     @FXML
     private ResourceBundle resources;
@@ -99,26 +110,106 @@ public class GuiController {
         }
     }
     
-    //import db method
+    /****************** METODI IMPORTA ******************/
     
     @FXML
     void importDb(){
     	
     	FileChooser fileChooser = new FileChooser();
     	fileChooser.setTitle("Open Resource File");
-    	fileChooser.showOpenDialog(MainApp.primaryStage); 	
-    	    	
+    	
+    	FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Database Access (*.accdb)", "*.accdb");
+    	fileChooser.getExtensionFilters().add(extFilter);
+    	
+    	File file = fileChooser.showOpenDialog(MainApp.primaryStage); 	
+    	
+    	if (file != null) {
+            importa(file.toPath());
+        }
     }
     
-    //export db method
     
+    //Metodo importa con chiusura e riapertura DB
+	private void importa(Path source) {
+		
+		juboss.Splash.db.closeDb();
+		
+		if(source != null) {
+			
+			try {
+				
+				Files.copy(source, filepath, REPLACE_EXISTING);
+				juboss.Splash.db = new DbManager();
+				
+				trueOperation();
+			} catch (IOException e) {
+				falseOperation(e.getMessage());
+			}
+		} else {
+			
+			juboss.Splash.db = new DbManager();
+			falseOperation("");
+		}
+	}
+    
+	
+	
+	/****************** METODI ESPORTA ******************/
+	
     @FXML
     void exportDb(){
     	
     	FileChooser fileChooser = new FileChooser();
     	fileChooser.setTitle("Open Resource File");
-    	fileChooser.showOpenDialog(MainApp.primaryStage);
     	
+    	FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Database Access (*.accdb)", "*.accdb");
+    	fileChooser.getExtensionFilters().add(extFilter);
+    	fileChooser.setInitialFileName("db");
+    	
+    	File file = fileChooser.showSaveDialog(MainApp.primaryStage);
+    	
+    	if (file != null) {
+    		esporta(file.toPath());
+        }
     }
+    
+    
+    //Metodo esporta
+    private void esporta(Path source) {
+		
+		if(source != null) {
+			
+			try {
+				
+				Files.copy(filepath, source, REPLACE_EXISTING);
+				
+				trueOperation();
+			} catch (IOException e) {
+				falseOperation(e.getMessage());
+			}
+		} else {
+			
+			falseOperation("");
+		}
+	}
+    
+    
+    
+    /****************** METODI VISUALIZZAZIONE ERRORE/RIUSCITA ******************/
+    
+    //Visualizzazione finestra di operazione riuscita Importa | Esporta
+	private void trueOperation() {
+		
+		Alert alert = new Alert(AlertType.INFORMATION, "Operazione eseguita!", ButtonType.OK);
+		alert.showAndWait();
+	}
+	
+	
+	//Visualizzazione finestra di operazione NON riuscita Importa | Esporta con errore
+	private void falseOperation(String e) {
+		
+		Alert alert = new Alert(AlertType.ERROR, "Operazione NON eseguita!\n" + e, ButtonType.OK);
+		alert.showAndWait();
+	}
   
 }
