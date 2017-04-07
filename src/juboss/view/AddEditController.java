@@ -73,17 +73,29 @@ public class AddEditController {
     	alert.setTitle("Errore");
     	alert.setHeaderText(null);
     	alert.setContentText("Il campo \"Denominazione\" deve essere riempito!");
-
+    	
+    	
+    	
     	if(fieldDenominazione.getText().equals(""))
     		alert.showAndWait();
 	    	
     		else{
-    				juboss.Splash.db.insertData(	fieldDenominazione.getText(), fieldProduttore.getText(), fieldTipoVino.getText(), 
-	    											comboPaese.getSelectionModel().getSelectedItem().toString(), comboRegione.getSelectionModel().getSelectedItem().toString(),
-	    											fieldCapacità.getText(), textAreaNote.getText(), Double.parseDouble(fieldPrezzo.getText()), Double.parseDouble(fieldIngrosso.getText()), 
-	    											Double.parseDouble(fieldDettaglio.getText()), checkManuale.isSelected()
+    				juboss.Splash.db.insertData(	fieldDenominazione.getText().toUpperCase(), 
+    												fieldProduttore.getText().toUpperCase(), 
+    												fieldTipoVino.getText().toUpperCase(), 
+	    											""+comboPaese.getSelectionModel().getSelectedIndex(), 
+	    											""+comboRegione.getSelectionModel().getSelectedIndex(),
+	    											fieldCapacità.getText().toUpperCase(), 
+	    											textAreaNote.getText().toUpperCase(), 
+	    											Double.parseDouble(fieldPrezzo.getText()), 
+	    											Double.parseDouble(fieldIngrosso.getText()), 
+	    											Double.parseDouble(fieldDettaglio.getText()),
+	    											checkManuale.isSelected()
 	    										);
-    			    			
+    				
+    			    //update lista dopo inserimento
+    				juboss.Splash.viniOb = juboss.Splash.db.getAllData();
+    				System.out.println("aggiunto");
     			};
     	
     }
