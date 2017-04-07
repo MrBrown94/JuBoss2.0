@@ -128,8 +128,8 @@ public class OldDb {
 
 				pst.setString(7, rs.getString(10)); //Capacità
 				pst.setString(8, rs.getString(12)); //Note
-				pst.setDouble(9, Double.parseDouble(rs.getString(15).replace(",", "."))); //Prezzo
-				pst.setDouble(10, 0); //Ingrosso
+				pst.setDouble(9, 0); //Prezzo
+				pst.setDouble(10, Double.parseDouble(rs.getString(15).replace(",", "."))); //Ingrosso
 				pst.setDouble(11, Double.parseDouble(rs.getString(14).replace(",", "."))); //Dettaglio
 				pst.setBoolean(12, true); //Manuale True/False
 				
