@@ -2,7 +2,9 @@ package juboss.view;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -10,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
@@ -259,12 +262,25 @@ public class AddEditDelController {
     	
     	alert.getDialogPane().setPrefSize(500, 150);
         	
-    	alert.showAndWait();
+    	Optional<ButtonType> result = alert.showAndWait();
     	
-    	MainApp.stageAddEditDel.close();
+    	if (result.get() == ButtonType.OK){
     	
-    	juboss.Splash.db.deleteData( Integer.parseInt(ListViewEditController.selected.getId()) );
-    
+    		System.out.println("premuto ok");
+    		
+    		
+    		juboss.Splash.db.deleteData( Integer.parseInt(ListViewEditController.selected.getId()) );
+        	
+        	juboss.Splash.viniOb = juboss.Splash.db.getAllData();
+        	
+           	MainApp.stageList.close();
+        	launchListEdit();
+    	    // ... user chose OK
+    	}
+    	
+    	else {
+    			alert.close();
+    		 }
     }
     
     //grab focus on click on the bg
@@ -350,6 +366,7 @@ public class AddEditDelController {
            
             //build scene
             Scene scene = new Scene(listView);
+            MainApp.stageList.setTitle("Elimina un elemento");
             MainApp.stageList.setScene(scene);
             MainApp.stageList.centerOnScreen();
             MainApp.stageList.setResizable(false);
