@@ -37,7 +37,7 @@ public class ListViewEditController {
 	  private TableColumn<Wine, String> columnIngrosso;
 
 	  @FXML
-	  private TableView<Wine> tableViewIngro;
+	  private  TableView<Wine> tableViewIngro;
 	  
 	  @FXML
 	  private TextField searchField;
@@ -159,8 +159,7 @@ public class ListViewEditController {
                      
             
         }
-    }
-    
+    }    
     @FXML
     public void clickItemIngro(MouseEvent event)
     {
