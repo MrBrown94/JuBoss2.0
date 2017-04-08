@@ -104,6 +104,11 @@
 /* END - Text Style AddEdit */
 
 
+/* START - TextField Disabled Style AddEdit  */
+.text-field:disabled, .text-field:disabled > * {
+  -fx-opacity: 1.0 ;
+}
+/* END - TextField Disabled Style AddEdit  */
 
 
 

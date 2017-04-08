@@ -135,8 +135,12 @@ public class AddEditController {
 			    	{
 			    		//check if manual mode isn't enabled
 			    		
-			    		if(!checkManuale.isSelected())
+			    		if(!checkManuale.isSelected()){
+			    			
+			    			/*fieldIngrosso.setStyle("-fx-opacity: 1.0;");
+			    			fieldDettaglio.setStyle("-fx-opacity: 1.0;");*/
 			    			percentCalc();
+			    		}
 			    	}
 			    	else
 		    			fieldPrezzo.setText(oldValue);
@@ -160,8 +164,6 @@ public class AddEditController {
     	aggiunto.setTitle("Aggiunto.");
     	aggiunto.setHeaderText(null);
     	aggiunto.setContentText("Elemento Aggiunto!");
-    	
-    	
     	
     	
     	if(fieldDenominazione.getText().equals(""))
