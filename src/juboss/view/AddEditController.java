@@ -89,11 +89,18 @@ public class AddEditController {
             {
                 if (!newPropertyValue)
                 
-                	//concat .00 if the input is integer
+                	//concat .00 if the input is integer or not complete
                 {      
 	                    if(!fieldPrezzo.getText().contains(".") && !fieldPrezzo.getText().equals("") )
 		                    	fieldPrezzo.setText(fieldPrezzo.getText().concat(".00"));
 	                    
+	                    if(!fieldPrezzo.getText().contains(".") && !fieldPrezzo.getText().contains(".00")) {
+	                    		fieldPrezzo.setText(fieldPrezzo.getText().concat(".00"));
+	                    }
+	                    if(fieldPrezzo.getText().lastIndexOf(".") == fieldPrezzo.getText().length()-1){
+                    	    	fieldPrezzo.setText(fieldPrezzo.getText().concat("00"));
+
+	                    }
                     
                 }
             }
@@ -112,18 +119,19 @@ public class AddEditController {
 		    public void changed(ObservableValue<? extends String> observable,
 		            String oldValue, String newValue) {
 
-		    	int in = newValue.length() - oldValue.length();
+		    	//int in = newValue.length() - oldValue.length();
 		    	
 		    //replaces AT RUNTIME each , with . 
 		    	
 		    	if(newValue.contains(",")) fieldPrezzo.setText(fieldPrezzo.getText().replaceAll(",", "."));
 		    	
 		    	
-		    	if(in>0)	
+		    	
+		    	if(newValue.length()>0)	
 		    		
 		    		//check if new inserted char is in the legal range
 		    		
-			    	if(legalRange.contains(""+newValue.charAt(in-1)))
+			    	if(legalRange.contains(""+newValue.charAt(newValue.length()-1)))
 			    	{
 			    		//check if manual mode isn't enabled
 			    		
