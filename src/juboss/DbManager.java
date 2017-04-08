@@ -111,7 +111,7 @@ public class DbManager {
 			
 			while (rs.next()) {
 
-	            data.add(new Wine(String.valueOf(rs.getInt(1)), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), String.valueOf(rs.getDouble(9)), String.valueOf(rs.getDouble(10)), String.valueOf(rs.getDouble(11))));
+	            data.add(new Wine(String.valueOf(rs.getInt(1)), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), String.valueOf(rs.getDouble(9)), String.valueOf(rs.getDouble(10)), String.valueOf(rs.getDouble(11)),false));
 			}
 			ObservableList<Wine> viniOb = FXCollections.observableList(data);
 			

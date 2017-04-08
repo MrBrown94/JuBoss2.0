@@ -15,10 +15,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import juboss.MainApp;
 import juboss.model.Wine;
 
-public class ListViewController {
+public class ListViewEditController {
 	
 	@FXML
 	  private TableColumn<Wine, String> columnDenominazione1;
@@ -124,6 +125,7 @@ public class ListViewController {
                 tableViewIngro.setItems(subentries);
             });
     }
+    
     @FXML
     public void clickItemDett(MouseEvent event)
     {
@@ -135,18 +137,18 @@ public class ListViewController {
                
        		// Load gui.
                FXMLLoader loader = new FXMLLoader();
-               loader.setLocation(MainApp.class.getResource("view/InfoPopup.fxml"));
+               loader.setLocation(MainApp.class.getResource("view/AddEditDel.fxml"));
                AnchorPane infoPopup = (AnchorPane) loader.load();
                
-               	           
-	           MainApp.stageInfoPop.centerOnScreen();
+               	          
+	           MainApp.stageAddEditDel = new Stage ();
                    
 	           //build scene
                Scene scene = new Scene(infoPopup);
-               MainApp.stageInfoPop.setScene(scene);
-               MainApp.stageInfoPop.setResizable(false);
+               MainApp.stageAddEditDel.setScene(scene);
+               MainApp.stageAddEditDel.setResizable(false);
                
-               MainApp.stageInfoPop.show();
+               MainApp.stageAddEditDel.show();
                
                
                
@@ -170,18 +172,18 @@ public class ListViewController {
                
        		// Load gui.
                FXMLLoader loader = new FXMLLoader();
-               loader.setLocation(MainApp.class.getResource("view/InfoPopup.fxml"));
+               loader.setLocation(MainApp.class.getResource("view/AddEditDel.fxml"));
                AnchorPane infoPopup = (AnchorPane) loader.load();
                
-               	           
-	           MainApp.stageInfoPop.centerOnScreen();
-                   
+              
+               MainApp.stageAddEditDel = new Stage ();
+               
 	           //build scene
                Scene scene = new Scene(infoPopup);
-               MainApp.stageInfoPop.setScene(scene);
-               MainApp.stageInfoPop.setResizable(false);
+               MainApp.stageAddEditDel.setScene(scene);
+               MainApp.stageAddEditDel.setResizable(false);
                
-               MainApp.stageInfoPop.show();
+               MainApp.stageAddEditDel.show();
                
                
                
