@@ -1,5 +1,6 @@
 package juboss.model;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Wine {
@@ -18,9 +19,10 @@ public class Wine {
 	private SimpleStringProperty ingrossoEur;
 	private SimpleStringProperty dettaglio;
 	private SimpleStringProperty dettaglioEur;
+	private SimpleBooleanProperty manuale;
 	
 	
-	public Wine(String id, String denominazione, String produttore, String tipoVino, String paese, String regione, String capacità, String note, String prezzo, String ingrosso, String dettaglio){
+	public Wine(String id, String denominazione, String produttore, String tipoVino, String paese, String regione, String capacità, String note, String prezzo, String ingrosso, String dettaglio,Boolean manuale){
 		
 		this.id = new SimpleStringProperty(id);
 		this.denominazione = new SimpleStringProperty(denominazione);
@@ -36,6 +38,7 @@ public class Wine {
 		this.ingrossoEur = new SimpleStringProperty(ingrosso+" €");
 		this.dettaglio = new SimpleStringProperty(dettaglio);
 		this.dettaglioEur = new SimpleStringProperty(dettaglio+" €");
+		this.manuale = new SimpleBooleanProperty(manuale);
 	}
 	
 	
@@ -66,6 +69,8 @@ public class Wine {
 	public String getDettaglio(){return dettaglio.get();}
 	
 	public String getDettaglioEur(){return dettaglioEur.get();}
+	
+	public boolean getManuale(){return manuale.get();}
 }
 
 

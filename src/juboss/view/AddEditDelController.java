@@ -19,7 +19,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import juboss.MainApp;
 
-public class AddEditController {
+public class AddEditDelController {
 
     @FXML
     private ResourceBundle resources;
@@ -141,18 +141,28 @@ public class AddEditController {
 			    	{
 			    		//check if manual mode isn't enabled
 			    		
-			    		if(!checkManuale.isSelected()){
-			    			
-			    			/*fieldIngrosso.setStyle("-fx-opacity: 1.0;");
-			    			fieldDettaglio.setStyle("-fx-opacity: 1.0;");*/
+			    		if(!checkManuale.isSelected())
 			    			percentCalc();
-			    		}
 			    	}
 			    	else
 		    			fieldPrezzo.setText(oldValue);
 		    }
 		});
 		
+        
+        //fill fields with information of item picked in list
+        
+        fieldDenominazione.setText(ListViewEditController.selected.getDenominazione());
+		fieldProduttore.setText(ListViewEditController.selected.getProduttore());
+		fieldTipoVino.setText(ListViewEditController.selected.getTipoVino());
+		comboPaese.getSelectionModel().select(null); 
+		comboRegione.getSelectionModel().select(null);
+		fieldCapacità.setText(ListViewEditController.selected.getCapacità());
+		textAreaNote.setText(ListViewEditController.selected.getNote());
+		fieldPrezzo.setText(ListViewEditController.selected.getPrezzo());
+		fieldIngrosso.setText(ListViewEditController.selected.getIngrosso());
+		fieldDettaglio.setText(ListViewEditController.selected.getDettaglio());
+		checkManuale.setSelected(ListViewEditController.selected.getManuale());
 		
      }
     
@@ -170,6 +180,8 @@ public class AddEditController {
     	aggiunto.setTitle("Aggiunto.");
     	aggiunto.setHeaderText(null);
     	aggiunto.setContentText("Elemento Aggiunto!");
+    	
+    	
     	
     	
     	if(fieldDenominazione.getText().equals(""))
@@ -232,6 +244,27 @@ public class AddEditController {
     				
     			};
     			
+    }
+    
+    
+    @FXML
+    void deleteItem(){
+    	
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+    	alert.setTitle("Elimina Elemento?");
+    	alert.setHeaderText(null);
+    	alert.setContentText("Vuoi davvero Eliminare\n \""+ ListViewEditController.selected.getDenominazione() + "\" ?" );
+        	
+    	alert.setResizable(true);
+    	
+    	alert.getDialogPane().setPrefSize(500, 150);
+        	
+    	alert.showAndWait();
+    	
+    	MainApp.stageAddEditDel.close();
+    	
+    	juboss.Splash.db.deleteData( Integer.parseInt(ListViewEditController.selected.getId()) );
+    
     }
     
     //grab focus on click on the bg
@@ -326,7 +359,6 @@ public class AddEditController {
             MainApp.stageList.initOwner(MainApp.getPrimaryStage());
             
             MainApp.stageList.show();
-            
             
         } catch (IOException e) {
             e.printStackTrace();

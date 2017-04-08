@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="root" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#grabFocus" prefHeight="587.0" prefWidth="839.0" stylesheets="@../../../res/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="juboss.view.AddEditController">
+<AnchorPane fx:id="root" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#grabFocus" prefHeight="587.0" prefWidth="839.0" stylesheets="@../../../res/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="juboss.view.AddEditDelController">
    <children>
       <GridPane id="bg" focusTraversable="true" layoutX="-14.0" onMouseClicked="#grabFocus" prefHeight="556.0" prefWidth="801.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -107,7 +107,7 @@
             </Pane>
             <Pane onMouseClicked="#grabFocus" prefHeight="41.0" prefWidth="283.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
                <children>
-                  <Button id="glass-grey" layoutX="56.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#launchListEdit" prefWidth="80.0" text="Modifica" />
+                  <Button id="glass-grey" layoutX="56.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#deleteItem" prefWidth="80.0" text="Elimina" />
                   <Button id="glass-grey" layoutX="157.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#checkAndInsert" prefHeight="25.0" prefWidth="80.0" text="Salva" />
                </children>
             </Pane>

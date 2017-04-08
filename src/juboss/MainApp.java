@@ -18,6 +18,8 @@ public class MainApp extends Application {
     public static Stage stageImport;
     public static Stage stageExport;
     public static Stage stageInfoPop;
+    public static Stage stageAddEditDel;
+    
     private BorderPane rootLayout;
 
     @Override
@@ -38,6 +40,11 @@ public class MainApp extends Application {
 		    MainApp.stageInfoPop.initModality(Modality.WINDOW_MODAL);
 		    MainApp.stageInfoPop.initOwner(stageList);
 		    MainApp.stageInfoPop.setAlwaysOnTop(true);
+		    
+		stageAddEditDel = new Stage(); //listView
+        	//blocks user input on Gui until child stage is closed
+        	MainApp.stageAddEditDel.initModality(Modality.WINDOW_MODAL);
+        	MainApp.stageAddEditDel.initOwner(MainApp.getPrimaryStage());
 		
 		           
         initRootLayout();
