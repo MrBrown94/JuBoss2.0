@@ -172,7 +172,7 @@ public class AddEditDelController {
     
     //check denominazione and insert
     @FXML
-    public void checkAndInsert(){
+    public void checkAndEdit(){
     	
     	Alert alert = new Alert(AlertType.INFORMATION);
     	alert.setTitle("Errore");
@@ -196,17 +196,19 @@ public class AddEditDelController {
     		
     		if(fieldPrezzo.getText().equals("")||fieldIngrosso.getText().equals("")||fieldDettaglio.getText().equals(""))
 	    		{
-	    			juboss.Splash.db.insertData(	fieldDenominazione.getText().toUpperCase(), 
-							fieldProduttore.getText().toUpperCase(), 
-							fieldTipoVino.getText().toUpperCase(), 
-							""+comboPaese.getSelectionModel().getSelectedIndex(), 
-							""+comboRegione.getSelectionModel().getSelectedIndex(),
-							fieldCapacità.getText().toUpperCase(), 
-							textAreaNote.getText().toUpperCase(), 
-							Double.parseDouble("0"), 
-							Double.parseDouble("0"), 
-							Double.parseDouble("0"),
-							checkManuale.isSelected()
+	    			juboss.Splash.db.editData(	
+	    											Integer.parseInt(ListViewEditController.selected.getId()),
+							    					fieldDenominazione.getText().toUpperCase(), 
+													fieldProduttore.getText().toUpperCase(), 
+													fieldTipoVino.getText().toUpperCase(), 
+													""+comboPaese.getSelectionModel().getSelectedIndex(), 
+													""+comboRegione.getSelectionModel().getSelectedIndex(),
+													fieldCapacità.getText().toUpperCase(), 
+													textAreaNote.getText().toUpperCase(), 
+													Double.parseDouble("0"), 
+													Double.parseDouble("0"), 
+													Double.parseDouble("0"),
+													checkManuale.isSelected()
 						);
 	    			
 	    			//update lista dopo inserimento
@@ -223,7 +225,9 @@ public class AddEditDelController {
     		//if prezzo dettaglio or ingrosso are NOT empty , puts content on db
 
 	    		else{
-	    				juboss.Splash.db.insertData(	fieldDenominazione.getText().toUpperCase(), 
+	    				juboss.Splash.db.editData(	
+	    												Integer.parseInt(ListViewEditController.selected.getId()),
+	    												fieldDenominazione.getText().toUpperCase(), 
 	    												fieldProduttore.getText().toUpperCase(), 
 	    												fieldTipoVino.getText().toUpperCase(), 
 		    											""+comboPaese.getSelectionModel().getSelectedIndex(), 
@@ -248,7 +252,6 @@ public class AddEditDelController {
     			};
     			
     }
-    
     
     @FXML
     void deleteItem(){
