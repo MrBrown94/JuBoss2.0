@@ -2,11 +2,8 @@ package juboss.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -14,8 +11,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 public class AddEditController {
@@ -62,8 +57,11 @@ public class AddEditController {
     @FXML
     private TextField fieldDettaglio;
     
-    int[] settings;
-    boolean comma;
+    //array settings
+    int[] settings;   
+        
+    //this string contains the legal char input
+    String legalRange = "1234567890,.";
 
     @FXML
     void initialize() {
@@ -83,58 +81,63 @@ public class AddEditController {
         
         settings = juboss.Splash.db.getSettings();
         
-        //check on fieldPrezzo content
-        
+     
         fieldPrezzo.focusedProperty().addListener(new ChangeListener<Boolean>()
         {
             @Override
             public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
             {
                 if (!newPropertyValue)
-                   
-                {
-                    fieldPrezzo.setText(fieldPrezzo.getText().replaceAll(",", "."));
-                    
-	                
+                
+                	//concat .00 if the input is integer
+                {      
 	                    if(!fieldPrezzo.getText().contains(".") && !fieldPrezzo.getText().equals("") )
 		                    	fieldPrezzo.setText(fieldPrezzo.getText().concat(".00"));
+	                    
                     
                 }
             }
         });
         
+            
         
-		fieldPrezzo.textProperty().addListener(new ChangeListener<String>() {
+		//listener on fieldPrezzo 
+        	//replaces , with .
+        	//check the inserted char if it's contained in legalRange
+        	//if checks fail replace the previous content (oldValue)
+        
+        fieldPrezzo.textProperty().addListener(new ChangeListener<String>() {
+		 
 		    @Override
 		    public void changed(ObservableValue<? extends String> observable,
 		            String oldValue, String newValue) {
-		    	
-		    //remove letters	
-		    	//if (newValue.matches("[a-zA-Z]*"))	fieldPrezzo.setText(oldValue);
-		   
-		   	//don't calculate when manual mode is enabled	
-		    	if(!checkManuale.isSelected())
-					percentCalc();
 
+		    	int in = newValue.length() - oldValue.length();
+		    	
+		    //replaces AT RUNTIME each , with . 
+		    	
+		    	if(newValue.contains(",")) fieldPrezzo.setText(fieldPrezzo.getText().replaceAll(",", "."));
+		    	
+		    	
+		    	if(in>0)	
+		    		
+		    		//check if new inserted char is in the legal range
+		    		
+			    	if(legalRange.contains(""+newValue.charAt(in-1)))
+			    	{
+			    		//check if manual mode isn't enabled
+			    		
+			    		if(!checkManuale.isSelected())
+			    			percentCalc();
+			    	}
+			    	else
+		    			fieldPrezzo.setText(oldValue);
 		    }
 		});
+		
+		
      }
     
-    @FXML
-	public void checkNumberPrezzo(KeyEvent event){
-    	
-    	if(event.getText().matches("[A-Za-z]")) event.consume();
-	}
-    
-    @FXML
-	public void checkNumberIngrosso(KeyEvent event){
-
-	}
-    
-    @FXML
-	public void checkNumberDettaglio(KeyEvent event){
-
-	}
     
     //check denominazione and insert
     @FXML
@@ -252,16 +255,19 @@ public class AddEditController {
 	@FXML
     void manualMode(){
     	
-    	if(checkManuale.isSelected()) {
+    	if(checkManuale.isSelected())
+	    	{
 	    	fieldDettaglio.setDisable(false);
 	    	fieldIngrosso.setDisable(false);
 	    	fieldDettaglio.clear();
 	    	fieldIngrosso.clear();
-	    } else {
-			fieldDettaglio.setDisable(true);
-			fieldIngrosso.setDisable(true);
-			percentCalc();
-    	}
+	    	}
+    			else
+    			{
+    				fieldDettaglio.setDisable(true);
+    				fieldIngrosso.setDisable(true);
+    				percentCalc();
+    			}
     	
     }
     
