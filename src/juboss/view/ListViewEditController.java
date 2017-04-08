@@ -21,7 +21,7 @@ import juboss.model.Wine;
 
 public class ListViewEditController {
 	
-	@FXML
+	  @FXML
 	  private TableColumn<Wine, String> columnDenominazione1;
 
 	  @FXML
@@ -37,7 +37,7 @@ public class ListViewEditController {
 	  private TableColumn<Wine, String> columnIngrosso;
 
 	  @FXML
-	  private  TableView<Wine> tableViewIngro;
+	  private TableView<Wine> tableViewIngro;
 	  
 	  @FXML
 	  private TextField searchField;
@@ -183,15 +183,10 @@ public class ListViewEditController {
                MainApp.stageAddEditDel.setResizable(false);
                
                MainApp.stageAddEditDel.show();
-               
-               
-               
+    
            } catch (IOException e) {
                e.printStackTrace();
-           }
-           
-                     
-            
+           }  
         }
     }
     
@@ -209,4 +204,11 @@ public class ListViewEditController {
         		else MainApp.stageList.setFullScreen(true); 
     }
     
+    
+    //Reflash list table
+    public void refresh() {
+    	
+    	tableViewDett.refresh();
+    	tableViewIngro.refresh();
+    }
   }

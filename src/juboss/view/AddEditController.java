@@ -143,8 +143,6 @@ public class AddEditController {
 			    		
 			    		if(!checkManuale.isSelected()){
 			    			
-			    			/*fieldIngrosso.setStyle("-fx-opacity: 1.0;");
-			    			fieldDettaglio.setStyle("-fx-opacity: 1.0;");*/
 			    			percentCalc();
 			    		}
 			    	}
@@ -299,7 +297,7 @@ public class AddEditController {
 		textAreaNote.clear(); 
 		fieldPrezzo.clear(); 
 		fieldIngrosso.clear(); 
-		fieldDettaglio.getText();
+		fieldDettaglio.clear();
 		checkManuale.setSelected(false);
     }
     
@@ -309,23 +307,23 @@ public class AddEditController {
     	//we should run ListView from here
     	try {
            
-    		MainApp.stageList = new Stage();
-    		// Load gui.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/ListViewEdit.fxml"));
-            AnchorPane listView = (AnchorPane) loader.load();
-           
-            //build scene
-            Scene scene = new Scene(listView);
-            MainApp.stageList.setScene(scene);
-            MainApp.stageList.centerOnScreen();
-            MainApp.stageList.setResizable(false);
-            
-            //blocks user input on Gui until child stage is closed
-            MainApp.stageList.initModality(Modality.WINDOW_MODAL);
-            MainApp.stageList.initOwner(MainApp.getPrimaryStage());
-            
-            MainApp.stageList.show();
+			MainApp.stageList = new Stage();
+			// Load gui.
+		    FXMLLoader loader = new FXMLLoader();
+		    loader.setLocation(MainApp.class.getResource("view/ListViewEdit.fxml"));
+		    AnchorPane listView = (AnchorPane) loader.load();
+		   
+		    //build scene
+		    Scene scene = new Scene(listView);
+		    MainApp.stageList.setScene(scene);
+		    MainApp.stageList.centerOnScreen();
+		    MainApp.stageList.setResizable(false);
+		    
+		    //blocks user input on Gui until child stage is closed
+		    MainApp.stageList.initModality(Modality.WINDOW_MODAL);
+		    MainApp.stageList.initOwner(MainApp.getPrimaryStage());
+		    
+		    MainApp.stageList.show();
             
             
         } catch (IOException e) {

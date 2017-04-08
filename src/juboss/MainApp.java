@@ -19,7 +19,6 @@ public class MainApp extends Application {
     public static Stage stageExport;
     public static Stage stageInfoPop;
     public static Stage stageAddEditDel;
-    
     private BorderPane rootLayout;
 
     @Override
@@ -48,10 +47,9 @@ public class MainApp extends Application {
 		
 		           
         initRootLayout();
-
         showGui();
     }
-
+    
     /**
      * Initializes the root layout.
      */

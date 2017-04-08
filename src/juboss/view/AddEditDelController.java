@@ -250,7 +250,6 @@ public class AddEditDelController {
     				cleanForm();
     				
     			};
-    			
     }
     
     @FXML
@@ -268,16 +267,14 @@ public class AddEditDelController {
     	Optional<ButtonType> result = alert.showAndWait();
     	
     	if (result.get() == ButtonType.OK){
-    	
-    		System.out.println("premuto ok");
     		
-    		
-    		juboss.Splash.db.deleteData( Integer.parseInt(ListViewEditController.selected.getId()) );
-        	
+    		juboss.Splash.db.deleteData( Integer.parseInt(ListViewEditController.selected.getId()) );	
         	juboss.Splash.viniOb = juboss.Splash.db.getAllData();
+        
+        	//AGGIUNGERE METODO refresh DA CONTROLLER
         	
-           	MainApp.stageList.close();
-        	launchListEdit();
+        	
+        	MainApp.stageAddEditDel.close();
     	    // ... user chose OK
     	}
     	
@@ -351,7 +348,7 @@ public class AddEditDelController {
 		textAreaNote.clear(); 
 		fieldPrezzo.clear(); 
 		fieldIngrosso.clear(); 
-		fieldDettaglio.getText();
+		fieldDettaglio.clear();
 		checkManuale.setSelected(false);
     }
     

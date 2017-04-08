@@ -2,6 +2,7 @@ package juboss.model;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.TableView;
 
 public class Wine {
 	
