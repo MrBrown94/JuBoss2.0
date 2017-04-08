@@ -152,10 +152,7 @@ public class ListViewController {
                
            } catch (IOException e) {
                e.printStackTrace();
-           }
-           
-                     
-            
+           }  
         }
     }
     
