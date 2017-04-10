@@ -440,10 +440,10 @@ public class AddEditDelController {
     	alert.setHeaderText(null);
     	alert.setContentText("Il campo \"Denominazione\" deve essere riempito!");
     	
-    	Alert aggiunto = new Alert(AlertType.INFORMATION);
-    	aggiunto.setTitle("Aggiunto.");
-    	aggiunto.setHeaderText(null);
-    	aggiunto.setContentText("Elemento Aggiunto!");
+    	Alert modificato = new Alert(AlertType.INFORMATION);
+    	modificato.setTitle("Modificato.");
+    	modificato.setHeaderText(null);
+    	modificato.setContentText("Elemento Modificato!");
     	
     	
     	
@@ -475,7 +475,7 @@ public class AddEditDelController {
 	    			//update lista dopo inserimento
     				juboss.Splash.viniOb = juboss.Splash.db.getAllData();
     				
-    				aggiunto.showAndWait();
+    				modificato.showAndWait();
     				
     				//clean form    				
     				
@@ -505,7 +505,7 @@ public class AddEditDelController {
 	    			juboss.Splash.viniOb.removeAll(juboss.Splash.viniOb);
     				juboss.Splash.viniOb = juboss.Splash.db.getAllData();
     				
-    		    	Optional<ButtonType> result = aggiunto.showAndWait();
+    		    	Optional<ButtonType> result = modificato.showAndWait();
 
     				if (result.get() == ButtonType.OK){
     		    		

@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.SortType;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -59,11 +60,14 @@ public class ListViewController {
         //set content type of column
         columnDenominazione1.setCellValueFactory(new PropertyValueFactory<Wine, String>("denominazione"));
         columnDenominazione2.setCellValueFactory(new PropertyValueFactory<Wine, String>("denominazione"));
+        
+       
+     
 
         columnDettaglio.setCellValueFactory(new PropertyValueFactory<Wine, String>("dettaglioEur"));
         columnIngrosso.setCellValueFactory(new PropertyValueFactory<Wine, String>("ingrossoEur"));
         
-    
+        
         //adding items to tableView
         tableViewDett.setItems(juboss.Splash.viniOb);
         tableViewIngro.setItems(juboss.Splash.viniOb);
