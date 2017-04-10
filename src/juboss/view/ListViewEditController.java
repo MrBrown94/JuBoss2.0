@@ -65,6 +65,9 @@ public class ListViewEditController {
         columnDettaglio.setCellValueFactory(new PropertyValueFactory<Wine, String>("dettaglioEur"));
         columnIngrosso.setCellValueFactory(new PropertyValueFactory<Wine, String>("ingrossoEur"));
         
+        
+        //Inizializzazione Sort Denominazione A-Z
+        columnDenominazione1.setSortType(TableColumn.SortType.ASCENDING);
     
         //adding items to tableView
         tableViewDett.setItems(juboss.Splash.viniOb);
@@ -111,6 +114,8 @@ public class ListViewEditController {
         filterUpdate();
         
 
+        //SET Sort Denominazione A-Z
+        tableViewDett.getSortOrder().add(columnDenominazione1);
         
        /*
         juboss.Splash.viniOb.addListener(new ListChangeListener() {

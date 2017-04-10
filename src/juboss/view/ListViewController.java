@@ -67,29 +67,15 @@ public class ListViewController {
 		        columnDettaglio.setCellValueFactory(new PropertyValueFactory<Wine, String>("dettaglioEur"));
 		        columnIngrosso.setCellValueFactory(new PropertyValueFactory<Wine, String>("ingrossoEur"));
 		       
-		        /*
-		        SortedList<Wine> sortedList = new SortedList<>( juboss.Splash.viniOb, 
-		        	      (Wine stock1, Wine stock2) -> {
-		        	        if( stock1.getDenominazione() < stock2.getDenominazione() ) {
-		        	            return -1;
-		        	        } else if( stock1.getPercentChange() > stock2.getPercentChange() ) {
-		        	            return 1;
-		        	        } else {
-		        	            return 0;
-		        	        }
-		        	    });
-		
-		
-		        	    tickerTableView.setItems(sortedList);
-		        	}
-		        */
+		        //Inizializzazione Sort Denominazione A-Z
+		        columnDenominazione1.setSortType(TableColumn.SortType.ASCENDING);
 		        
 		        //adding items to tableView
 		        tableViewDett.setItems(juboss.Splash.viniOb);
 		        tableViewIngro.setItems(juboss.Splash.viniOb);
 		        
-		        //lock of column repositioning
 		        
+		        //lock of column repositioning
 		        tableViewDett.getColumns().addListener(new ListChangeListener() {
 		            public boolean suspended;
 		
@@ -123,13 +109,16 @@ public class ListViewController {
 		        Platform.runLater(new Runnable() {
 		            @Override
 		            public void run() {
-		            	searchField.requestFocus();            }
+		            	searchField.requestFocus();
+		            }
 		        });
-		        
 		        
 		        filterUpdate();
 		        
+		        //SET Sort Denominazione A-Z
+		        tableViewDett.getSortOrder().add(columnDenominazione1);
     }
+    
     
     public void filterUpdate(){
     ObservableList<Wine> data =  tableViewDett.getItems();
