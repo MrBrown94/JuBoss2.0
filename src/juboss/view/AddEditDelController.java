@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -447,8 +446,8 @@ public class AddEditDelController {
 							    					fieldDenominazione.getText().toUpperCase(), 
 													fieldProduttore.getText().toUpperCase(), 
 													fieldTipoVino.getText().toUpperCase(), 
-													""+comboPaese.getSelectionModel().getSelectedIndex(), 
-													""+comboRegione.getSelectionModel().getSelectedIndex(),
+	    											comboPaese.getSelectionModel().getSelectedItem(), 
+	    											comboRegione.getSelectionModel().getSelectedItem(), 
 													fieldCapacità.getText().toUpperCase(), 
 													textAreaNote.getText().toUpperCase(), 
 													Double.parseDouble("0"), 
@@ -476,8 +475,8 @@ public class AddEditDelController {
 	    												fieldDenominazione.getText().toUpperCase(), 
 	    												fieldProduttore.getText().toUpperCase(), 
 	    												fieldTipoVino.getText().toUpperCase(), 
-		    											""+comboPaese.getSelectionModel().getSelectedIndex(), 
-		    											""+comboRegione.getSelectionModel().getSelectedIndex(),
+		    											comboPaese.getSelectionModel().getSelectedItem(), 
+		    											comboRegione.getSelectionModel().getSelectedItem(),
 		    											fieldCapacità.getText().toUpperCase(), 
 		    											textAreaNote.getText().toUpperCase(), 
 		    											Double.parseDouble(fieldPrezzo.getText()), 
