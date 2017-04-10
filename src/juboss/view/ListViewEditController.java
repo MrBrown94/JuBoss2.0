@@ -181,10 +181,12 @@ public class ListViewEditController {
 
         if (event.getClickCount() == 2) //Checking double click
         {
-            MainApp.stageListEdit.close();
+            MainApp.stageListEdit.hide();
+            MainApp.stageList.hide();
 
         	selected = tableViewDett.getSelectionModel().getSelectedItem();
            
+        	System.out.println("chiudi");
            try {
                
        		// Load gui.
@@ -209,10 +211,6 @@ public class ListViewEditController {
                e.printStackTrace();
            }
            
-           MainApp.stageListEdit.close();
-           
-           
-            
         }
     }    
     @FXML
@@ -222,7 +220,8 @@ public class ListViewEditController {
 
         if (event.getClickCount() == 2) //Checking double click
         { 
-          MainApp.stageListEdit.close();
+        	 MainApp.stageListEdit.hide();
+             MainApp.stageList.hide();
           selected = tableViewIngro.getSelectionModel().getSelectedItem();
           
            
