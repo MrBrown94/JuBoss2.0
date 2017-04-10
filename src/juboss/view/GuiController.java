@@ -233,8 +233,7 @@ public class GuiController {
     //quit application
     @FXML
     void quit(){
-    	juboss.Splash.db.closeDb();
-    	Platform.exit();
+        	Platform.exit();
     }
     
     
@@ -258,4 +257,5 @@ public class GuiController {
 		alert.setTitle("Errore");
 		alert.showAndWait();
 	}
+	
 }

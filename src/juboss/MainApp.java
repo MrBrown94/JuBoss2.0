@@ -111,4 +111,11 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
+    @Override
+    public void stop(){
+    	juboss.Splash.db.closeDb();
+    	System.out.println("chiusura Db");
+
+    }
 }
