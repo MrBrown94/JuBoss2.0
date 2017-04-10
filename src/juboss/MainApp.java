@@ -19,10 +19,15 @@ public class MainApp extends Application {
     public static Stage stageExport;
     public static Stage stageInfoPop;
     public static Stage stageAddEditDel;
+	public static Stage stageListEdit;
     private BorderPane rootLayout;
 
+   
+    
     @Override
     public void start(Stage primaryStage) {
+    	
+    	
         MainApp.primaryStage = primaryStage;
         MainApp.primaryStage.setTitle("JuBoss Gestional Software");
         MainApp.primaryStage.setResizable(false);
@@ -44,7 +49,8 @@ public class MainApp extends Application {
         	//blocks user input on Gui until child stage is closed
         	MainApp.stageAddEditDel.initModality(Modality.WINDOW_MODAL);
         	MainApp.stageAddEditDel.initOwner(MainApp.getPrimaryStage());
-		
+        	
+        
 		           
         initRootLayout();
         showGui();

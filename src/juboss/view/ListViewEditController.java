@@ -100,8 +100,40 @@ public class ListViewEditController {
         });
         
         filterUpdate();
+        
+       /*
+        juboss.Splash.viniOb.addListener(new ListChangeListener() {
+            @Override
+            public void onChanged(Change change) {
+              
+            	refreshTab();
+            
+            	
+				try {
+					FXMLLoader loader = new FXMLLoader();
+                 loader.setLocation(MainApp.class.getResource("view/ListViewEdit.fxml"));
+                 AnchorPane infoPopup;
+					
+					infoPopup = (AnchorPane) loader.load();
+				
+                 
+                 Scene scene = new Scene(infoPopup);
+            	MainApp.stageListEdit.setScene(scene);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            	
+               
+				
+               System.out.println("listener viniOb cambiamento");
+
+                }
+        });
+        */
     }
     
+   
     public void filterUpdate(){
     ObservableList<Wine> data =  tableViewDett.getItems();
     searchField.textProperty().addListener((observable, oldValue,  newValue) -> {
@@ -129,9 +161,13 @@ public class ListViewEditController {
     @FXML
     public void clickItemDett(MouseEvent event)
     {
+        
+
         if (event.getClickCount() == 2) //Checking double click
         {
-          selected = tableViewDett.getSelectionModel().getSelectedItem();
+            MainApp.stageListEdit.close();
+
+        	selected = tableViewDett.getSelectionModel().getSelectedItem();
            
            try {
                
@@ -156,16 +192,20 @@ public class ListViewEditController {
                e.printStackTrace();
            }
            
-                     
+           MainApp.stageListEdit.close();
             
         }
     }    
     @FXML
     public void clickItemIngro(MouseEvent event)
     {
+       
+
         if (event.getClickCount() == 2) //Checking double click
-        {
+        { 
+          MainApp.stageListEdit.close();
           selected = tableViewIngro.getSelectionModel().getSelectedItem();
+          
            
            try {
                
@@ -187,7 +227,11 @@ public class ListViewEditController {
            } catch (IOException e) {
                e.printStackTrace();
            }  
+           
         }
+        MainApp.stageListEdit.close();
+
+        
     }
     
     //emette un suono di errore <3
@@ -204,11 +248,11 @@ public class ListViewEditController {
         		else MainApp.stageList.setFullScreen(true); 
     }
     
-    
-    //Reflash list table
-    public void refresh() {
-    	
+    @FXML
+    void refreshTab(){
+    	tableViewDett.setItems(juboss.Splash.viniOb);
     	tableViewDett.refresh();
-    	tableViewIngro.refresh();
+    	
     }
-  }
+    
+}

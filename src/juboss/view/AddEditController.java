@@ -301,13 +301,14 @@ public class AddEditController {
 		checkManuale.setSelected(false);
     }
     
+    //click on "modifica" button
     @FXML
     void launchListEdit(){
     	
     	//we should run ListView from here
     	try {
            
-			MainApp.stageList = new Stage();
+			MainApp.stageListEdit = new Stage();
 			// Load gui.
 		    FXMLLoader loader = new FXMLLoader();
 		    loader.setLocation(MainApp.class.getResource("view/ListViewEdit.fxml"));
@@ -315,15 +316,15 @@ public class AddEditController {
 		   
 		    //build scene
 		    Scene scene = new Scene(listView);
-		    MainApp.stageList.setScene(scene);
-		    MainApp.stageList.centerOnScreen();
-		    MainApp.stageList.setResizable(false);
+		    MainApp.stageListEdit.setScene(scene);
+		    MainApp.stageListEdit.centerOnScreen();
+		    MainApp.stageListEdit.setResizable(false);
 		    
 		    //blocks user input on Gui until child stage is closed
-		    MainApp.stageList.initModality(Modality.WINDOW_MODAL);
-		    MainApp.stageList.initOwner(MainApp.getPrimaryStage());
+		    MainApp.stageListEdit.initModality(Modality.WINDOW_MODAL);
+		    MainApp.stageListEdit.initOwner(MainApp.getPrimaryStage());
 		    
-		    MainApp.stageList.show();
+		    MainApp.stageListEdit.show();
             
             
         } catch (IOException e) {

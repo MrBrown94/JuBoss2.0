@@ -90,7 +90,8 @@ public class AddEditDelController {
         
         settings = juboss.Splash.db.getSettings();
         
-     
+        MainApp.stageListEdit.close();
+        
         fieldPrezzo.focusedProperty().addListener(new ChangeListener<Boolean>()
         {
             @Override
@@ -115,7 +116,7 @@ public class AddEditDelController {
             }
         });
         
-            
+                 
         
 		//listener on fieldPrezzo 
         	//replaces , with .
@@ -154,19 +155,20 @@ public class AddEditDelController {
 		
         
         //fill fields with information of item picked in list
-        
-        fieldDenominazione.setText(ListViewEditController.selected.getDenominazione());
-		fieldProduttore.setText(ListViewEditController.selected.getProduttore());
-		fieldTipoVino.setText(ListViewEditController.selected.getTipoVino());
-		comboPaese.getSelectionModel().select(null); 
-		comboRegione.getSelectionModel().select(null);
-		fieldCapacità.setText(ListViewEditController.selected.getCapacità());
-		textAreaNote.setText(ListViewEditController.selected.getNote());
-		fieldPrezzo.setText(ListViewEditController.selected.getPrezzo());
-		fieldIngrosso.setText(ListViewEditController.selected.getIngrosso());
-		fieldDettaglio.setText(ListViewEditController.selected.getDettaglio());
-		checkManuale.setSelected(ListViewEditController.selected.getManuale());
-		
+        if(ListViewEditController.selected != null){
+						        	
+						        fieldDenominazione.setText(ListViewEditController.selected.getDenominazione());
+								fieldProduttore.setText(ListViewEditController.selected.getProduttore());
+								fieldTipoVino.setText(ListViewEditController.selected.getTipoVino());
+								comboPaese.getSelectionModel().select(null); 
+								comboRegione.getSelectionModel().select(null);
+								fieldCapacità.setText(ListViewEditController.selected.getCapacità());
+								textAreaNote.setText(ListViewEditController.selected.getNote());
+								fieldPrezzo.setText(ListViewEditController.selected.getPrezzo());
+								fieldIngrosso.setText(ListViewEditController.selected.getIngrosso());
+								fieldDettaglio.setText(ListViewEditController.selected.getDettaglio());
+								checkManuale.setSelected(ListViewEditController.selected.getManuale());
+        					}
      }
     
     
@@ -241,6 +243,7 @@ public class AddEditDelController {
 		    										);
     				
     			    //update list after insert
+	    			juboss.Splash.viniOb.removeAll(juboss.Splash.viniOb);
     				juboss.Splash.viniOb = juboss.Splash.db.getAllData();
     				
     				aggiunto.showAndWait();
@@ -268,14 +271,29 @@ public class AddEditDelController {
     	
     	if (result.get() == ButtonType.OK){
     		
-    		juboss.Splash.db.deleteData( Integer.parseInt(ListViewEditController.selected.getId()) );	
-        	juboss.Splash.viniOb = juboss.Splash.db.getAllData();
+    		juboss.Splash.db.deleteData( Integer.parseInt(ListViewEditController.selected.getId()) );
+    		
         
         	//AGGIUNGERE METODO refresh DA CONTROLLER
         	
         	
         	MainApp.stageAddEditDel.close();
-    	    // ... user chose OK
+        	
+        	
+        	MainApp.stageListEdit.close();
+        
+        	
+        	
+        	juboss.Splash.viniOb.clear();
+			juboss.Splash.viniOb = juboss.Splash.db.getAllData();
+        	
+        	
+        	launchListEdit();
+        	
+        	
+        	
+
+    	  
     	}
     	
     	else {
@@ -352,13 +370,14 @@ public class AddEditDelController {
 		checkManuale.setSelected(false);
     }
     
+    //click  on "modifica" button
     @FXML
     void launchListEdit(){
-    	
+    	MainApp.stageListEdit.close();
     	//we should run ListView from here
     	try {
            
-    		MainApp.stageList = new Stage();
+    		//MainApp.stageList = new Stage();
     		// Load gui.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/ListViewEdit.fxml"));
@@ -366,14 +385,11 @@ public class AddEditDelController {
            
             //build scene
             Scene scene = new Scene(listView);
-            MainApp.stageList.setTitle("Elimina un elemento");
             MainApp.stageList.setScene(scene);
             MainApp.stageList.centerOnScreen();
             MainApp.stageList.setResizable(false);
             
-            //blocks user input on Gui until child stage is closed
-            MainApp.stageList.initModality(Modality.WINDOW_MODAL);
-            MainApp.stageList.initOwner(MainApp.getPrimaryStage());
+           
             
             MainApp.stageList.show();
             
@@ -381,6 +397,8 @@ public class AddEditDelController {
             e.printStackTrace();
             
         }
+    	 
+           
     }
     
 }
