@@ -358,15 +358,15 @@ public class AddEditController {
                 
                 	//concat .00 if the input is integer or not complete
                 {      
+                		if(fieldPrezzo.getText().equals("")) fieldPrezzo.setText("");
                 		
-                			
-	                    if(!fieldPrezzo.getText().contains(".") && !fieldPrezzo.getText().equals("") )
+                			else if(!fieldPrezzo.getText().contains(".") && !fieldPrezzo.getText().equals("") )
 		                    	fieldPrezzo.setText(fieldPrezzo.getText().concat(".00"));
 	                    
-	                    if(!fieldPrezzo.getText().contains(".") && !fieldPrezzo.getText().contains(".00")) {
+                			else if(!fieldPrezzo.getText().contains(".") && !fieldPrezzo.getText().contains(".00")) 
 	                    		fieldPrezzo.setText(fieldPrezzo.getText().concat(".00"));
-	                    }
-	                    if(fieldPrezzo.getText().lastIndexOf(".") == fieldPrezzo.getText().length()-1){
+	                    
+                			else if(fieldPrezzo.getText().lastIndexOf(".") == fieldPrezzo.getText().length()-1){
                     	    	fieldPrezzo.setText(fieldPrezzo.getText().concat("00"));
 
 	                    }
@@ -604,7 +604,7 @@ public class AddEditController {
 		
 		fieldDettaglio.setText(fieldDettaglio.getText().replaceAll(",", "."));
         
-        
+    		
         if(!fieldDettaglio.getText().contains(".") && !fieldDettaglio.getText().equals("") )
             	fieldDettaglio.setText(fieldDettaglio.getText().concat(".00"));
         
