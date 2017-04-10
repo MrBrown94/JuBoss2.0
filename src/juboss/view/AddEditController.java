@@ -358,6 +358,8 @@ public class AddEditController {
                 
                 	//concat .00 if the input is integer or not complete
                 {      
+                		
+                			
 	                    if(!fieldPrezzo.getText().contains(".") && !fieldPrezzo.getText().equals("") )
 		                    	fieldPrezzo.setText(fieldPrezzo.getText().concat(".00"));
 	                    
@@ -388,10 +390,19 @@ public class AddEditController {
 
 		    	//int in = newValue.length() - oldValue.length();
 		    	
+		    	//filter "." if fieldPrezzo is empty
+		    	
+		    	if(fieldPrezzo.getText().equals("."))
+    				fieldPrezzo.setText("");
+		    	
 		    //replaces AT RUNTIME each , with . 
 		    	
 		    	if(newValue.contains(",")) fieldPrezzo.setText(fieldPrezzo.getText().replaceAll(",", "."));
-		    	
+		    	if(fieldPrezzo.getText().equals("") && !checkManuale.isSelected()){
+		    		
+		    		fieldDettaglio.setText("");
+		    		fieldIngrosso.setText("");
+		    	}
 		    	
 		    	
 		    	if(newValue.length()>0)	
@@ -412,7 +423,99 @@ public class AddEditController {
 		    }
 		});
 		
+        
+      //listener on fieldDettaglio
+    	//replaces , with .
+    	//check the inserted char if it's contained in legalRange
+    	//if checks fail replace the previous content (oldValue)
+    
+      fieldDettaglio.textProperty().addListener(new ChangeListener<String>() {
+	 
+	    @Override
+	    public void changed(ObservableValue<? extends String> observable,
+	            String oldValue, String newValue) {
+
+	    	//int in = newValue.length() - oldValue.length();
+	    	
+	    	//filter "." if fieldPrezzo is empty
+	    	
+	    	if(fieldDettaglio.getText().equals("."))
+	    		fieldDettaglio.setText("");
+	    	
+	    //replaces AT RUNTIME each , with . 
+	    	
+	    	if(newValue.contains(",")) fieldDettaglio.setText(fieldDettaglio.getText().replaceAll(",", "."));
+	    	if(fieldDettaglio.getText().equals("") && !checkManuale.isSelected()){
+	    		
+	    		fieldDettaglio.setText("");
+	    		fieldIngrosso.setText("");
+	    	}
+	    	
+	    	
+	    	if(newValue.length()>0)	
+	    		
+	    		//check if new inserted char is in the legal range
+	    		
+		    	if(legalRange.contains(""+newValue.charAt(newValue.length()-1)))
+		    	{
+		    		//check if manual mode isn't enabled
+		    		
+		    		if(!checkManuale.isSelected()){
+		    			
+		    			percentCalc();
+		    		}
+		    	}
+		    	else
+		    		fieldDettaglio.setText(oldValue);
+	    }
+	});
 		
+      	//listener on fieldIngrosso
+	  	//replaces , with .
+	  	//check the inserted char if it's contained in legalRange
+	  	//if checks fail replace the previous content (oldValue)
+  
+      	fieldIngrosso.textProperty().addListener(new ChangeListener<String>() {
+	 
+	    @Override
+	    public void changed(ObservableValue<? extends String> observable,
+	            String oldValue, String newValue) {
+
+	    	//int in = newValue.length() - oldValue.length();
+	    	
+	    	//filter "." if fieldPrezzo is empty
+	    	
+	    	if(fieldIngrosso.getText().equals("."))
+	    		fieldIngrosso.setText("");
+	    	
+	    //replaces AT RUNTIME each , with . 
+	    	
+	    	if(newValue.contains(",")) fieldIngrosso.setText(fieldIngrosso.getText().replaceAll(",", "."));
+	    	if(fieldDettaglio.getText().equals("") && !checkManuale.isSelected()){
+	    		
+	    		fieldDettaglio.setText("");
+	    		fieldIngrosso.setText("");
+	    	}
+	    	
+	    	
+	    	if(newValue.length()>0)	
+	    		
+	    		//check if new inserted char is in the legal range
+	    		
+		    	if(legalRange.contains(""+newValue.charAt(newValue.length()-1)))
+		    	{
+		    		//check if manual mode isn't enabled
+		    		
+		    		if(!checkManuale.isSelected()){
+		    			
+		    			percentCalc();
+		    		}
+		    	}
+		    	else
+		    		fieldIngrosso.setText(oldValue);
+	    }
+	});
+      
      }
     
     
