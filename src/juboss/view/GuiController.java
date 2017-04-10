@@ -235,6 +235,8 @@ public class GuiController {
 	private void trueOperation() {
 		
 		Alert alert = new Alert(AlertType.INFORMATION, "Operazione eseguita!", ButtonType.OK);
+		alert.setHeaderText(null);
+		alert.setTitle("Informazione");
 		alert.showAndWait();
 	}
 	
@@ -243,6 +245,8 @@ public class GuiController {
 	private void falseOperation(String e) {
 		
 		Alert alert = new Alert(AlertType.ERROR, "Operazione NON eseguita!\n" + e, ButtonType.OK);
+		alert.setHeaderText(null);
+		alert.setTitle("Errore");
 		alert.showAndWait();
 	}
 }
