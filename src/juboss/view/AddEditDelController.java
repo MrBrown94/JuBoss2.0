@@ -332,7 +332,8 @@ public class AddEditDelController {
     			"Zimbabwe"
          		);
  
- 
+        	
+        
             comboRegione.getItems().addAll("","Abruzzo","Basilicata","Calabria","Campania","Emilia-Romagna","Friuli-Venezia Giulia","Lazio","Liguria","Lombardia","Marche","Molise",
     				"Piemonte","Puglia","Sardegna","Sicilia","Toscana","Trentino-Alto Adige","Umbria","Valle d'Aosta","Veneto");
             
@@ -455,7 +456,7 @@ public class AddEditDelController {
     	else
     		//if prezzo dettaglio or ingrosso are empty , replace content with "0"
     		
-    		if(fieldPrezzo.getText().equals("")||fieldIngrosso.getText().equals("")||fieldDettaglio.getText().equals(""))
+    		if(fieldPrezzo.getText().equals("")||fieldIngrosso.getText().equals("")||fieldDettaglio.getText() == null)
 	    		{
 	    			juboss.Splash.db.editData(	
 	    											Integer.parseInt(ListViewEditController.selected.getId()),
@@ -465,7 +466,7 @@ public class AddEditDelController {
 	    											comboPaese.getSelectionModel().getSelectedItem(), 
 	    											comboRegione.getSelectionModel().getSelectedItem(), 
 													fieldCapacità.getText().toUpperCase(), 
-													""+textAreaNote.getText().toUpperCase(), 
+													""+textAreaNote.getText(), 
 													Double.parseDouble("0"), 
 													Double.parseDouble("0"), 
 													Double.parseDouble("0"),
@@ -494,7 +495,7 @@ public class AddEditDelController {
 		    											comboPaese.getSelectionModel().getSelectedItem(), 
 		    											comboRegione.getSelectionModel().getSelectedItem(),
 		    											fieldCapacità.getText().toUpperCase(), 
-		    											""+textAreaNote.getText().toUpperCase(), 
+		    											textAreaNote.getText(), 
 		    											Double.parseDouble(fieldPrezzo.getText()), 
 		    											Double.parseDouble(fieldIngrosso.getText()), 
 		    											Double.parseDouble(fieldDettaglio.getText()),
