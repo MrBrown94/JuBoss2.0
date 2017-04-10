@@ -50,6 +50,9 @@ public class MainApp extends Application {
         	MainApp.stageAddEditDel.initModality(Modality.WINDOW_MODAL);
         	MainApp.stageAddEditDel.initOwner(MainApp.getPrimaryStage());
         	
+        stageListEdit = new Stage(); //listViewEdit
+        stageListEdit.centerOnScreen();
+        	
         
 		           
         initRootLayout();

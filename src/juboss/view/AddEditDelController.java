@@ -511,8 +511,7 @@ public class AddEditDelController {
 
     				if (result.get() == ButtonType.OK){
     		    		
-    		    		juboss.Splash.db.deleteData( Integer.parseInt(ListViewEditController.selected.getId()) );
-    		    		
+    		    		    		    		
     		    		juboss.Splash.viniOb.clear();
     					juboss.Splash.viniOb = juboss.Splash.db.getAllData();
     		        	
@@ -520,12 +519,10 @@ public class AddEditDelController {
     		        
     		        	//AGGIUNGERE METODO refresh DA CONTROLLER
     		        	
-    		    		MainApp.stageListEdit.close();
-
-    		        	
     		        	MainApp.stageAddEditDel.close();
     		        	
     		        	      	
+    		        	MainApp.stageListEdit.close();
     		        	launchListEdit();
     				}
     		        	
@@ -561,12 +558,10 @@ public class AddEditDelController {
         
         	//AGGIUNGERE METODO refresh DA CONTROLLER
         	
-    		MainApp.stageListEdit.close();
-
-        	
         	MainApp.stageAddEditDel.close();
         	
         	      	
+        	MainApp.stageListEdit.close();
         	launchListEdit();
         }
     	
