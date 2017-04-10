@@ -57,15 +57,7 @@
                   <TextField fx:id="searchField" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="517.0" promptText="Ricerca..." BorderPane.alignment="CENTER_LEFT" />
                </center>
                <right>
-                  <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <ToggleButton id="glass-grey" focusTraversable="false" layoutX="21.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#setFullScreen" prefHeight="28.0" prefWidth="151.0" text="Schermo Intero">
-                           <font>
-                              <Font name="Ebrima" size="15.0" />
-                           </font>
-                        </ToggleButton>
-                     </children>
-                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                </right>
             </BorderPane>
          </children>

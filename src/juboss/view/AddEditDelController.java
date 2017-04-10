@@ -388,7 +388,6 @@ public class AddEditDelController {
 		    public void changed(ObservableValue<? extends String> observable,
 		            String oldValue, String newValue) {
 
-		    	//int in = newValue.length() - oldValue.length();
 		    	
 		    //replaces AT RUNTIME each , with . 
 		    	
