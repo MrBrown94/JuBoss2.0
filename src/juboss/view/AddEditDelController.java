@@ -349,29 +349,31 @@ public class AddEditDelController {
                   }    
               });
         
-        fieldPrezzo.focusedProperty().addListener(new ChangeListener<Boolean>()
-        {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+            fieldPrezzo.focusedProperty().addListener(new ChangeListener<Boolean>()
             {
-                if (!newPropertyValue)
-                
-                	//concat .00 if the input is integer or not complete
-                {      
-	                    if(!fieldPrezzo.getText().contains(".") && !fieldPrezzo.getText().equals("") )
-		                    	fieldPrezzo.setText(fieldPrezzo.getText().concat(".00"));
-	                    
-	                    if(!fieldPrezzo.getText().contains(".") && !fieldPrezzo.getText().contains(".00")) {
-	                    		fieldPrezzo.setText(fieldPrezzo.getText().concat(".00"));
-	                    }
-	                    if(fieldPrezzo.getText().lastIndexOf(".") == fieldPrezzo.getText().length()-1){
-                    	    	fieldPrezzo.setText(fieldPrezzo.getText().concat("00"));
-
-	                    }
+                @Override
+                public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+                {
+                    if (!newPropertyValue)
                     
+                    	//concat .00 if the input is integer or not complete
+                    {      
+                    		if(fieldPrezzo.getText().equals("")) fieldPrezzo.setText("");
+                    		
+                    			else if(!fieldPrezzo.getText().contains(".") && !fieldPrezzo.getText().equals("") )
+    		                    	fieldPrezzo.setText(fieldPrezzo.getText().concat(".00"));
+    	                    
+                    			else if(!fieldPrezzo.getText().contains(".") && !fieldPrezzo.getText().contains(".00")) 
+    	                    		fieldPrezzo.setText(fieldPrezzo.getText().concat(".00"));
+    	                    
+                    			else if(fieldPrezzo.getText().lastIndexOf(".") == fieldPrezzo.getText().length()-1){
+                        	    	fieldPrezzo.setText(fieldPrezzo.getText().concat("00"));
+
+    	                    }
+                        
+                    }
                 }
-            }
-        });
+            });
         
                  
         
