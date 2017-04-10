@@ -344,7 +344,7 @@ public class AddEditDelController {
             
             comboPaese.valueProperty().addListener(new ChangeListener<String>() {
                 @Override public void changed(ObservableValue<? extends String> ov, String t, String t1) {
-                	if(t1.equals("Italia")) comboRegione.setDisable(false);
+                	if(t1.equals("ITALIA") || t1.equals("Italia")) comboRegione.setDisable(false);
                 		else comboRegione.setDisable(true);
                   }    
               });
@@ -425,9 +425,6 @@ public class AddEditDelController {
 								fieldDettaglio.setText(ListViewEditController.selected.getDettaglio());
 								checkManuale.setSelected(ListViewEditController.selected.getManuale());
 								
-								//enables region if "ITALIA" is selected
-								if(comboPaese.getSelectionModel().getSelectedItem().equals("ITALIA")) comboRegione.setDisable(false);
-					        	
         					}
         
              }
