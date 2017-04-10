@@ -193,6 +193,8 @@ public class ListViewEditController {
            }
            
            MainApp.stageListEdit.close();
+           
+           
             
         }
     }    

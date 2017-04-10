@@ -410,23 +410,27 @@ public class AddEditDelController {
 		    }
 		});
 		
-        
         //fill fields with information of item picked in list
         if(ListViewEditController.selected != null){
 						        	
 						        fieldDenominazione.setText(ListViewEditController.selected.getDenominazione());
 								fieldProduttore.setText(ListViewEditController.selected.getProduttore());
 								fieldTipoVino.setText(ListViewEditController.selected.getTipoVino());
-								comboPaese.getSelectionModel().select(ListViewEditController.selected.getPaese()); 
-								comboRegione.getSelectionModel().select(ListViewEditController.selected.getRegione());
+								comboPaese.setValue(ListViewEditController.selected.getPaese()); 
+								comboRegione.setValue(ListViewEditController.selected.getRegione());
 								fieldCapacità.setText(ListViewEditController.selected.getCapacità());
 								textAreaNote.setText(ListViewEditController.selected.getNote());
 								fieldPrezzo.setText(ListViewEditController.selected.getPrezzo());
 								fieldIngrosso.setText(ListViewEditController.selected.getIngrosso());
 								fieldDettaglio.setText(ListViewEditController.selected.getDettaglio());
 								checkManuale.setSelected(ListViewEditController.selected.getManuale());
+								
+								//enables region if "ITALIA" is selected
+								if(comboPaese.getSelectionModel().getSelectedItem().equals("ITALIA")) comboRegione.setDisable(false);
+					        	
         					}
-     }
+        
+             }
     
     
     //check denominazione and insert
@@ -509,29 +513,22 @@ public class AddEditDelController {
     		    		
     		    		juboss.Splash.db.deleteData( Integer.parseInt(ListViewEditController.selected.getId()) );
     		    		
+    		    		juboss.Splash.viniOb.clear();
+    					juboss.Splash.viniOb = juboss.Splash.db.getAllData();
+    		        	
+    		    		
     		        
     		        	//AGGIUNGERE METODO refresh DA CONTROLLER
     		        	
+    		    		MainApp.stageListEdit.close();
+
     		        	
     		        	MainApp.stageAddEditDel.close();
     		        	
-    		        	
-    		        	MainApp.stageListEdit.close();
-    		        
-    		        	
-    		        	
-    		        	juboss.Splash.viniOb.clear();
-    					juboss.Splash.viniOb = juboss.Splash.db.getAllData();
-    		        	
-    		        	
+    		        	      	
     		        	launchListEdit();
+    				}
     		        	
-    		        	
-    		        	
-
-    		    	  
-    		    	}
-    		    	
     		    	else {
     		    			alert.close();
     		    		 }
@@ -557,28 +554,21 @@ public class AddEditDelController {
     		
     		juboss.Splash.db.deleteData( Integer.parseInt(ListViewEditController.selected.getId()) );
     		
+    		juboss.Splash.viniOb.clear();
+			juboss.Splash.viniOb = juboss.Splash.db.getAllData();
+        	
+    		
         
         	//AGGIUNGERE METODO refresh DA CONTROLLER
         	
+    		MainApp.stageListEdit.close();
+
         	
         	MainApp.stageAddEditDel.close();
         	
-        	
-        	MainApp.stageListEdit.close();
-        
-        	
-        	
-        	juboss.Splash.viniOb.clear();
-			juboss.Splash.viniOb = juboss.Splash.db.getAllData();
-        	
-        	
+        	      	
         	launchListEdit();
-        	
-        	
-        	
-
-    	  
-    	}
+        }
     	
     	else {
     			alert.close();

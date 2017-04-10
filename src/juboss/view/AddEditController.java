@@ -334,6 +334,21 @@ public class AddEditController {
         comboRegione.getItems().addAll("","Abruzzo","Basilicata","Calabria","Campania","Emilia-Romagna","Friuli-Venezia Giulia","Lazio","Liguria","Lombardia","Marche","Molise",
 				"Piemonte","Puglia","Sardegna","Sicilia","Toscana","Trentino-Alto Adige","Umbria","Valle d'Aosta","Veneto");
         
+        
+        
+        comboRegione.setDisable(true);
+        
+        
+        //lock regione
+        
+        comboPaese.valueProperty().addListener(new ChangeListener<String>() {
+            @Override public void changed(ObservableValue<? extends String> ov, String t, String t1) {
+            	if(t1.equals("Italia")) comboRegione.setDisable(false);
+            		else comboRegione.setDisable(true);
+              }    
+          });
+    
+        
         fieldPrezzo.focusedProperty().addListener(new ChangeListener<Boolean>()
         {
             @Override
