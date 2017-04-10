@@ -619,8 +619,8 @@ public class AddEditController {
 	
 		if(!fieldPrezzo.getText().equals(""))
 		{
-			fieldDettaglio.setText(Double.toString(Math.ceil(Double.parseDouble(fieldPrezzo.getText()) + Double.parseDouble(fieldPrezzo.getText())/100*settings[0])+1) );
-			fieldIngrosso.setText(Double.toString(Math.ceil(Double.parseDouble(fieldPrezzo.getText()) + Double.parseDouble(fieldPrezzo.getText())/100*settings[1])+1) );
+			fieldDettaglio.setText(Double.toString(Math.round(Double.parseDouble(fieldPrezzo.getText()) + Double.parseDouble(fieldPrezzo.getText())/100*settings[0])) );
+			fieldIngrosso.setText(Double.toString(Math.round(Double.parseDouble(fieldPrezzo.getText()) + Double.parseDouble(fieldPrezzo.getText())/100*settings[1])) );
 		}
 		else 
 		{
