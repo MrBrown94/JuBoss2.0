@@ -64,7 +64,7 @@ public class DbManager {
 		    
 		    String rePath = path;
 		    
-		    path += "db/db.accdb;memory=false;COLUMNORDER=DISPLAY;singleconnection=true";
+		    path += "/db/db.accdb;memory=false;COLUMNORDER=DISPLAY;singleconnection=true";
 		    
 		    return rePath;
 		} catch (UnsupportedEncodingException e) {

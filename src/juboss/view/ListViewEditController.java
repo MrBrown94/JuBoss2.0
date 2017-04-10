@@ -181,6 +181,7 @@ public class ListViewEditController {
                    
 	           //build scene
                Scene scene = new Scene(infoPopup);
+               scene.getStylesheets().add("style.css");
                MainApp.stageAddEditDel.setScene(scene);
                MainApp.stageAddEditDel.setResizable(false);
                
@@ -221,6 +222,7 @@ public class ListViewEditController {
                
 	           //build scene
                Scene scene = new Scene(infoPopup);
+               scene.getStylesheets().add("style.css");
                MainApp.stageAddEditDel.setScene(scene);
                MainApp.stageAddEditDel.setResizable(false);
                

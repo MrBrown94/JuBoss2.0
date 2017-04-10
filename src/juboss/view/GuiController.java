@@ -70,6 +70,7 @@ public class GuiController {
             
             //build scene
             Scene scene = new Scene(listView);
+            scene.getStylesheets().add("style.css");
             MainApp.stageList.setScene(scene);
             MainApp.stageList.setResizable(false);
                    
@@ -94,6 +95,7 @@ public class GuiController {
            
             //build scene
             Scene scene = new Scene(listView);
+            scene.getStylesheets().add("style.css");
             MainApp.stageAddEdit.setScene(scene);
             MainApp.stageAddEdit.centerOnScreen();
             MainApp.stageAddEdit.setResizable(false);
@@ -167,6 +169,7 @@ public class GuiController {
            
             //build scene
             Scene scene = new Scene(listView);
+            scene.getStylesheets().add("style.css");
             MainApp.stageOption.setScene(scene);
             MainApp.stageOption.centerOnScreen();
             MainApp.stageOption.setResizable(false);

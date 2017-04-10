@@ -143,6 +143,7 @@ public class ListViewController {
                    
 	           //build scene
                Scene scene = new Scene(infoPopup);
+               scene.getStylesheets().add("style.css");
                MainApp.stageInfoPop.setScene(scene);
                MainApp.stageInfoPop.setResizable(false);
                
@@ -175,6 +176,7 @@ public class ListViewController {
                    
 	           //build scene
                Scene scene = new Scene(infoPopup);
+               scene.getStylesheets().add("style.css");
                MainApp.stageInfoPop.setScene(scene);
                MainApp.stageInfoPop.setResizable(false);
                

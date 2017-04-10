@@ -654,6 +654,7 @@ public class AddEditDelController {
            
             //build scene
             Scene scene = new Scene(listView);
+            scene.getStylesheets().add("style.css");
             MainApp.stageList.setScene(scene);
             MainApp.stageList.centerOnScreen();
             MainApp.stageList.setResizable(false);

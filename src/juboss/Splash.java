@@ -67,7 +67,7 @@ public class Splash extends JWindow {
 	//Main Splash
 	public static void main(String[] args) {
 		
-		Splash splash = new Splash(2000);
+		Splash splash = new Splash(1700);
 	    splash.showSplashAndStart();
 	  }
 }

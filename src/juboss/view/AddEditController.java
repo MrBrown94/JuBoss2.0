@@ -680,6 +680,7 @@ public class AddEditController {
 		   
 		    //build scene
 		    Scene scene = new Scene(listView);
+		    scene.getStylesheets().add("style.css");
 		    MainApp.stageListEdit.setScene(scene);
 		    MainApp.stageListEdit.centerOnScreen();
 		    MainApp.stageListEdit.setResizable(false);
