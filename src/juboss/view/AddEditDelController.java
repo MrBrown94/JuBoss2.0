@@ -330,10 +330,24 @@ public class AddEditDelController {
     			"Yemen",
     			"Zambia",
     			"Zimbabwe"
-    		);
-            
+         		);
+ 
+ 
             comboRegione.getItems().addAll("","Abruzzo","Basilicata","Calabria","Campania","Emilia-Romagna","Friuli-Venezia Giulia","Lazio","Liguria","Lombardia","Marche","Molise",
     				"Piemonte","Puglia","Sardegna","Sicilia","Toscana","Trentino-Alto Adige","Umbria","Valle d'Aosta","Veneto");
+            
+            
+            comboRegione.setDisable(true);
+            
+            
+            //lock regione
+            
+            comboPaese.valueProperty().addListener(new ChangeListener<String>() {
+                @Override public void changed(ObservableValue<? extends String> ov, String t, String t1) {
+                	if(t1.equals("Italia")) comboRegione.setDisable(false);
+                		else comboRegione.setDisable(true);
+                  }    
+              });
         
         fieldPrezzo.focusedProperty().addListener(new ChangeListener<Boolean>()
         {
@@ -489,11 +503,38 @@ public class AddEditDelController {
 	    			juboss.Splash.viniOb.removeAll(juboss.Splash.viniOb);
     				juboss.Splash.viniOb = juboss.Splash.db.getAllData();
     				
-    				aggiunto.showAndWait();
-    				
-    				//clean form
-    				
-    				cleanForm();
+    		    	Optional<ButtonType> result = aggiunto.showAndWait();
+
+    				if (result.get() == ButtonType.OK){
+    		    		
+    		    		juboss.Splash.db.deleteData( Integer.parseInt(ListViewEditController.selected.getId()) );
+    		    		
+    		        
+    		        	//AGGIUNGERE METODO refresh DA CONTROLLER
+    		        	
+    		        	
+    		        	MainApp.stageAddEditDel.close();
+    		        	
+    		        	
+    		        	MainApp.stageListEdit.close();
+    		        
+    		        	
+    		        	
+    		        	juboss.Splash.viniOb.clear();
+    					juboss.Splash.viniOb = juboss.Splash.db.getAllData();
+    		        	
+    		        	
+    		        	launchListEdit();
+    		        	
+    		        	
+    		        	
+
+    		    	  
+    		    	}
+    		    	
+    		    	else {
+    		    			alert.close();
+    		    		 }
     				
     			};
     }
