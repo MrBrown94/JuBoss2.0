@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.SortType;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -66,7 +65,23 @@ public class ListViewController {
 
         columnDettaglio.setCellValueFactory(new PropertyValueFactory<Wine, String>("dettaglioEur"));
         columnIngrosso.setCellValueFactory(new PropertyValueFactory<Wine, String>("ingrossoEur"));
-        
+       
+        /*
+        SortedList<Wine> sortedList = new SortedList<>( juboss.Splash.viniOb, 
+        	      (Wine stock1, Wine stock2) -> {
+        	        if( stock1.getDenominazione() < stock2.getDenominazione() ) {
+        	            return -1;
+        	        } else if( stock1.getPercentChange() > stock2.getPercentChange() ) {
+        	            return 1;
+        	        } else {
+        	            return 0;
+        	        }
+        	    });
+
+
+        	    tickerTableView.setItems(sortedList);
+        	}
+        */
         
         //adding items to tableView
         tableViewDett.setItems(juboss.Splash.viniOb);

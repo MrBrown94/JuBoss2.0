@@ -8,6 +8,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
+
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -227,6 +229,13 @@ public class GuiController {
 		}
 	}
     
+    
+    //quit application
+    @FXML
+    void quit(){
+    	juboss.Splash.db.closeDb();
+    	Platform.exit();
+    }
     
     
     /****************** METODI VISUALIZZAZIONE ERRORE/RIUSCITA ******************/
