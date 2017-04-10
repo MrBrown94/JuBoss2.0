@@ -3,6 +3,7 @@ package juboss.view;
 import java.awt.Toolkit;
 import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -99,7 +100,17 @@ public class ListViewEditController {
             }
         });
         
+        //focus request on searchfield
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+            	searchField.requestFocus();            }
+        });
+         
+               
         filterUpdate();
+        
+
         
        /*
         juboss.Splash.viniOb.addListener(new ListChangeListener() {

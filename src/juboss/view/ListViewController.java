@@ -3,6 +3,7 @@ package juboss.view;
 import java.awt.Toolkit;
 import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -47,77 +48,87 @@ public class ListViewController {
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	@FXML
     void initialize() {
-    	assert columnDenominazione1 != null : "fx:id=\"ColumnDenominazione1\" was not injected: check your FXML file 'ListView.fxml'.";
-    	assert columnDenominazione2 != null : "fx:id=\"ColumnDenominazione2\" was not injected: check your FXML file 'ListView.fxml'.";
-        assert tableViewDett != null : "fx:id=\"tableViewDett\" was not injected: check your FXML file 'ListView.fxml'.";
-        assert tableViewIngro != null : "fx:id=\"tableViewIngro\" was not injected: check your FXML file 'ListView.fxml'.";
-        assert columnIngrosso != null : "fx:id=\"columnIngrosso\" was not injected: check your FXML file 'ListView.fxml'.";
-        assert columnDettaglio != null : "fx:id=\"columnDettaglio\" was not injected: check your FXML file 'ListView.fxml'.";
-        assert searchField != null : "fx:id=\"searchField\" was not injected: check your FXML file 'ListView.fxml'.";
+		    	assert columnDenominazione1 != null : "fx:id=\"ColumnDenominazione1\" was not injected: check your FXML file 'ListView.fxml'.";
+		    	assert columnDenominazione2 != null : "fx:id=\"ColumnDenominazione2\" was not injected: check your FXML file 'ListView.fxml'.";
+		        assert tableViewDett != null : "fx:id=\"tableViewDett\" was not injected: check your FXML file 'ListView.fxml'.";
+		        assert tableViewIngro != null : "fx:id=\"tableViewIngro\" was not injected: check your FXML file 'ListView.fxml'.";
+		        assert columnIngrosso != null : "fx:id=\"columnIngrosso\" was not injected: check your FXML file 'ListView.fxml'.";
+		        assert columnDettaglio != null : "fx:id=\"columnDettaglio\" was not injected: check your FXML file 'ListView.fxml'.";
+		        assert searchField != null : "fx:id=\"searchField\" was not injected: check your FXML file 'ListView.fxml'.";
+		
+		       
+		        //set content type of column
+		        columnDenominazione1.setCellValueFactory(new PropertyValueFactory<Wine, String>("denominazione"));
+		        columnDenominazione2.setCellValueFactory(new PropertyValueFactory<Wine, String>("denominazione"));
+		        
+		       
+		     
+		
+		        columnDettaglio.setCellValueFactory(new PropertyValueFactory<Wine, String>("dettaglioEur"));
+		        columnIngrosso.setCellValueFactory(new PropertyValueFactory<Wine, String>("ingrossoEur"));
+		       
+		        /*
+		        SortedList<Wine> sortedList = new SortedList<>( juboss.Splash.viniOb, 
+		        	      (Wine stock1, Wine stock2) -> {
+		        	        if( stock1.getDenominazione() < stock2.getDenominazione() ) {
+		        	            return -1;
+		        	        } else if( stock1.getPercentChange() > stock2.getPercentChange() ) {
+		        	            return 1;
+		        	        } else {
+		        	            return 0;
+		        	        }
+		        	    });
+		
+		
+		        	    tickerTableView.setItems(sortedList);
+		        	}
+		        */
+		        
+		        //adding items to tableView
+		        tableViewDett.setItems(juboss.Splash.viniOb);
+		        tableViewIngro.setItems(juboss.Splash.viniOb);
+		        
+		        //lock of column repositioning
+		        
+		        tableViewDett.getColumns().addListener(new ListChangeListener() {
+		            public boolean suspended;
+		
+		            @Override
+		            public void onChanged(Change change) {
+		                change.next();
+		                if (change.wasReplaced() && !suspended) {
+		                    this.suspended = true;
+		                    tableViewDett.getColumns().setAll(columnDenominazione1, columnDettaglio);
+		                    this.suspended = false;
+		                }
+		            }
+		        });
+		        
+		        tableViewIngro.getColumns().addListener(new ListChangeListener() {
+		            public boolean suspended;
+		
+		            @Override
+		            public void onChanged(Change change) {
+		                change.next();
+		                if (change.wasReplaced() && !suspended) {
+		                    this.suspended = true;
+		                    tableViewIngro.getColumns().setAll(columnDenominazione2, columnIngrosso);
+		                    this.suspended = false;
+		                }
+		            }
+		        });
+		        
 
-       
-        //set content type of column
-        columnDenominazione1.setCellValueFactory(new PropertyValueFactory<Wine, String>("denominazione"));
-        columnDenominazione2.setCellValueFactory(new PropertyValueFactory<Wine, String>("denominazione"));
-        
-       
-     
-
-        columnDettaglio.setCellValueFactory(new PropertyValueFactory<Wine, String>("dettaglioEur"));
-        columnIngrosso.setCellValueFactory(new PropertyValueFactory<Wine, String>("ingrossoEur"));
-       
-        /*
-        SortedList<Wine> sortedList = new SortedList<>( juboss.Splash.viniOb, 
-        	      (Wine stock1, Wine stock2) -> {
-        	        if( stock1.getDenominazione() < stock2.getDenominazione() ) {
-        	            return -1;
-        	        } else if( stock1.getPercentChange() > stock2.getPercentChange() ) {
-        	            return 1;
-        	        } else {
-        	            return 0;
-        	        }
-        	    });
-
-
-        	    tickerTableView.setItems(sortedList);
-        	}
-        */
-        
-        //adding items to tableView
-        tableViewDett.setItems(juboss.Splash.viniOb);
-        tableViewIngro.setItems(juboss.Splash.viniOb);
-        
-        //lock of column repositioning
-        
-        tableViewDett.getColumns().addListener(new ListChangeListener() {
-            public boolean suspended;
-
-            @Override
-            public void onChanged(Change change) {
-                change.next();
-                if (change.wasReplaced() && !suspended) {
-                    this.suspended = true;
-                    tableViewDett.getColumns().setAll(columnDenominazione1, columnDettaglio);
-                    this.suspended = false;
-                }
-            }
-        });
-        
-        tableViewIngro.getColumns().addListener(new ListChangeListener() {
-            public boolean suspended;
-
-            @Override
-            public void onChanged(Change change) {
-                change.next();
-                if (change.wasReplaced() && !suspended) {
-                    this.suspended = true;
-                    tableViewIngro.getColumns().setAll(columnDenominazione2, columnIngrosso);
-                    this.suspended = false;
-                }
-            }
-        });
-        
-        filterUpdate();
+		        //focus request on searchfield
+		        Platform.runLater(new Runnable() {
+		            @Override
+		            public void run() {
+		            	searchField.requestFocus();            }
+		        });
+		        
+		        
+		        filterUpdate();
+		        
     }
     
     public void filterUpdate(){
