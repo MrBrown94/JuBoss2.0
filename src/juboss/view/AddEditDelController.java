@@ -439,7 +439,7 @@ public class AddEditDelController {
     	Alert alert = new Alert(AlertType.INFORMATION);
     	alert.setTitle("Errore");
     	alert.setHeaderText(null);
-    	alert.setContentText("Il campo \"Denominazione\" deve essere riempito!");
+    	alert.setContentText("I campi \"Denominazione e Prezzo/Ingrosso/Dettaglio\" devono essere riempiti!");
     	
     	Alert modificato = new Alert(AlertType.INFORMATION);
     	modificato.setTitle("Modificato.");
@@ -449,14 +449,14 @@ public class AddEditDelController {
     	
     	
     	
-    	if(fieldDenominazione.getText().equals(""))
+    	if(fieldDenominazione.getText().equals("") || fieldPrezzo.getText().equals("") || fieldIngrosso.getText().equals("") || fieldDettaglio.getText().equals(""))
     		alert.showAndWait();
     	
     	
     	else
     		//if prezzo dettaglio or ingrosso are empty , replace content with "0"
     		
-    		if(fieldPrezzo.getText().equals("")||fieldIngrosso.getText().equals("")||fieldDettaglio.getText() == null)
+    		if(fieldPrezzo.getText().equals("")||fieldIngrosso.getText().equals("")||fieldDettaglio.getText().equals(""))
 	    		{
 	    			juboss.Splash.db.editData(	
 	    											Integer.parseInt(ListViewEditController.selected.getId()),
@@ -645,8 +645,8 @@ public class AddEditDelController {
     	fieldDenominazione.clear();
 		fieldProduttore.clear(); 
 		fieldTipoVino.clear();
-		comboPaese.getSelectionModel().select(null); 
-		comboRegione.getSelectionModel().select(null);
+		comboPaese.getSelectionModel().select(0); 
+		comboRegione.getSelectionModel().select(0);
 		fieldCapacità.clear();
 		textAreaNote.clear(); 
 		fieldPrezzo.clear(); 

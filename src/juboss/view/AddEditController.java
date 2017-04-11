@@ -526,7 +526,7 @@ public class AddEditController {
     	Alert alert = new Alert(AlertType.INFORMATION);
     	alert.setTitle("Errore");
     	alert.setHeaderText(null);
-    	alert.setContentText("Il campo \"Denominazione\" deve essere riempito!");
+    	alert.setContentText("I campi \"Denominazione e Prezzo/Ingrosso/Dettaglio\" devono essere riempiti!");
     	
     	Alert aggiunto = new Alert(AlertType.INFORMATION);
     	aggiunto.setTitle("Aggiunto.");
@@ -534,7 +534,7 @@ public class AddEditController {
     	aggiunto.setContentText("Elemento Aggiunto!");
     	
     	
-    	if(fieldDenominazione.getText().equals(""))
+    	if(fieldDenominazione.getText().equals("") || fieldPrezzo.getText().equals("") || fieldIngrosso.getText().equals("") || fieldDettaglio.getText().equals(""))
     		alert.showAndWait();
     	
     	
@@ -542,14 +542,14 @@ public class AddEditController {
     		//if prezzo dettaglio or ingrosso are empty , replace content with "0"
     		
     		if(fieldPrezzo.getText().equals("")||fieldIngrosso.getText().equals("")||fieldDettaglio.getText().equals(""))
-	    		{
+	    		{    			
 	    			juboss.Splash.db.insertData(	fieldDenominazione.getText().toUpperCase(), 
 							fieldProduttore.getText().toUpperCase(), 
 							fieldTipoVino.getText().toUpperCase(), 
 							comboPaese.getSelectionModel().getSelectedItem(), 
 							comboRegione.getSelectionModel().getSelectedItem(),
 							fieldCapacità.getText().toUpperCase(), 
-							textAreaNote.getText().toUpperCase(), 
+							textAreaNote.getText(), 
 							Double.parseDouble("0"), 
 							Double.parseDouble("0"), 
 							Double.parseDouble("0"),
@@ -576,7 +576,7 @@ public class AddEditController {
 		    											comboPaese.getSelectionModel().getSelectedItem(), 
 		    											comboRegione.getSelectionModel().getSelectedItem(),
 		    											fieldCapacità.getText().toUpperCase(), 
-		    											textAreaNote.getText().toUpperCase(), 
+		    											textAreaNote.getText(), 
 		    											Double.parseDouble(fieldPrezzo.getText()), 
 		    											Double.parseDouble(fieldIngrosso.getText()), 
 		    											Double.parseDouble(fieldDettaglio.getText()),
@@ -672,8 +672,8 @@ public class AddEditController {
     	fieldDenominazione.clear();
 		fieldProduttore.clear(); 
 		fieldTipoVino.clear();
-		comboPaese.getSelectionModel().select(null); 
-		comboRegione.getSelectionModel().select(null);
+		comboPaese.getSelectionModel().select(0); 
+		comboRegione.getSelectionModel().select(0);
 		fieldCapacità.clear();
 		textAreaNote.clear(); 
 		fieldPrezzo.clear(); 

@@ -18,10 +18,10 @@
             <Font size="23.0" />
          </font>
       </Label>
-      <TextField fx:id="fieldIngrosso" layoutX="122.0" layoutY="14.0" prefHeight="31.0" prefWidth="50.0" />
-      <TextField fx:id="fieldDettaglio" layoutX="122.0" layoutY="57.0" prefHeight="31.0" prefWidth="50.0" />
+      <TextField fx:id="fieldDettaglio" layoutX="122.0" layoutY="14.0" prefHeight="31.0" prefWidth="50.0" />
+      <TextField fx:id="fieldIngrosso" layoutX="122.0" layoutY="57.0" prefHeight="31.0" prefWidth="50.0" />
       <Button layoutX="206.0" layoutY="103.0" mnemonicParsing="false" onMouseClicked="#editOption" prefWidth="70.0" text="Salva" />
-      <Button layoutX="120.0" layoutY="103.0" mnemonicParsing="false" onMouseClicked="#close" prefWidth="70.0" text="Annulla" />
+      <Button layoutX="102.0" layoutY="103.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="31.0" prefWidth="88.0" text="Annulla" />
       <Label layoutX="179.0" layoutY="15.0" text="\%">
          <font>
             <Font name="System Bold" size="18.0" />
