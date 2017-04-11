@@ -614,20 +614,37 @@ public class AddEditController {
 	}
     
 	//fill dettaglio and ingrosso with values calculated by options
-	@FXML
-	void percentCalc(){
-	
-		if(!fieldPrezzo.getText().equals(""))
-		{
-			fieldDettaglio.setText(Double.toString(Math.round(Double.parseDouble(fieldPrezzo.getText()) + Double.parseDouble(fieldPrezzo.getText())/100*settings[0])) );
-			fieldIngrosso.setText(Double.toString(Math.round(Double.parseDouble(fieldPrezzo.getText()) + Double.parseDouble(fieldPrezzo.getText())/100*settings[1])) );
-		}
-		else 
-		{
-			fieldDettaglio.setText("");
-			fieldIngrosso.setText("");
-		}
-	}
+			@FXML
+			void percentCalc(){
+			
+				if(!fieldPrezzo.getText().equals(""))
+				{
+					Double d = Double.parseDouble(fieldPrezzo.getText()); 
+					Double percent = ((Double.parseDouble(fieldPrezzo.getText()))/100.0 ) * (double)((settings[0]));
+					Double d1= Double.parseDouble(fieldPrezzo.getText());
+					Double percent1 = ((Double.parseDouble(fieldPrezzo.getText()))/100.0 ) * (double)((settings[1]));
+				
+					
+					//round value to NEXT INTEGER only if is >= 15.0
+					if(Double.parseDouble(fieldPrezzo.getText()) <= 15.0){
+						
+						fieldDettaglio.setText (Double.toString(d+percent));
+						fieldIngrosso.setText(Double.toString(d1+percent1));
+					}
+						else{
+							
+							fieldDettaglio.setText (Double.toString((Math.ceil(d+percent))));
+							fieldIngrosso.setText(Double.toString(Math.ceil(d1+percent1)));
+						}
+					
+					
+				}
+				else 
+				{
+					fieldDettaglio.setText("");
+					fieldIngrosso.setText("");
+				}
+			}
 	
     //unlock dettaglio and ingrosso
 	@FXML
