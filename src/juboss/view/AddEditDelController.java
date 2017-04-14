@@ -474,7 +474,11 @@ public class AddEditDelController {
 						);
 	    			
 	    			//update lista dopo inserimento
-    				juboss.Splash.viniOb = juboss.Splash.db.getAllData();
+	    			
+	    			juboss.Splash.viniOb.clear();
+    				
+	    			juboss.Splash.update();
+
     				
     				modificato.showAndWait();
     				
@@ -503,8 +507,11 @@ public class AddEditDelController {
 		    										);
     				
     			    //update list after insert
-	    			juboss.Splash.viniOb.removeAll(juboss.Splash.viniOb);
-    				juboss.Splash.viniOb = juboss.Splash.db.getAllData();
+	    				
+	    				juboss.Splash.viniOb.clear();
+	    				
+		    			juboss.Splash.update();
+
     				
     		    	Optional<ButtonType> result = modificato.showAndWait();
 

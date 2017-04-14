@@ -12,7 +12,7 @@ public class Splash extends JWindow {
 	private int duration;
 	
 	//ObservableList di  Vini
-	public static ObservableList<Wine> viniOb;
+	public static ObservableList<Wine> viniOb = null;
 	public static DbManager db = null;
 	
 	
@@ -47,8 +47,9 @@ public class Splash extends JWindow {
 		//Sleep Splash
 	    try { 
 	    	db = new DbManager();
-	    	viniOb = db.getAllData();
 	    	
+	    	viniOb = db.getAllData();
+	    		    	
 	    	Thread.sleep(duration);
 	    } catch (Exception e) {}
 	    
@@ -74,8 +75,9 @@ public class Splash extends JWindow {
 	public static void update(){
 		
 		 try { 
-		    	db = new DbManager();
-		    	viniOb = db.getAllData();
+			 	db = new DbManager();
+		    	viniOb.clear();
+		    	viniOb = db.getAllData(); 
 		    	
 		    	Thread.sleep(1700);
 		    } catch (Exception e) {}

@@ -18,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import juboss.MainApp;
+import juboss.model.Wine;
 
 public class AddEditController {
 
@@ -543,7 +544,8 @@ public class AddEditController {
     		
     		if(fieldPrezzo.getText().equals("")||fieldIngrosso.getText().equals("")||fieldDettaglio.getText().equals(""))
 	    		{    			
-	    			juboss.Splash.db.insertData(	fieldDenominazione.getText().toUpperCase(), 
+	    			juboss.Splash.db.insertData(	
+	    					fieldDenominazione.getText().toUpperCase(), 
 							fieldProduttore.getText().toUpperCase(), 
 							fieldTipoVino.getText().toUpperCase(), 
 							comboPaese.getSelectionModel().getSelectedItem(), 
@@ -557,7 +559,11 @@ public class AddEditController {
 						);
 	    			
 	    			//update lista dopo inserimento
-    				juboss.Splash.viniOb = juboss.Splash.db.getAllData();
+	    			
+    				juboss.Splash.viniOb.clear();
+    				
+	    			juboss.Splash.update();
+
     				
     				aggiunto.showAndWait();
     				
@@ -584,8 +590,11 @@ public class AddEditController {
 		    										);
     				
     			    //update list after insert
-    				juboss.Splash.viniOb = juboss.Splash.db.getAllData();
-    				
+	    			juboss.Splash.viniOb.clear();
+	    			
+	    			juboss.Splash.update();
+	    			
+	    			   				
     				aggiunto.showAndWait();
     				
     				//clean form

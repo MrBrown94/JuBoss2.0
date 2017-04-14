@@ -71,8 +71,13 @@ public class ListViewController {
 		        columnDenominazione1.setSortType(TableColumn.SortType.ASCENDING);
 		        
 		        //adding items to tableView
+		        System.out.println("setto a null");
+		        tableViewDett.setItems(null);
+		        tableViewDett.refresh();
 		        tableViewDett.setItems(juboss.Splash.viniOb);
-		        tableViewIngro.setItems(juboss.Splash.viniOb);
+		        
+		       
+		        //tableViewIngro.setItems(juboss.Splash.viniOb);
 		        
 		        
 		        //lock of column repositioning
