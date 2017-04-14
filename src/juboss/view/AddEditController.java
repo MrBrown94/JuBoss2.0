@@ -18,7 +18,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import juboss.MainApp;
-import juboss.model.Wine;
 
 public class AddEditController {
 
@@ -389,8 +388,7 @@ public class AddEditController {
 		    public void changed(ObservableValue<? extends String> observable,
 		            String oldValue, String newValue) {
 
-		    	//int in = newValue.length() - oldValue.length();
-		    	
+		    			    	
 		    	//filter "." if fieldPrezzo is empty
 		    	
 		    	if(fieldPrezzo.getText().equals("."))
@@ -576,7 +574,12 @@ public class AddEditController {
     		//if prezzo dettaglio or ingrosso are NOT empty , puts content on db
 
 	    		else{
-	    				juboss.Splash.db.insertData(	fieldDenominazione.getText().toUpperCase(), 
+	    			
+	    			/*
+	    			for(int i=0; i<=10000; i++ )
+	    			{
+	    				juboss.Splash.db.insertData(	
+	    												fieldDenominazione.getText().toUpperCase()+" "+i, 
 	    												fieldProduttore.getText().toUpperCase(), 
 	    												fieldTipoVino.getText().toUpperCase(), 
 		    											comboPaese.getSelectionModel().getSelectedItem(), 
@@ -588,8 +591,25 @@ public class AddEditController {
 		    											Double.parseDouble(fieldDettaglio.getText()),
 		    											checkManuale.isSelected()
 		    										);
-    				
-    			    //update list after insert
+	    				System.out.println("Aggiunto vino n° "+ i +"/1000");
+	    			}
+	    			*/
+	    			
+	    			juboss.Splash.db.insertData(	
+							fieldDenominazione.getText().toUpperCase(), 
+							fieldProduttore.getText().toUpperCase(), 
+							fieldTipoVino.getText().toUpperCase(), 
+							comboPaese.getSelectionModel().getSelectedItem(), 
+							comboRegione.getSelectionModel().getSelectedItem(),
+							fieldCapacità.getText().toUpperCase(), 
+							textAreaNote.getText(), 
+							Double.parseDouble(fieldPrezzo.getText()), 
+							Double.parseDouble(fieldIngrosso.getText()), 
+							Double.parseDouble(fieldDettaglio.getText()),
+							checkManuale.isSelected()
+							);
+	    			
+	    			//update list after insert
 	    			juboss.Splash.viniOb.clear();
 	    			
 	    			juboss.Splash.update();

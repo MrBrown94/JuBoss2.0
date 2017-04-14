@@ -186,7 +186,6 @@ public class ListViewEditController {
 
         	selected = tableViewDett.getSelectionModel().getSelectedItem();
            
-        	System.out.println("chiudi");
            try {
                
        		// Load gui.

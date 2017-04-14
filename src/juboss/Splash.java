@@ -78,9 +78,8 @@ public class Splash extends JWindow {
 			 	db = new DbManager();
 		    	viniOb.clear();
 		    	viniOb = db.getAllData(); 
-		    	
-		    	Thread.sleep(1700);
-		    } catch (Exception e) {}
+		     } 
+		 catch (Exception e) {}
 		 
 	}
 }

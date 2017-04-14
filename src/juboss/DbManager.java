@@ -66,8 +66,7 @@ public class DbManager {
 		    
 		    path += "/db/db.accdb;memory=false;COLUMNORDER=DISPLAY;singleconnection=true";
 		    
-		    System.out.println(path);
-		    
+		    		    
 		    return rePath;
 		} catch (UnsupportedEncodingException e) {
 			errorMessage(e.getMessage());
@@ -105,6 +104,9 @@ public class DbManager {
 	
 	//Get Info Vini
 	public ObservableList<Wine> getAllData() {
+		
+		
+		System.out.println("Accesso Db");
 		
 		try {
 			

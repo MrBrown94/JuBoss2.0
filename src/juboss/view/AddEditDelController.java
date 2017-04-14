@@ -504,6 +504,7 @@ public class AddEditDelController {
 		    											Double.parseDouble(fieldIngrosso.getText()), 
 		    											Double.parseDouble(fieldDettaglio.getText()),
 		    											checkManuale.isSelected()
+		    											
 		    										);
     				
     			    //update list after insert
@@ -678,13 +679,13 @@ public class AddEditDelController {
             //build scene
             Scene scene = new Scene(listView);
             scene.getStylesheets().add("style.css");
-            MainApp.stageList.setScene(scene);
-            MainApp.stageList.centerOnScreen();
-            MainApp.stageList.setResizable(false);
+            MainApp.stageListEdit.setScene(scene);
+            MainApp.stageListEdit.centerOnScreen();
+            MainApp.stageListEdit.setResizable(false);
             
            
             
-            MainApp.stageList.show();
+            MainApp.stageListEdit.show();
             
         } catch (IOException e) {
             e.printStackTrace();
