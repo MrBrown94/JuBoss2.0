@@ -70,4 +70,15 @@ public class Splash extends JWindow {
 		Splash splash = new Splash(1700);
 	    splash.showSplashAndStart();
 	  }
+	
+	public static void update(){
+		
+		 try { 
+		    	db = new DbManager();
+		    	viniOb = db.getAllData();
+		    	
+		    	Thread.sleep(1700);
+		    } catch (Exception e) {}
+		 
+	}
 }

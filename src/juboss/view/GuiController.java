@@ -129,6 +129,10 @@ public class GuiController {
     	if (file != null) {
             importa(file.toPath());
         }
+    	MainApp.primaryStage.close();
+    	
+    	juboss.Splash.update();
+    	MainApp.primaryStage.show();
     }
     
     
@@ -207,6 +211,11 @@ public class GuiController {
     	if (file != null) {
     		esporta(file.toPath());
         }
+    	
+    	MainApp.primaryStage.close();
+    	
+    	juboss.Splash.update();
+    	MainApp.primaryStage.show();
     }
     
     
