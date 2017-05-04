@@ -29,7 +29,7 @@ import juboss.Splash;
 
 public class GuiController {
 	
-	private Path filepath = Paths.get(Splash.db.getPath()+"\\db\\db.accdb");
+	private Path filepath = Paths.get(Splash.db.getPath()+"\\db\\database.db");
 	
     @FXML
     private ResourceBundle resources;
@@ -121,7 +121,7 @@ public class GuiController {
     	FileChooser fileChooser = new FileChooser();
     	fileChooser.setTitle("Open Resource File");
     	
-    	FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Database Access (*.accdb)", "*.accdb");
+    	FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Database SQLite (*.db)", "*.db");
     	fileChooser.getExtensionFilters().add(extFilter);
     	
     	File file = fileChooser.showOpenDialog(MainApp.primaryStage); 	
@@ -202,9 +202,9 @@ public class GuiController {
     	FileChooser fileChooser = new FileChooser();
     	fileChooser.setTitle("Open Resource File");
     	
-    	FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Database Access (*.accdb)", "*.accdb");
+    	FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Database SQLite (*.db)", "*.db");
     	fileChooser.getExtensionFilters().add(extFilter);
-    	fileChooser.setInitialFileName("db");
+    	fileChooser.setInitialFileName("database");
     	
     	File file = fileChooser.showSaveDialog(MainApp.primaryStage);
     	
