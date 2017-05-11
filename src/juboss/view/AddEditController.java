@@ -643,37 +643,66 @@ public class AddEditController {
 	}
     
 	//fill dettaglio and ingrosso with values calculated by options
-			@FXML
-			void percentCalc(){
+	@FXML
+	void percentCalc(){
+		
+		if(!fieldPrezzo.getText().equals("")) {
 			
-				if(!fieldPrezzo.getText().equals(""))
-				{
-					Double d = Double.parseDouble(fieldPrezzo.getText()); 
-					Double percent = ((Double.parseDouble(fieldPrezzo.getText()))/100.0 ) * (double)((settings[0]));
-					Double d1= Double.parseDouble(fieldPrezzo.getText());
-					Double percent1 = ((Double.parseDouble(fieldPrezzo.getText()))/100.0 ) * (double)((settings[1]));
+			double d = Double.parseDouble(fieldPrezzo.getText()); 
+			double percent = ((Double.parseDouble(fieldPrezzo.getText()))/100.0 ) * (double)((settings[1]));
+			double d1= Double.parseDouble(fieldPrezzo.getText());
+			double percent1 = ((Double.parseDouble(fieldPrezzo.getText()))/100.0 ) * (double)((settings[0]));
+		
+			
+			//round value
+			if(Double.parseDouble(fieldPrezzo.getText()) < 12.0){
 				
+				fieldDettaglio.setText (Double.toString(d+percent));
+				fieldIngrosso.setText(Double.toString(d1+percent1));
+			} else {
 					
-					//round value to NEXT INTEGER only if is >= 15.0
-					if(Double.parseDouble(fieldPrezzo.getText()) <= 15.0){
-						
-						fieldDettaglio.setText (Double.toString(d+percent));
-						fieldIngrosso.setText(Double.toString(d1+percent1));
+				
+				long iPartDettaglio = (long)percent;
+				double fPartDettaglio = percent - iPartDettaglio;
+				
+				if(fPartDettaglio != 0) {
+					
+					if(fPartDettaglio <= 0.5) {
+						fieldDettaglio.setText (Double.toString((Math.ceil(d+percent)-0.5)));
 					}
-						else{
-							
-							fieldDettaglio.setText (Double.toString((Math.ceil(d+percent))));
-							fieldIngrosso.setText(Double.toString(Math.ceil(d1+percent1)));
-						}
 					
+					if(fPartDettaglio > 0.5) {
+						fieldDettaglio.setText (Double.toString((Math.ceil(d+percent))));
+					}
+				} else {
 					
+					fieldDettaglio.setText (Double.toString(d+percent));
 				}
-				else 
-				{
-					fieldDettaglio.setText("");
-					fieldIngrosso.setText("");
+				
+				long iPartIngrosso = (long)percent1;
+				double fPartIngrosso = percent1 - iPartIngrosso;
+				
+				if(fPartIngrosso != 0) {	
+					if(fPartIngrosso <= 0.5) {
+						fieldIngrosso.setText(Double.toString(Math.ceil(d1+percent1)-0.5));
+					}
+					
+					if(fPartIngrosso > 0.5) {
+						fieldIngrosso.setText(Double.toString(Math.ceil(d1+percent1)));
+					}
+				} else {
+					
+					fieldIngrosso.setText(Double.toString(d1+percent1));
 				}
 			}
+		}
+		else 
+		{
+			fieldDettaglio.setText("");
+			fieldIngrosso.setText("");
+		}
+	}
+			
 	
     //unlock dettaglio and ingrosso
 	@FXML
