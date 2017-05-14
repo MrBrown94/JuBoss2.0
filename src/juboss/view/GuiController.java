@@ -30,6 +30,7 @@ import juboss.Splash;
 public class GuiController {
 	
 	private Path filepath = Paths.get(Splash.db.getPath()+"\\db\\database.db");
+	private static String OS = System.getProperty("os.name").toLowerCase();
 	
     @FXML
     private ResourceBundle resources;
@@ -204,18 +205,13 @@ public class GuiController {
     	
     	FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Database SQLite (*.db)", "*.db");
     	fileChooser.getExtensionFilters().add(extFilter);
-    	fileChooser.setInitialFileName("database");
+    	fileChooser.setInitialFileName("database.db");
     	
     	File file = fileChooser.showSaveDialog(MainApp.primaryStage);
     	
     	if (file != null) {
     		esporta(file.toPath());
         }
-    	
-    	MainApp.primaryStage.close();
-    	
-    	juboss.Splash.update();
-    	MainApp.primaryStage.show();
     }
     
     
