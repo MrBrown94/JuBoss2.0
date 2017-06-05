@@ -17,7 +17,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import juboss.DbManager;
 import juboss.MainApp;
+import juboss.Splash;
 
 public class AddEditDelController {
 
@@ -479,7 +481,6 @@ public class AddEditDelController {
     				
 	    			juboss.Splash.update();
 
-    				
     				modificato.showAndWait();
     				
     				//clean form    				
@@ -695,6 +696,11 @@ public class AddEditDelController {
     @FXML
     void launchListEdit(){
     	MainApp.stageListEdit.close();
+    	
+    	//MAFIATA
+    	Splash.db.closeDb();
+		DbManager db = new DbManager();
+		Splash.db = db;
     	//we should run ListView from here
     	try {
            

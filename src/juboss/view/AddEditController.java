@@ -17,7 +17,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import juboss.DbManager;
 import juboss.MainApp;
+import juboss.Splash;
 
 public class AddEditController {
 
@@ -746,7 +748,13 @@ public class AddEditController {
     	
     	//we should run ListView from here
     	try {
-           
+    		
+    		//MAFIATA
+    		MainApp.stageAddEdit.close();
+    		Splash.db.closeDb();
+    		DbManager db = new DbManager();
+    		Splash.db = db;
+    		
 			MainApp.stageListEdit = new Stage();
 			// Load gui.
 		    FXMLLoader loader = new FXMLLoader();
